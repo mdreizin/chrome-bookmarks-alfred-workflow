@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.mdreizin.chromebookmarks</string>
+	<key>connections</key>
+	<dict>
+		<key>736FD243-5957-4B4D-82CA-DFDF53FEB361</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>FFEE45C1-3AC1-4F40-8123-C46FC668CEC3</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Marat Dreizin</string>
+	<key>description</key>
+	<string>Search Google Chrome Bookmarks</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Chrome Bookmarks</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>63</integer>
+				<key>script</key>
+				<string>open -a "/Applications/Google Chrome.app" "{query}"</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>FFEE45C1-3AC1-4F40-8123-C46FC668CEC3</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>63</integer>
+				<key>keyword</key>
+				<string>chrome</string>
+				<key>script</key>
+				<string>php -f main.php -- "{query}"</string>
+				<key>subtext</key>
+				<string>Find and open a Google Chrome Bookmark</string>
+				<key>title</key>
+				<string>Google Chrome Bookmark '{query}'</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>736FD243-5957-4B4D-82CA-DFDF53FEB361</string>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>736FD243-5957-4B4D-82CA-DFDF53FEB361</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>FFEE45C1-3AC1-4F40-8123-C46FC668CEC3</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>

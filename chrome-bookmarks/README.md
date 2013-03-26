@@ -1,4 +1,4 @@
-# Chrome Bookmarks [download](https://raw.github.com/mdreizin/alfred-workflows/master/chrome-bookmarks/chrome-bookmarks.alfredworkflow)
+# Chrome Bookmarks
 
 This workflow helps you search your bookmarks in Google Chrome by using keyword ```chrome```:
 

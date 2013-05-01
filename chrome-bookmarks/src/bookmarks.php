@@ -18,7 +18,10 @@ class Bookmarks {
 			} else {
 				$name = html_entity_decode(htmlspecialchars($item->name));
 				$url = html_entity_decode(htmlspecialchars($item->url));
-				$isMatched = (strpos($name, $query) !== false || strpos($url, $query) !== false);
+				$lower_query = strtolower($query);
+				$lower_name = strtolower($name);
+				$lower_url = strtolower($url);
+				$isMatched = (strpos($lower_name, $lower_query) !== false || strpos($lower_url, $lower_query) !== false);
 
 				if ($isMatched) {
 					array_push($results, array('name' => $name, 'url' => $url));

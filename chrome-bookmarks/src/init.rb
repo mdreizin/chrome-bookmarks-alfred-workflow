@@ -18,8 +18,8 @@ def rbenv_ruby_path
 end
 
 def rvm_ruby_path
-	ruby_path = ruby_exec_path `/usr/local/.rvm`
-	ruby_path = ruby_exec_path `~/.rvm/bin/rvm` if ruby_path.empty?
+	ruby_path = ruby_exec_path '~/.rvm/bin/rvm'
+	ruby_path = ruby_exec_path '/usr/local/rvm' if ruby_path.empty?
 	ruby_path
 end
 

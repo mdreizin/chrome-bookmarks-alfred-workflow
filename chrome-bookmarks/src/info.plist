@@ -3,14 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>com.mdreizin.chromebookmarks</string>
+	<string>com.mdreizin.chrome.bookmarks</string>
 	<key>connections</key>
 	<dict>
-		<key>736FD243-5957-4B4D-82CA-DFDF53FEB361</key>
+		<key>3D8A5387-CCF1-421B-B3AF-054EFF9C80F5</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>FFEE45C1-3AC1-4F40-8123-C46FC668CEC3</string>
+				<string>800AEC36-5B23-48F1-A2F0-18C041F1A17A</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -21,7 +21,7 @@
 	<key>createdby</key>
 	<string>Marat Dreizin</string>
 	<key>description</key>
-	<string>Search Google Chrome Bookmarks</string>
+	<string>Search Google Chrome bookmarks</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -31,17 +31,19 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>escaping</key>
-				<integer>63</integer>
-				<key>script</key>
-				<string>open -a "/Applications/Google Chrome.app" "{query}"</string>
-				<key>type</key>
-				<integer>0</integer>
+				<key>browser</key>
+				<string>com.google.chrome</string>
+				<key>plusspaces</key>
+				<true/>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.script</string>
+			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
-			<string>FFEE45C1-3AC1-4F40-8123-C46FC668CEC3</string>
+			<string>800AEC36-5B23-48F1-A2F0-18C041F1A17A</string>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -49,15 +51,19 @@
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>escaping</key>
-				<integer>63</integer>
+				<integer>127</integer>
 				<key>keyword</key>
 				<string>chrome</string>
+				<key>runningsubtext</key>
+				<string>Searching bookmarks...</string>
 				<key>script</key>
-				<string>php -f main.php -- "{query}"</string>
+				<string>QUERY=$(./bin/normalise -form NFC "{query}")
+
+ruby -Ku "init.rb" "chrome" "${QUERY}"</string>
 				<key>subtext</key>
-				<string>Find and open a Google Chrome Bookmark</string>
+				<string>Start typing to search bookmarks…</string>
 				<key>title</key>
-				<string>Google Chrome Bookmark '{query}'</string>
+				<string>Google Chrome bookmarks '{query}'</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -66,19 +72,19 @@
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>736FD243-5957-4B4D-82CA-DFDF53FEB361</string>
+			<string>3D8A5387-CCF1-421B-B3AF-054EFF9C80F5</string>
 		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
-		<key>736FD243-5957-4B4D-82CA-DFDF53FEB361</key>
+		<key>3D8A5387-CCF1-421B-B3AF-054EFF9C80F5</key>
 		<dict>
 			<key>ypos</key>
 			<real>10</real>
 		</dict>
-		<key>FFEE45C1-3AC1-4F40-8123-C46FC668CEC3</key>
+		<key>800AEC36-5B23-48F1-A2F0-18C041F1A17A</key>
 		<dict>
 			<key>ypos</key>
 			<real>10</real>

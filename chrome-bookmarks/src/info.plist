@@ -59,7 +59,7 @@
 				<key>script</key>
 				<string>QUERY=$(./bin/normalise -form NFC "{query}")
 
-ruby -Ku "init.rb" "chrome" "${QUERY}"</string>
+python "main.py" "${QUERY}"</string>
 				<key>subtext</key>
 				<string>Start typing to search bookmarks…</string>
 				<key>title</key>

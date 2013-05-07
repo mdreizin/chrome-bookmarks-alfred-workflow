@@ -4,10 +4,12 @@ import re
 import json
 
 __BOOKMARKS_PATH = os.path.expanduser('~/Library/Application Support/Google/Chrome/Default/Bookmarks')
+__BOOKMARKS_CHROMIUM_PATH = os.path.expanduser('~/Library/Application Support/Chromium/Default/Bookmarks')
 
 
-def __load():
-    with open(__BOOKMARKS_PATH, 'r') as io:
+def __load(is_chromium):
+    path = __BOOKMARKS_CHROMIUM_PATH if is_chromium else __BOOKMARKS_PATH;
+    with open(path, 'r') as io:
         data = json.load(io)
 
     return data
@@ -31,10 +33,10 @@ def __inspect(data, chain, predicate):
     return
 
 
-def __find(predicate):
+def __find(predicate, is_chromium):
     items = []
 
-    data = __load()
+    data = __load(is_chromium)
 
     if data:
         __inspect(data['roots'], items, predicate)
@@ -42,7 +44,7 @@ def __find(predicate):
     return items
 
 
-def find(query):
+def find(query, is_chromium):
     r = re.compile(re.escape(query), re.UNICODE | re.IGNORECASE)
 
-    return __find((lambda x: bool(r.search(x['name'])) or bool(r.search(x['url']))))
+    return __find((lambda x: bool(r.search(x['name'])) or bool(r.search(x['url']))), is_chromium)

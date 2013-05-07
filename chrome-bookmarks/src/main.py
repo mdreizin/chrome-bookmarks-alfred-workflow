@@ -15,7 +15,7 @@ if len(args) > 0:
 
         items = sorted(items, key=lambda x: (x['title'].lower(), x['url'].lower()))
         items = map((lambda x: alfred.Item(
-            attributes={'uid': uuid.uuid1().int >> 64, 'arg': x['url'], 'valid': 'yes'},
+            attributes={'uid': uuid.uuid1().int >> 64, 'arg': x['url'], 'valid': u'yes'},
             icon=icon,
             title=x['title'],
             subtitle=x['url']
@@ -23,7 +23,7 @@ if len(args) > 0:
 
         if len(items) == 0:
             items = [alfred.Item(
-                attributes={'valid': 'no'},
+                attributes={'valid': u'no'},
                 icon=icon,
                 title=u'No bookmarks found',
                 subtitle=u'No bookmarks matching your query were found'

@@ -42,23 +42,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>browser</key>
-				<string>com.google.chrome</string>
-				<key>plusspaces</key>
-				<true/>
-				<key>url</key>
-				<string>{query}</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>800AEC36-5B23-48F1-A2F0-18C041F1A17A</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>escaping</key>
@@ -84,6 +67,23 @@ python "main.py" "${QUERY}"</string>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>3D8A5387-CCF1-421B-B3AF-054EFF9C80F5</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string>com.google.chrome</string>
+				<key>plusspaces</key>
+				<true/>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>800AEC36-5B23-48F1-A2F0-18C041F1A17A</string>
 		</dict>
 		<dict>
 			<key>config</key>

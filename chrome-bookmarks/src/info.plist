@@ -6,6 +6,17 @@
 	<string>com.mdreizin.chrome.bookmarks</string>
 	<key>connections</key>
 	<dict>
+		<key>2373A51A-F314-484C-81CE-BAB19BDEFF48</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>800AEC36-5B23-48F1-A2F0-18C041F1A17A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>3D8A5387-CCF1-421B-B3AF-054EFF9C80F5</key>
 		<array>
 			<dict>
@@ -74,11 +85,45 @@ python "main.py" "${QUERY}"</string>
 			<key>uid</key>
 			<string>3D8A5387-CCF1-421B-B3AF-054EFF9C80F5</string>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>chromium</string>
+				<key>runningsubtext</key>
+				<string>Searching bookmarks...</string>
+				<key>script</key>
+				<string>QUERY=$(./bin/normalise -form NFC "{query}")
+
+python "main.py" "${QUERY}" "chromium"</string>
+				<key>subtext</key>
+				<string>Start typing to search bookmarks…</string>
+				<key>title</key>
+				<string>Google Chromium bookmarks '{query}'</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>2373A51A-F314-484C-81CE-BAB19BDEFF48</string>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>2373A51A-F314-484C-81CE-BAB19BDEFF48</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
 		<key>3D8A5387-CCF1-421B-B3AF-054EFF9C80F5</key>
 		<dict>
 			<key>ypos</key>

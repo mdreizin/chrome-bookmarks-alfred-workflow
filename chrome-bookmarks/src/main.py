@@ -7,7 +7,7 @@ args = alfred.args()
 
 if len(args) > 0:
     query = args[0].strip()
-    is_chromium = len(args) > 1
+    is_chromium = len(args) > 1 and args[1].strip() == u'chromium'
 
     if query:
         items = bookmarks.find(query, is_chromium)

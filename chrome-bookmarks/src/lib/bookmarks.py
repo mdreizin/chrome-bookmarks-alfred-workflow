@@ -9,8 +9,12 @@ __BOOKMARKS_CHROMIUM_PATH = os.path.expanduser('~/Library/Application Support/Ch
 
 def __load(is_chromium):
     path = __BOOKMARKS_CHROMIUM_PATH if is_chromium else __BOOKMARKS_PATH
-    with open(path, 'r') as io:
-        data = json.load(io)
+
+    try:
+        with open(path, 'r') as io:
+            data = json.load(io)
+    except:
+        data = None
 
     return data
 

@@ -10,7 +10,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>800AEC36-5B23-48F1-A2F0-18C041F1A17A</string>
+				<string>284986D3-9648-450F-BD20-DF66B98F0E2D</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -114,12 +114,34 @@ python "main.py" "${QUERY}" "chromium"</string>
 			<key>uid</key>
 			<string>2373A51A-F314-484C-81CE-BAB19BDEFF48</string>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string>org.chromium.Chromium</string>
+				<key>plusspaces</key>
+				<false/>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>284986D3-9648-450F-BD20-DF66B98F0E2D</string>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
 		<key>2373A51A-F314-484C-81CE-BAB19BDEFF48</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>284986D3-9648-450F-BD20-DF66B98F0E2D</key>
 		<dict>
 			<key>ypos</key>
 			<real>130</real>

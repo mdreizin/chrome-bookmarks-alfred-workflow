@@ -103,7 +103,7 @@ python "main.py" "${QUERY}" "chromium"</string>
 				<key>subtext</key>
 				<string>Start typing to search bookmarks…</string>
 				<key>title</key>
-				<string>Google Chromium bookmarks '{query}'</string>
+				<string>Chromium bookmarks '{query}'</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>

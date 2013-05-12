@@ -6,6 +6,17 @@
 	<string>com.mdreizin.chrome.bookmarks</string>
 	<key>connections</key>
 	<dict>
+		<key>0436063E-BB98-42FF-A897-2CE6E941F289</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>986B910B-B203-4CFA-807B-7922C6D6FF15</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>2373A51A-F314-484C-81CE-BAB19BDEFF48</key>
 		<array>
 			<dict>
@@ -28,6 +39,39 @@
 				<string></string>
 			</dict>
 		</array>
+		<key>3E84C658-B2CE-46AB-8242-4D2675D1AC1C</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>986B910B-B203-4CFA-807B-7922C6D6FF15</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>77312921-B908-44FA-A262-65BB92C5F779</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>0436063E-BB98-42FF-A897-2CE6E941F289</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>87C75463-1570-420F-96CE-BD330C6FC18E</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3E84C658-B2CE-46AB-8242-4D2675D1AC1C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 	</dict>
 	<key>createdby</key>
 	<string>Marat Dreizin</string>
@@ -39,35 +83,6 @@
 	<string>Chrome Bookmarks</string>
 	<key>objects</key>
 	<array>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>escaping</key>
-				<integer>127</integer>
-				<key>keyword</key>
-				<string>chrome</string>
-				<key>runningsubtext</key>
-				<string>Searching bookmarks...</string>
-				<key>script</key>
-				<string>QUERY=$(./bin/normalise -form NFC "{query}")
-
-python "main.py" "${QUERY}"</string>
-				<key>subtext</key>
-				<string>Start typing to search bookmarks…</string>
-				<key>title</key>
-				<string>Google Chrome bookmarks '{query}'</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>3D8A5387-CCF1-421B-B3AF-054EFF9C80F5</string>
-		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -93,13 +108,42 @@ python "main.py" "${QUERY}"</string>
 				<key>escaping</key>
 				<integer>127</integer>
 				<key>keyword</key>
+				<string>chrome</string>
+				<key>runningsubtext</key>
+				<string>Searching bookmarks...</string>
+				<key>script</key>
+				<string>QUERY=$(./bin/normalise -form NFC "{query}")
+
+python "main.py" "chrome" "find.bookmarks" "${QUERY}"</string>
+				<key>subtext</key>
+				<string>Start typing to search bookmarks…</string>
+				<key>title</key>
+				<string>Google Chrome bookmarks '{query}'</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>3D8A5387-CCF1-421B-B3AF-054EFF9C80F5</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
 				<string>chromium</string>
 				<key>runningsubtext</key>
 				<string>Searching bookmarks...</string>
 				<key>script</key>
 				<string>QUERY=$(./bin/normalise -form NFC "{query}")
 
-python "main.py" "${QUERY}" "chromium"</string>
+python "main.py" "chromium" "find.bookmarks" "${QUERY}"</string>
 				<key>subtext</key>
 				<string>Start typing to search bookmarks…</string>
 				<key>title</key>
@@ -131,11 +175,131 @@ python "main.py" "${QUERY}" "chromium"</string>
 			<key>uid</key>
 			<string>284986D3-9648-450F-BD20-DF66B98F0E2D</string>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>chrome-profiles</string>
+				<key>runningsubtext</key>
+				<string>Getting profiles...</string>
+				<key>script</key>
+				<string>QUERY=$(./bin/normalise -form NFC "{query}")
+
+python "main.py" "chrome" "get.profiles" "${QUERY}"</string>
+				<key>subtext</key>
+				<string>Show list of profiles</string>
+				<key>title</key>
+				<string>Google Chrome profiles '{query}'</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>77312921-B908-44FA-A262-65BB92C5F779</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>QUERY=$(./bin/normalise -form NFC "{query}")
+
+python "main.py" "chrome" "set.profile" "${QUERY}"</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>0436063E-BB98-42FF-A897-2CE6E941F289</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>Your profile "{query}" has been successfully set</string>
+				<key>title</key>
+				<string>Chrome Bookmarks</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>986B910B-B203-4CFA-807B-7922C6D6FF15</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>QUERY=$(./bin/normalise -form NFC "{query}")
+
+python "main.py" "chromium" "set.profile" "${QUERY}"</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>3E84C658-B2CE-46AB-8242-4D2675D1AC1C</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>chromium-profiles</string>
+				<key>runningsubtext</key>
+				<string>Getting profiles...</string>
+				<key>script</key>
+				<string>QUERY=$(./bin/normalise -form NFC "{query}")
+
+python "main.py" "chromium" "get.profiles" "${QUERY}"</string>
+				<key>subtext</key>
+				<string>Show list of profiles</string>
+				<key>title</key>
+				<string>Chromium profiles '{query}'</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>87C75463-1570-420F-96CE-BD330C6FC18E</string>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>0436063E-BB98-42FF-A897-2CE6E941F289</key>
+		<dict>
+			<key>ypos</key>
+			<real>250</real>
+		</dict>
 		<key>2373A51A-F314-484C-81CE-BAB19BDEFF48</key>
 		<dict>
 			<key>ypos</key>
@@ -151,10 +315,30 @@ python "main.py" "${QUERY}" "chromium"</string>
 			<key>ypos</key>
 			<real>10</real>
 		</dict>
+		<key>3E84C658-B2CE-46AB-8242-4D2675D1AC1C</key>
+		<dict>
+			<key>ypos</key>
+			<real>370</real>
+		</dict>
+		<key>77312921-B908-44FA-A262-65BB92C5F779</key>
+		<dict>
+			<key>ypos</key>
+			<real>250</real>
+		</dict>
 		<key>800AEC36-5B23-48F1-A2F0-18C041F1A17A</key>
 		<dict>
 			<key>ypos</key>
 			<real>10</real>
+		</dict>
+		<key>87C75463-1570-420F-96CE-BD330C6FC18E</key>
+		<dict>
+			<key>ypos</key>
+			<real>370</real>
+		</dict>
+		<key>986B910B-B203-4CFA-807B-7922C6D6FF15</key>
+		<dict>
+			<key>ypos</key>
+			<real>300</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>

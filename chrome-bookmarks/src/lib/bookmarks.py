@@ -58,7 +58,7 @@ class Provider(object):
         if data:
             regexp = re.compile(re.escape(query), re.UNICODE | re.IGNORECASE)
 
-            _inspect_bookmarks(data[u'roots'], items, lambda x: bool(regexp.search(x['name'])) or bool(regexp.search(x['url'])))
+            _inspect_bookmarks(data['roots'], items, lambda x: bool(regexp.search(x['name'])) or bool(regexp.search(x['url'])))
 
         return sorted(items, key=lambda x: (x['title'].lower(), x['url'].lower()))
 

@@ -91,3 +91,9 @@ def _create(path):
     if not os.access(path, os.W_OK):
         raise IOError('No write access: %s' % path)
     return path
+
+_SETTING_FILE = os.path.join(work(False), 'settings.plist')
+settings =  plistlib.readPlist(_SETTING_FILE) if os.path.exists(_SETTING_FILE) else {}
+
+def flush():
+    plistlib.writePlist(settings, _SETTING_FILE)

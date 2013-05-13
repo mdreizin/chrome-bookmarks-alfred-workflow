@@ -3,7 +3,7 @@ import itertools
 from xml.etree import ElementTree as xml
 
 
-class Feedback:
+class Feedback(object):
     def __init__(self):
         self.__items = []
 
@@ -15,7 +15,7 @@ class Feedback:
                 self.__items.append(item)
 
     def xml(self, max_results=None):
-        if max_results is None:
+        if not max_results:
             max_results = len(self.__items)
 
         root = xml.Element('items')
@@ -28,7 +28,7 @@ class Feedback:
     def to_xml(self, max_results=None):
         return xml.tostring(self.xml(max_results), encoding='utf-8')
 
-    class Item:
+    class Item(object):
         def __init__(self, attributes, title, subtitle, icon=None):
             self.attributes = attributes
             self.title = title
@@ -41,7 +41,7 @@ class Feedback:
             for attribute in ('title', 'subtitle', 'icon'):
                 value = getattr(self, attribute)
 
-                if value is None:
+                if not value:
                     continue
 
                 attributes = {}

@@ -3,7 +3,7 @@ import os
 import plistlib
 
 
-class Settings:
+class Settings(object):
     def __init__(self, path):
         self.__settings = plistlib.readPlist(path) if os.path.exists(path) else {}
         self.path = os.path.expanduser(path)

@@ -5,8 +5,9 @@ _UNESCAPE_CHARACTERS = u""" ;()"""
 
 
 def unescape(query, characters=None):
-    for character in (_UNESCAPE_CHARACTERS if (characters is None) else characters):
+    for character in (_UNESCAPE_CHARACTERS if not characters else characters):
         query = query.replace('\\%s' % character, character)
+
     return query
 
 

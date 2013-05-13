@@ -8,7 +8,7 @@ _NON_PERSISTENT_PATH = '~/Library/Caches/com.runningwithcrayons.Alfred-2/Workflo
 _PERSISTENT_PATH = '~/Library/Application Support/Alfred 2/Workflow Data'
 
 
-class Workflow:
+class Workflow(object):
     def __init__(self):
         self.preferences = ImmutableSettings('info.plist')
         self.id = self.preferences.get('bundleid')

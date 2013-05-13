@@ -1,62 +1,63 @@
 # -*- coding: utf-8 -*-
-import time
 import lib.alfred as alfred
 import lib.bookmarks as bookmarks
 
 args = alfred.args()
 
 if len(args) >= 2:
+    workflow = alfred.Workflow()
     vendor = args[0].strip()
     command = args[1].strip()
     query = args[2].strip() if len(args) == 3 else None
     icon = u'icons/%s.png' % vendor
     profile_id = u'%s.profile' % vendor
-    profile = alfred.settings[profile_id] if alfred.settings.has_key(profile_id) else u'Default'
+    profile = workflow.settings.get(profile_id, u'Default')
     provider = bookmarks.Provider(vendor, profile)
 
     if command == 'find.bookmarks':
-        if query:
-            items = provider.find_bookmarks(query)
-            items = map(lambda x: alfred.Item(
-                attributes={'uid': alfred.uid(time.time()), 'arg': x['url'], 'valid': u'yes'},
+        result = map(lambda x: workflow.feedback.Item(
+            attributes={'uid': workflow.uid(), 'arg': x['url'], 'valid': u'yes'},
+            icon=icon,
+            title=x['title'],
+            subtitle=x['url']
+        ), provider.find_bookmarks(query))
+
+        if not result:
+            result = workflow.feedback.Item(
+                attributes={'uid': workflow.uid(), 'valid': u'no'},
                 icon=icon,
-                title=x['title'],
-                subtitle=x['url']
-            ), items)
+                title=u'No bookmarks found',
+                subtitle=u'No bookmarks matching your query were found'
+            )
 
-            if len(items) == 0:
-                items = [alfred.Item(
-                    attributes={'uid': alfred.uid(time.time()), 'valid': u'no'},
-                    icon=icon,
-                    title=u'No bookmarks found',
-                    subtitle=u'No bookmarks matching your query were found'
-                )]
+        workflow.feedback.add(result)
 
-            xml = alfred.xml(items, len(items))
+        xml = workflow.feedback.to_xml()
 
-            alfred.write(xml)
+        alfred.write(xml)
     elif command == 'get.profiles':
-        items = provider.get_profiles(query)
-        items = map(lambda x: alfred.Item(
-            attributes={'uid': alfred.uid(time.time()), 'arg': x['name'], 'valid': u'yes'},
+        result = map(lambda x: workflow.feedback.Item(
+            attributes={'uid': workflow.uid(), 'arg': x['name'], 'valid': u'yes'},
             icon=icon,
             title=x['name'] if x['name'] != profile else u'* %s' % x['name'],
             subtitle=x['full_path']
-        ), items)
+        ), provider.get_profiles(query))
 
-        if len(items) == 0:
-            items = [alfred.Item(
-                attributes={'uid': alfred.uid(time.time()), 'valid': u'no'},
+        if not result:
+            result = workflow.feedback.Item(
+                attributes={'uid': workflow.uid(), 'valid': u'no'},
                 icon=icon,
                 title=u'No profiles found',
                 subtitle=u'No profiles were found'
-            )]
+            )
 
-        xml = alfred.xml(items, len(items))
+        workflow.feedback.add(result)
+
+        xml = workflow.feedback.to_xml()
 
         alfred.write(xml)
     elif command == 'set.profile':
-        alfred.settings[profile_id] = query
+        workflow.settings.set({profile_id: query})
+        workflow.settings.save()
 
-        alfred.flush()
         alfred.write(query)

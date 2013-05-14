@@ -185,13 +185,13 @@ python "main.py" -v "chromium" -c "get.bookmarks" -q "${QUERY}"</string>
 				<key>keyword</key>
 				<string>chrome-profiles</string>
 				<key>runningsubtext</key>
-				<string>Getting profiles...</string>
+				<string>Loading profiles...</string>
 				<key>script</key>
 				<string>QUERY=$(./bin/normalise -form NFC "{query}")
 
 python "settings.py" -v "chrome" -c "get.profiles" -q "${QUERY}"</string>
 				<key>subtext</key>
-				<string>Show list of profiles</string>
+				<string>Show all available profiles</string>
 				<key>title</key>
 				<string>Google Chrome profiles '{query}'</string>
 				<key>type</key>
@@ -235,7 +235,7 @@ python "settings.py" -v "chrome" -c "set.profile" -q "${QUERY}"</string>
 				<key>sticky</key>
 				<false/>
 				<key>text</key>
-				<string>Your profile "{query}" has been successfully set</string>
+				<string>{query}</string>
 				<key>title</key>
 				<string>Chrome Bookmarks</string>
 			</dict>
@@ -271,13 +271,13 @@ python "settings.py" -v "chromium" -c "set.profile" -q "${QUERY}"</string>
 				<key>keyword</key>
 				<string>chromium-profiles</string>
 				<key>runningsubtext</key>
-				<string>Getting profiles...</string>
+				<string>Loading profiles...</string>
 				<key>script</key>
 				<string>QUERY=$(./bin/normalise -form NFC "{query}")
 
 python "settings.py" -v "chromium" -c "get.profiles" -q "${QUERY}"</string>
 				<key>subtext</key>
-				<string>Show list of profiles</string>
+				<string>Show all available profiles</string>
 				<key>title</key>
 				<string>Chromium profiles '{query}'</string>
 				<key>type</key>

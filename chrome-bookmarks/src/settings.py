@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
-import getopt, sys
-import lib.alfred as alfred
-import lib.bookmarks as bookmarks
+import getopt
+import sys
+import packages.alfred as alfred
+import packages.workflow as core
+
 
 def main(argv):
     try:
@@ -23,12 +25,13 @@ def main(argv):
 
     if vendor and command:
         workflow = alfred.Workflow()
-        icon = u'icons/%s.png' % vendor
-        profile_id = u'%s.profile' % vendor
-        profile = workflow.settings.get(profile_id, u'Default')
-        provider = bookmarks.Provider(vendor, profile)
+        provider = core.providers.create(vendor, workflow.settings)
+
+        icon = provider.icon
 
         if command == 'get.profiles':
+            profile = provider.profile
+
             result = map(lambda x: workflow.feedback.Item(
                 attributes={'uid': workflow.uid(), 'arg': x['name'], 'valid': u'yes'},
                 icon=icon,
@@ -50,10 +53,10 @@ def main(argv):
 
             alfred.write(xml)
         elif command == 'set.profile':
-            workflow.settings.set({profile_id: query})
-            workflow.settings.save()
+            provider.settings.set({'profile': query})
+            provider.settings.save()
 
-            alfred.write(query)
+            alfred.write(u'Now %s uses the "%s" profile' % (provider.name, query))
 
 if __name__ == '__main__':
     main(list(alfred.args()))

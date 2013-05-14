@@ -36,14 +36,3 @@ class Settings(object):
             raise IOError('No write access: %s' % path)
 
         plistlib.writePlist(self.__settings, self.path)
-
-
-class ImmutableSettings(Settings):
-    def set(self, **attributes):
-        pass
-
-    def unset(self, **keys):
-        pass
-
-    def save(self):
-        pass

@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 import time
 import os
-from feedback import Feedback
-from settings import Settings, ImmutableSettings
+from feedback import *
+from settings import *
+from immutable_settings import *
 
 _NON_PERSISTENT_PATH = '~/Library/Caches/com.runningwithcrayons.Alfred-2/Workflow Data'
 _PERSISTENT_PATH = '~/Library/Application Support/Alfred 2/Workflow Data'

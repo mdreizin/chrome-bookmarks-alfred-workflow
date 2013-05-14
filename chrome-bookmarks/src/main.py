@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
-import getopt, sys
-import lib.alfred as alfred
-import lib.bookmarks as bookmarks
+import getopt
+import sys
+import packages.alfred as alfred
+import packages.workflow as core
+
 
 def main(argv):
     try:
@@ -23,10 +25,9 @@ def main(argv):
 
     if vendor and command:
         workflow = alfred.Workflow()
-        icon = u'icons/%s.png' % vendor
-        profile_id = u'%s.profile' % vendor
-        profile = workflow.settings.get(profile_id, u'Default')
-        provider = bookmarks.Provider(vendor, profile)
+        provider = core.providers.create(vendor, workflow.settings)
+
+        icon = provider.icon
 
         if command == 'get.bookmarks':
             result = map(lambda x: workflow.feedback.Item(
@@ -34,7 +35,7 @@ def main(argv):
                 icon=icon,
                 title=x['title'],
                 subtitle=x['url']
-            ), provider.find_bookmarks(query))
+            ), provider.get_bookmarks(query))
 
             if not result:
                 result = workflow.feedback.Item(

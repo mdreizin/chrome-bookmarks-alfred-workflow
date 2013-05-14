@@ -114,7 +114,7 @@
 				<key>script</key>
 				<string>QUERY=$(./bin/normalise -form NFC "{query}")
 
-python "main.py" -v "chrome" -c "find.bookmarks" -q "${QUERY}"</string>
+python "main.py" -v "chrome" -c "get.bookmarks" -q "${QUERY}"</string>
 				<key>subtext</key>
 				<string>Start typing to search bookmarks…</string>
 				<key>title</key>
@@ -143,7 +143,7 @@ python "main.py" -v "chrome" -c "find.bookmarks" -q "${QUERY}"</string>
 				<key>script</key>
 				<string>QUERY=$(./bin/normalise -form NFC "{query}")
 
-python "main.py" -v "chromium" -c "find.bookmarks" -q "${QUERY}"</string>
+python "main.py" -v "chromium" -c "get.bookmarks" -q "${QUERY}"</string>
 				<key>subtext</key>
 				<string>Start typing to search bookmarks…</string>
 				<key>title</key>
@@ -189,7 +189,7 @@ python "main.py" -v "chromium" -c "find.bookmarks" -q "${QUERY}"</string>
 				<key>script</key>
 				<string>QUERY=$(./bin/normalise -form NFC "{query}")
 
-python "main.py" -v "chrome" -c "get.profiles" -q "${QUERY}"</string>
+python "settings.py" -v "chrome" -c "get.profiles" -q "${QUERY}"</string>
 				<key>subtext</key>
 				<string>Show list of profiles</string>
 				<key>title</key>
@@ -212,7 +212,7 @@ python "main.py" -v "chrome" -c "get.profiles" -q "${QUERY}"</string>
 				<key>script</key>
 				<string>QUERY=$(./bin/normalise -form NFC "{query}")
 
-python "main.py" -v "chrome" -c "set.profile" -q "${QUERY}"</string>
+python "settings.py" -v "chrome" -c "set.profile" -q "${QUERY}"</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -252,7 +252,7 @@ python "main.py" -v "chrome" -c "set.profile" -q "${QUERY}"</string>
 				<key>script</key>
 				<string>QUERY=$(./bin/normalise -form NFC "{query}")
 
-python "main.py" -v "chromium" -c "set.profile" -q "${QUERY}"</string>
+python "settings.py" -v "chromium" -c "set.profile" -q "${QUERY}"</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -275,7 +275,7 @@ python "main.py" -v "chromium" -c "set.profile" -q "${QUERY}"</string>
 				<key>script</key>
 				<string>QUERY=$(./bin/normalise -form NFC "{query}")
 
-python "main.py" -v "chromium" -c "get.profiles" -q "${QUERY}"</string>
+python "settings.py" -v "chromium" -c "get.profiles" -q "${QUERY}"</string>
 				<key>subtext</key>
 				<string>Show list of profiles</string>
 				<key>title</key>

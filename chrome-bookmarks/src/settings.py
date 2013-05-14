@@ -28,20 +28,20 @@ def main(argv):
         profile = workflow.settings.get(profile_id, u'Default')
         provider = bookmarks.Provider(vendor, profile)
 
-        if command == 'get.bookmarks':
+        if command == 'get.profiles':
             result = map(lambda x: workflow.feedback.Item(
-                attributes={'uid': workflow.uid(), 'arg': x['url'], 'valid': u'yes'},
+                attributes={'uid': workflow.uid(), 'arg': x['name'], 'valid': u'yes'},
                 icon=icon,
-                title=x['title'],
-                subtitle=x['url']
-            ), provider.find_bookmarks(query))
+                title=x['name'] if x['name'] != profile else u'* %s' % x['name'],
+                subtitle=x['full_path']
+            ), provider.get_profiles(query))
 
             if not result:
                 result = workflow.feedback.Item(
                     attributes={'uid': workflow.uid(), 'valid': u'no'},
                     icon=icon,
-                    title=u'No bookmarks found',
-                    subtitle=u'No bookmarks matching your query were found'
+                    title=u'No profiles found',
+                    subtitle=u'No profiles were found'
                 )
 
             workflow.feedback.add(result)
@@ -49,6 +49,11 @@ def main(argv):
             xml = workflow.feedback.to_xml()
 
             alfred.write(xml)
+        elif command == 'set.profile':
+            workflow.settings.set({profile_id: query})
+            workflow.settings.save()
+
+            alfred.write(query)
 
 if __name__ == '__main__':
     main(list(alfred.args()))

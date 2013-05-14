@@ -342,6 +342,6 @@ python "main.py" "chromium" "get.profiles" "${QUERY}"</string>
 		</dict>
 	</dict>
 	<key>webaddress</key>
-	<string></string>
+	<string>http://mdreizin.github.io/alfred-workflows/#chrome-bookmarks</string>
 </dict>
 </plist>

@@ -5,8 +5,8 @@ import plistlib
 
 class Settings(object):
     def __init__(self, path):
-        self.__settings = plistlib.readPlist(path) if os.path.exists(path) else {}
         self.path = os.path.expanduser(path)
+        self.__settings = plistlib.readPlist(self.path) if os.path.exists(self.path) else {}
 
     def set(self, *attributes):
         for attribute in attributes:

@@ -17,3 +17,5 @@ Also you can specify which profile will be used by using a ```chrome-profiles```
 
 [![](https://raw.github.com/mdreizin/alfred-workflows/master/chrome-bookmarks/img/chrome_profiles.png)](https://raw.github.com/mdreizin/alfred-workflows/master/chrome-bookmarks/zip/chrome-bookmarks.alfredworkflow)
 [![](https://raw.github.com/mdreizin/alfred-workflows/master/chrome-bookmarks/img/chromium_profiles.png)](https://raw.github.com/mdreizin/alfred-workflows/master/chrome-bookmarks/zip/chrome-bookmarks.alfredworkflow)
+
+[Download](https://raw.github.com/mdreizin/alfred-workflows/master/chrome-bookmarks/zip/chrome-bookmarks.alfredworkflow)

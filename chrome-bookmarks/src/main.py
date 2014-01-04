@@ -30,22 +30,22 @@ def main(argv):
         icon = provider.icon
 
         if command == 'get.bookmarks':
-            result = map(lambda x: workflow.feedback.Item(
+            results = map(lambda x: workflow.feedback.Item(
                 attributes={'uid': workflow.uid(), 'arg': x['url'], 'valid': u'yes'},
                 icon=icon,
                 title=x['title'],
                 subtitle=x['url']
             ), provider.get_bookmarks(query))
 
-            if not result:
-                result = workflow.feedback.Item(
+            if not results:
+                results = workflow.feedback.Item(
                     attributes={'uid': workflow.uid(), 'valid': u'no'},
                     icon=icon,
                     title=u'No bookmarks found',
                     subtitle=u'No bookmarks matching your query were found'
                 )
 
-            workflow.feedback.add(result)
+            workflow.feedback.add(results)
 
             xml = workflow.feedback.to_xml()
 

@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 import os
-import re
 import json
 from abc import *
-from provider_settings import *
+from ..matchers import *
+
 
 class ProviderBase(object):
+    def __init__(self, settings):
+        self.__settings = settings
+
     @abstractproperty
     def id(self):
         pass
@@ -24,37 +27,65 @@ class ProviderBase(object):
 
     @property
     def profile(self):
-        return self.settings.get('profile', u'Default')
+        return self.settings.get(u'profile', u'Default')
 
     @property
     def profile_path(self):
-        return os.path.join(self.full_path, self.profile)
+        return self.file_path(self.profile)
+
+    def profile_file_path(self, name):
+        return os.path.join(self.profile_path, name)
 
     def file_path(self, name):
-        return os.path.join(self.profile_path, name)
+        return os.path.join(self.full_path, name)
 
     @property
     def settings(self):
         return self.__settings
 
-    @settings.setter
-    def settings(self, value):
-        self.__settings = ProviderSettings(self.id, value)
-
     def get_profiles(self, query=None):
-        try:
-            path = os.path.expanduser(self.full_path)
+        profiles = []
+        payload = ProviderBase.load_json(self.file_path('Local State')) or {}
 
-            profiles = [{'name': x, 'full_path': os.path.join(self.full_path, x)} for x in os.listdir(path) if x == u'Default' or x.startswith(u'Profile')]
-        except IOError:
-            profiles = []
+        if payload:
+            root = (payload['profile'] and payload['profile']['info_cache']) or {}
+            profiles = [
+                {'name': name, 'title': '{name} ({user_name})'.format(**profile), 'icon': self.icon,
+                 'full_path': self.file_path(name)} for (name, profile) in root.items()]
+        else:
+            try:
+                path = os.path.expanduser(self.full_path)
+
+                if os.path.exists(path):
+                    profiles = [{'name': profile, 'title': profile, 'full_path': os.path.join(self.full_path, profile),
+                                 'icon': self.icon} for
+                                profile in os.listdir(path) if profile == u'Default' or profile.startswith(u'Profile')]
+            except IOError:
+                profiles = []
 
         if query:
-            regexp = re.compile(re.escape(query), re.UNICODE | re.IGNORECASE)
+            matcher = RegexpMatcher(query)
 
-            profiles = [x for x in profiles if bool(regexp.search(x['name']))]
+            for i, profile in enumerate(profiles):
+                name_ratio = matcher.ratio(profile['name'])
+                title_ratio = matcher.ratio(profile['title'])
+                total_ratio = name_ratio + title_ratio
+                matched = total_ratio >= 0.5
 
-        return sorted(profiles, key=lambda x: x['name'].lower())
+                if not matched:
+                    del profiles[i]
+
+        return sorted(profiles, key=lambda x: (x['title'], x['name']))
+
+    @staticmethod
+    def load_json(path):
+        try:
+            with open(os.path.expanduser(path), 'r') as io:
+                payload = json.load(io)
+        except IOError:
+            payload = None
+
+        return payload
 
     @staticmethod
     def inspect_bookmarks(payload):
@@ -75,25 +106,22 @@ class ProviderBase(object):
                     for x in ProviderBase.inspect_bookmarks(value):
                         yield x
 
-    def get_bookmarks(self, query):
+    def get_bookmarks(self, query=None):
         bookmarks = []
 
         if query:
-            path = os.path.expanduser(self.file_path('Bookmarks'))
-
-            try:
-                with open(path, 'r') as io:
-                    payload = json.load(io)
-            except IOError:
-                payload = None
+            payload = ProviderBase.load_json(self.profile_file_path('Bookmarks'))
 
             if payload:
-                regexp = re.compile(re.escape(query), re.UNICODE | re.IGNORECASE)
+                matcher = FuzzyMatcher(query)
 
-                for x in ProviderBase.inspect_bookmarks(payload['roots']):
-                    matched = bool(regexp.search(x['name'])) or bool(regexp.search(x['url']))
+                for bookmark in ProviderBase.inspect_bookmarks(payload['roots']):
+                    name_ratio = matcher.ratio(bookmark['name'])
+                    url_ratio = matcher.ratio(bookmark['url'])
+                    total_ratio = name_ratio + url_ratio
+                    matched = bool(total_ratio >= 0.5)
 
                     if matched:
-                        bookmarks.append({'title': x['name'], 'url': x['url']})
+                        bookmarks.append({'title': bookmark['name'], 'url': bookmark['url']})
 
-        return sorted(bookmarks, key=lambda x: (x['title'].lower(), x['url'].lower()))
+        return sorted(bookmarks, key=lambda x: (x['title'], x['url']))

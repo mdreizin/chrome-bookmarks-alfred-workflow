@@ -21,7 +21,10 @@ class ProviderSettings(object):
             for key in attribute:
                 options.append({self.__cid(key): attribute[key]})
 
-        self.__settings.set(*options)
+        self.sync(*options)
+
+    def sync(self, *attributes):
+        self.__settings.set(*attributes)
 
     def save(self):
         self.__settings.save()

@@ -32,22 +32,22 @@ def main(argv):
         if command == 'get.profiles':
             profile = provider.profile
 
-            result = map(lambda x: workflow.feedback.Item(
+            results = map(lambda x: workflow.feedback.Item(
                 attributes={'uid': workflow.uid(), 'arg': x['name'], 'valid': u'yes'},
                 icon=icon,
-                title=x['name'] if x['name'] != profile else u'* %s' % x['name'],
+                title=x['title'] if x['name'] != profile else u'* %s' % x['title'],
                 subtitle=x['full_path']
             ), provider.get_profiles(query))
 
-            if not result:
-                result = workflow.feedback.Item(
+            if not results:
+                results = workflow.feedback.Item(
                     attributes={'uid': workflow.uid(), 'valid': u'no'},
                     icon=icon,
                     title=u'No profiles found',
                     subtitle=u'No profiles were found'
                 )
 
-            workflow.feedback.add(result)
+            workflow.feedback.add(results)
 
             xml = workflow.feedback.to_xml()
 

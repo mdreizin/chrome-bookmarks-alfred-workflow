@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from provider_base import ProviderBase
 
+
 class ChromiumProvider(ProviderBase):
     @property
     def id(self):

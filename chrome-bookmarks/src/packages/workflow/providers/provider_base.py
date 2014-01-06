@@ -1,13 +1,54 @@
 # -*- coding: utf-8 -*-
 import os
 import json
+import urllib2
 from abc import *
 from ..matchers import *
+from provider_settings import ProviderSettings
+
+_MINIMUM_RATIO = 50
+
+
+def load_json(path):
+    try:
+        with open(os.path.expanduser(path), 'r') as io:
+            payload = json.load(io)
+    except IOError:
+        payload = None
+
+    return payload
+
+
+def inspect_json(payload):
+    if payload:
+        if type(payload) == dict:
+            if 'type' in payload:
+                if payload['type'] == 'folder':
+                    for x in inspect_json(payload['children']):
+                        yield x
+                elif payload['type'] == 'url':
+                    yield payload
+            else:
+                for value in payload.itervalues():
+                    for x in inspect_json(value):
+                        yield x
+        elif type(payload) == list:
+            for value in payload:
+                for x in inspect_json(value):
+                    yield x
+
+
+def decode_url(url):
+    return urllib2.unquote(url.decode('utf-8'))
+
+
+def make_sortable(query):
+    return re.escape(query)
 
 
 class ProviderBase(object):
     def __init__(self, settings):
-        self.__settings = settings
+        self.__settings = ProviderSettings(self.id, settings)
 
     @abstractproperty
     def id(self):
@@ -45,12 +86,14 @@ class ProviderBase(object):
 
     def get_profiles(self, query=None):
         profiles = []
-        payload = ProviderBase.load_json(self.file_path('Local State')) or {}
+        payload = load_json(self.file_path('Local State')) or {}
 
         if payload:
             root = (payload['profile'] and payload['profile']['info_cache']) or {}
             profiles = [
-                {'name': name, 'title': '{name} ({user_name})'.format(**profile), 'icon': self.icon,
+                {'name': name,
+                 'title': u'%s (%s)' % (profile['name'], profile['user_name']) if profile['user_name'] else profile['name'],
+                 'icon': self.icon,
                  'full_path': self.file_path(name)} for (name, profile) in root.items()]
         else:
             try:
@@ -64,64 +107,43 @@ class ProviderBase(object):
                 profiles = []
 
         if query:
-            matcher = RegexpMatcher(query)
+            matcher = PartialStringMatcher(query)
 
             for i, profile in enumerate(profiles):
-                name_ratio = matcher.ratio(profile['name'])
-                title_ratio = matcher.ratio(profile['title'])
-                total_ratio = name_ratio + title_ratio
-                matched = total_ratio >= 0.5
+                name = profile['name']
+                title = profile['title']
+                full_path = profile['full_path']
+
+                name_ratio = matcher.ratio(name)
+                title_ratio = matcher.ratio(title)
+                full_path_ratio = matcher.ratio(full_path)
+
+                matched = name_ratio >= _MINIMUM_RATIO or title_ratio >= _MINIMUM_RATIO or full_path_ratio >= _MINIMUM_RATIO
 
                 if not matched:
                     del profiles[i]
 
         return sorted(profiles, key=lambda x: (x['title'], x['name']))
 
-    @staticmethod
-    def load_json(path):
-        try:
-            with open(os.path.expanduser(path), 'r') as io:
-                payload = json.load(io)
-        except IOError:
-            payload = None
-
-        return payload
-
-    @staticmethod
-    def inspect_bookmarks(payload):
-        if payload:
-            if type(payload) == dict:
-                if 'type' in payload:
-                    if payload['type'] == 'folder':
-                        for x in ProviderBase.inspect_bookmarks(payload['children']):
-                            yield x
-                    elif payload['type'] == 'url':
-                        yield payload
-                else:
-                    for value in payload.itervalues():
-                        for x in ProviderBase.inspect_bookmarks(value):
-                            yield x
-            elif type(payload) == list:
-                for value in payload:
-                    for x in ProviderBase.inspect_bookmarks(value):
-                        yield x
-
     def get_bookmarks(self, query=None):
         bookmarks = []
 
         if query:
-            payload = ProviderBase.load_json(self.profile_file_path('Bookmarks'))
+            payload = load_json(self.profile_file_path('Bookmarks'))
 
             if payload:
-                matcher = FuzzyMatcher(query)
+                matcher = PartialStringMatcher(query)
 
-                for bookmark in ProviderBase.inspect_bookmarks(payload['roots']):
-                    name_ratio = matcher.ratio(bookmark['name'])
-                    url_ratio = matcher.ratio(bookmark['url'])
-                    total_ratio = name_ratio + url_ratio
-                    matched = bool(total_ratio >= 0.5)
+                for bookmark in inspect_json(payload['roots']):
+                    name = bookmark['name']
+                    url = bookmark['url']
+
+                    name_ratio = matcher.ratio(name)
+                    url_ratio = matcher.ratio(decode_url(url))
+
+                    matched = name_ratio >= _MINIMUM_RATIO or url_ratio >= _MINIMUM_RATIO
 
                     if matched:
-                        bookmarks.append({'title': bookmark['name'], 'url': bookmark['url']})
+                        bookmarks.append({'title': name, 'url': url})
 
-        return sorted(bookmarks, key=lambda x: (x['title'], x['url']))
+        return sorted(bookmarks, key=lambda x: (make_sortable(x['title']), make_sortable(x['url'])))

@@ -1,4 +1,3 @@
 # -*- coding: utf-8 -*-
 from string_matcher import *
-from regexp_matcher import *
-from fuzzy_matcher import *
+from partial_string_matcher import *

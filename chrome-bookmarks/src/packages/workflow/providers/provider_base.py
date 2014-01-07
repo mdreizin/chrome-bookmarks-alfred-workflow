@@ -123,7 +123,7 @@ class ProviderBase(object):
                 if not matched:
                     del profiles[i]
 
-        return sorted(profiles, key=lambda x: (x['title'], x['name']))
+        return sorted(profiles, key=lambda x: (make_sortable(x['title']), make_sortable(x['name'])))
 
     def get_bookmarks(self, query=None):
         bookmarks = []

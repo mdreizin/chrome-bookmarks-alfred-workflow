@@ -24,7 +24,6 @@ class PartialStringMatcher(StringMatcher):
     def __init__(self, query):
         super(PartialStringMatcher, self).__init__(query)
 
-        self.tags = to_tags(self.query)
         self.queries = to_queries(self.query)
 
     def ratio(self, query):

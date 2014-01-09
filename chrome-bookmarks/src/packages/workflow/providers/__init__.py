@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from chrome_provider import *
 from chromium_provider import *
+from canary_provider import *
 
 
 def create(vendor, settings=None):

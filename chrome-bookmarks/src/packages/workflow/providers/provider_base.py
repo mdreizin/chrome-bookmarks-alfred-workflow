@@ -42,7 +42,7 @@ def decode_url(url):
     return urllib2.unquote(url.decode('utf-8'))
 
 
-def make_sortable(query):
+def escape(query):
     return re.escape(query)
 
 
@@ -123,7 +123,7 @@ class ProviderBase(object):
                 if not matched:
                     del profiles[i]
 
-        return sorted(profiles, key=lambda x: (make_sortable(x['title']), make_sortable(x['name'])))
+        return sorted(profiles, key=lambda x: (escape(x['title']), escape(x['name'])))
 
     def get_bookmarks(self, query=None):
         bookmarks = []
@@ -146,4 +146,4 @@ class ProviderBase(object):
                     if matched:
                         bookmarks.append({'title': name, 'url': url})
 
-        return sorted(bookmarks, key=lambda x: (make_sortable(x['title']), make_sortable(x['url'])))
+        return sorted(bookmarks, key=lambda x: (escape(x['title']), escape(x['url'])))

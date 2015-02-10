@@ -4,6 +4,8 @@
 <dict>
 	<key>bundleid</key>
 	<string>com.mdreizin.chrome.bookmarks</string>
+	<key>category</key>
+	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
 		<key>0436063E-BB98-42FF-A897-2CE6E941F289</key>

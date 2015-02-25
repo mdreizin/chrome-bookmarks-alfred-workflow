@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import getopt
 import sys
-import packages.alfred as alfred
-import packages.workflow as core
+import lib.alfred as alfred
+import lib.workflow as core
 
 
 def main(argv):

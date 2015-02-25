@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from packages.alfred.settings import Settings
+from lib.alfred.settings import Settings
 
 
 class ImmutableSettings(Settings):

@@ -6,7 +6,7 @@ from canary_provider import *
 
 def create(vendor, settings=None):
     """
-    :rtype : packages.workflow.providers.ProviderBase
+    :rtype : lib.workflow.providers.ProviderBase
     """
     name = '%sProvider' % vendor.title()
     ctor = globals()[name]

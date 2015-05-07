@@ -1,3 +1,5 @@
+{"gitdown": "badge", "name": "codeclimate-gpa"}
+
 Alfred Workflows
 ================
 

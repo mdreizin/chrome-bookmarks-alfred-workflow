@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/mdreizin/alfred-workflows/badges/gpa.svg)](https://codeclimate.com/github/mdreizin/alfred-workflows)
+
 Alfred Workflows
 ================
 

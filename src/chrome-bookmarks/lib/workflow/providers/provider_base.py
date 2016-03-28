@@ -39,7 +39,10 @@ def inspect_json(payload):
 
 
 def decode_url(url):
-    return urllib2.unquote(url.decode('utf-8'))
+    if isinstance(url, str):
+        return urllib2.unquote(url.decode('utf-8'))
+    else:
+        return urllib2.unquote(url)
 
 
 def escape(query):

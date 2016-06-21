@@ -1,0 +1,55 @@
+{
+   "roots": {
+      "bookmark_bar": {
+         "children": [{
+            "children": [{
+               "name": "angular-translate-loader",
+               "type": "url",
+               "url": "https://github.com/mdreizin/angular-translate-loader"
+            }, {
+               "name": "enhanced-properties-loader",
+               "type": "url",
+               "url": "https://github.com/mdreizin/enhanced-properties-loader"
+            }, {
+               "name": "webpack-cluster",
+               "type": "url",
+               "url": "https://github.com/mdreizin/webpack-cluster"
+            }, {
+               "name": "webpack-config",
+               "type": "url",
+               "url": "https://github.com/mdreizin/webpack-config"
+            }],
+            "name": "Github",
+            "type": "folder"
+         }, {
+            "children": [{
+               "name": "Go",
+               "type": "url",
+               "url": "https://en.wikipedia.org/wiki/Go_(programming_language)"
+            }, {
+               "name": "Node.js",
+               "type": "url",
+               "url": "https://en.wikipedia.org/wiki/Node.js"
+            }, {
+               "name": "JavaScript",
+               "type": "url",
+               "url": "https://en.wikipedia.org/wiki/JavaScript"
+            }],
+            "name": "Wiki",
+            "type": "folder"
+         }],
+         "name": "Bookmarks Bar",
+         "type": "folder"
+      },
+      "other": {
+         "children": [],
+         "name": "Other Bookmarks",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [],
+         "name": "Mobile Bookmarks",
+         "type": "folder"
+      }
+   }
+}

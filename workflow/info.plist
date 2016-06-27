@@ -2,147 +2,83 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	{{- $workflow := .Workflow}}
+	{{- $browsers := .Browsers}}
+	{{- $metadata := .Metadata}}
 	<key>bundleid</key>
-	<string>com.mdreizin.chrome.bookmarks</string>
+	<string>{{$workflow.BundleID}}</string>
 	<key>category</key>
-	<string>Productivity</string>
-	<key>connections</key>
-	<dict>
-		<key>0436063E-BB98-42FF-A897-2CE6E941F289</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>986B910B-B203-4CFA-807B-7922C6D6FF15</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>20F1E8E8-0E47-48E3-92C4-AF412CCD4271</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>6F699D42-32F5-4E05-BC56-B0CFE62B3FB8</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>2373A51A-F314-484C-81CE-BAB19BDEFF48</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>284986D3-9648-450F-BD20-DF66B98F0E2D</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>3D8A5387-CCF1-421B-B3AF-054EFF9C80F5</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>800AEC36-5B23-48F1-A2F0-18C041F1A17A</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>3E84C658-B2CE-46AB-8242-4D2675D1AC1C</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>986B910B-B203-4CFA-807B-7922C6D6FF15</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>77312921-B908-44FA-A262-65BB92C5F779</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>0436063E-BB98-42FF-A897-2CE6E941F289</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>87C75463-1570-420F-96CE-BD330C6FC18E</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>3E84C658-B2CE-46AB-8242-4D2675D1AC1C</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>F6CA3879-13F5-4213-BA6B-082BF8B37D59</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>986B910B-B203-4CFA-807B-7922C6D6FF15</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>F8FA4D92-EBF7-4C91-A6E8-B026CAEE8488</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>F6CA3879-13F5-4213-BA6B-082BF8B37D59</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-	</dict>
+	<string>{{$workflow.Category}}</string>
+	<key>readme</key>
+	<string>{{$workflow.Readme}}</string>
+	<key>webaddress</key>
+	<string>{{$workflow.URL}}</string>
+	<key>version</key>
+	<string>{{$workflow.Version}}</string>
 	<key>createdby</key>
-	<string>Marat Dreizin</string>
+	<string>{{$workflow.Author}}</string>
 	<key>description</key>
-	<string>Chrome bookmarks search workflow</string>
+	<string>{{$workflow.Description}}</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Chrome Bookmarks</string>
+	<string>{{$workflow.Name}}</string>
+	<key>connections</key>
+	<dict>
+	{{- range $b := $browsers }}
+	{{- $m := index $metadata $b.ID }}
+		<key>{{$m.BookmarkListID}}</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>{{$m.BookmarkOpenID}}</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>{{$m.ProfileSetID}}</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>6A6D5564-63F4-425C-A21B-58A66B090B74</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>{{$m.ProfileListID}}</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>{{$m.ProfileSetID}}</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	{{- end -}}
+	</dict>
 	<key>objects</key>
 	<array>
+		{{- range $b := $browsers }}
+		{{- $m := index $metadata $b.ID }}
 		<dict>
 			<key>config</key>
 			<dict>
 				<key>browser</key>
-				<string>com.google.Chrome</string>
+				<string>{{$b.FullName}}</string>
 				<key>spaces</key>
-				<string>+</string>
+				<string></string>
 				<key>url</key>
 				<string>{query}</string>
 				<key>utf8</key>
@@ -151,7 +87,7 @@
 			<key>type</key>
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
-			<string>800AEC36-5B23-48F1-A2F0-18C041F1A17A</string>
+			<string>{{$m.BookmarkOpenID}}</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -165,21 +101,21 @@
 				<key>escaping</key>
 				<integer>127</integer>
 				<key>keyword</key>
-				<string>chrome</string>
+				<string>{{$b.Name}}</string>
 				<key>queuedelaycustom</key>
-				<integer>1</integer>
+				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
-				<false/>
+				<true/>
 				<key>queuedelaymode</key>
 				<integer>0</integer>
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>runningsubtext</key>
-				<string>Searching bookmarks...</string>
+				<string>Searching bookmarks…</string>
 				<key>script</key>
 				<string>QUERY=$(./bin/normalise -form NFC "{query}")
 
-python "main.py" -v "chrome" -c "get.bookmarks" -q "${QUERY}"</string>
+./bin/cli bookmarks "{{$b.Name}}" -query="${QUERY}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -187,7 +123,7 @@ python "main.py" -v "chrome" -c "get.bookmarks" -q "${QUERY}"</string>
 				<key>subtext</key>
 				<string>Start typing to search bookmarks…</string>
 				<key>title</key>
-				<string>Google Chrome bookmarks '{query}'</string>
+				<string>{{$b.Description}} bookmarks '{query}'</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -196,137 +132,9 @@ python "main.py" -v "chrome" -c "get.bookmarks" -q "${QUERY}"</string>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>3D8A5387-CCF1-421B-B3AF-054EFF9C80F5</string>
+			<string>{{$m.BookmarkListID}}</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>escaping</key>
-				<integer>127</integer>
-				<key>keyword</key>
-				<string>chromium</string>
-				<key>queuedelaycustom</key>
-				<integer>1</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<false/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>Searching bookmarks...</string>
-				<key>script</key>
-				<string>QUERY=$(./bin/normalise -form NFC "{query}")
-
-python "main.py" -v "chromium" -c "get.bookmarks" -q "${QUERY}"</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string>Start typing to search bookmarks…</string>
-				<key>title</key>
-				<string>Chromium bookmarks '{query}'</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>2373A51A-F314-484C-81CE-BAB19BDEFF48</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string>org.chromium.Chromium</string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>{query}</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>284986D3-9648-450F-BD20-DF66B98F0E2D</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>escaping</key>
-				<integer>127</integer>
-				<key>keyword</key>
-				<string>canary</string>
-				<key>queuedelaycustom</key>
-				<integer>1</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<false/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>Searching bookmarks...</string>
-				<key>script</key>
-				<string>QUERY=$(./bin/normalise -form NFC "{query}")
-
-python "main.py" -v "canary" -c "get.bookmarks" -q "${QUERY}"</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string>Start typing to search bookmarks…</string>
-				<key>title</key>
-				<string>Google Chrome Canary bookmarks '{query}'</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>20F1E8E8-0E47-48E3-92C4-AF412CCD4271</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string>com.google.Chrome.canary</string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>{query}</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>6F699D42-32F5-4E05-BC56-B0CFE62B3FB8</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -338,21 +146,21 @@ python "main.py" -v "canary" -c "get.bookmarks" -q "${QUERY}"</string>
 				<key>escaping</key>
 				<integer>127</integer>
 				<key>keyword</key>
-				<string>chrome-profiles</string>
+				<string>{{$b.Name}}-profiles</string>
 				<key>queuedelaycustom</key>
-				<integer>1</integer>
+				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
-				<false/>
+				<true/>
 				<key>queuedelaymode</key>
 				<integer>0</integer>
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>runningsubtext</key>
-				<string>Loading profiles...</string>
+				<string>Searching profiles...</string>
 				<key>script</key>
 				<string>QUERY=$(./bin/normalise -form NFC "{query}")
 
-python "settings.py" -v "chrome" -c "get.profiles" -q "${QUERY}"</string>
+./bin/cli profiles "{{$b.Name}}" -query="${QUERY}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -360,7 +168,7 @@ python "settings.py" -v "chrome" -c "get.profiles" -q "${QUERY}"</string>
 				<key>subtext</key>
 				<string>Show all available profiles</string>
 				<key>title</key>
-				<string>Google Chrome profiles '{query}'</string>
+				<string>{{$b.Description}} profiles '{query}'</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -369,7 +177,7 @@ python "settings.py" -v "chrome" -c "get.profiles" -q "${QUERY}"</string>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>77312921-B908-44FA-A262-65BB92C5F779</string>
+			<string>{{$m.ProfileListID}}</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -383,7 +191,7 @@ python "settings.py" -v "chrome" -c "get.profiles" -q "${QUERY}"</string>
 				<key>script</key>
 				<string>QUERY=$(./bin/normalise -form NFC "{query}")
 
-python "settings.py" -v "chrome" -c "set.profile" -q "${QUERY}"</string>
+./bin/cli select-profile "{{$b.Name}}" -query="${QUERY}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -394,35 +202,11 @@ python "settings.py" -v "chrome" -c "set.profile" -q "${QUERY}"</string>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>0436063E-BB98-42FF-A897-2CE6E941F289</string>
+			<string>{{$m.ProfileSetID}}</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>127</integer>
-				<key>script</key>
-				<string>QUERY=$(./bin/normalise -form NFC "{query}")
-
-python "settings.py" -v "chromium" -c "set.profile" -q "${QUERY}"</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>3E84C658-B2CE-46AB-8242-4D2675D1AC1C</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
+		{{- end -}}
 		<dict>
 			<key>config</key>
 			<dict>
@@ -435,228 +219,15 @@ python "settings.py" -v "chromium" -c "set.profile" -q "${QUERY}"</string>
 				<key>text</key>
 				<string>{query}</string>
 				<key>title</key>
-				<string>Chrome Bookmarks</string>
+				<string>{{$workflow.Name}}</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
-			<string>986B910B-B203-4CFA-807B-7922C6D6FF15</string>
+			<string>6A6D5564-63F4-425C-A21B-58A66B090B74</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>127</integer>
-				<key>keyword</key>
-				<string>chromium-profiles</string>
-				<key>queuedelaycustom</key>
-				<integer>1</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<false/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>Loading profiles...</string>
-				<key>script</key>
-				<string>QUERY=$(./bin/normalise -form NFC "{query}")
-
-python "settings.py" -v "chromium" -c "get.profiles" -q "${QUERY}"</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string>Show all available profiles</string>
-				<key>title</key>
-				<string>Chromium profiles '{query}'</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>87C75463-1570-420F-96CE-BD330C6FC18E</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>127</integer>
-				<key>script</key>
-				<string>QUERY=$(./bin/normalise -form NFC "{query}")
-
-python "settings.py" -v "canary" -c "set.profile" -q "${QUERY}"</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>F6CA3879-13F5-4213-BA6B-082BF8B37D59</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>127</integer>
-				<key>keyword</key>
-				<string>canary-profiles</string>
-				<key>queuedelaycustom</key>
-				<integer>1</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<false/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>Loading profiles...</string>
-				<key>script</key>
-				<string>QUERY=$(./bin/normalise -form NFC "{query}")
-
-python "settings.py" -v "canary" -c "get.profiles" -q "${QUERY}"</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string>Show all available profiles</string>
-				<key>title</key>
-				<string>Google Chrome Canary profiles '{query}'</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>F8FA4D92-EBF7-4C91-A6E8-B026CAEE8488</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
 	</array>
-	<key>readme</key>
-	<string></string>
-	<key>uidata</key>
-	<dict>
-		<key>0436063E-BB98-42FF-A897-2CE6E941F289</key>
-		<dict>
-			<key>xpos</key>
-			<integer>500</integer>
-			<key>ypos</key>
-			<real>370</real>
-		</dict>
-		<key>20F1E8E8-0E47-48E3-92C4-AF412CCD4271</key>
-		<dict>
-			<key>xpos</key>
-			<integer>300</integer>
-			<key>ypos</key>
-			<real>250</real>
-		</dict>
-		<key>2373A51A-F314-484C-81CE-BAB19BDEFF48</key>
-		<dict>
-			<key>xpos</key>
-			<integer>300</integer>
-			<key>ypos</key>
-			<real>130</real>
-		</dict>
-		<key>284986D3-9648-450F-BD20-DF66B98F0E2D</key>
-		<dict>
-			<key>xpos</key>
-			<integer>500</integer>
-			<key>ypos</key>
-			<real>130</real>
-		</dict>
-		<key>3D8A5387-CCF1-421B-B3AF-054EFF9C80F5</key>
-		<dict>
-			<key>xpos</key>
-			<integer>300</integer>
-			<key>ypos</key>
-			<real>10</real>
-		</dict>
-		<key>3E84C658-B2CE-46AB-8242-4D2675D1AC1C</key>
-		<dict>
-			<key>xpos</key>
-			<integer>500</integer>
-			<key>ypos</key>
-			<real>490</real>
-		</dict>
-		<key>6F699D42-32F5-4E05-BC56-B0CFE62B3FB8</key>
-		<dict>
-			<key>xpos</key>
-			<integer>500</integer>
-			<key>ypos</key>
-			<real>250</real>
-		</dict>
-		<key>77312921-B908-44FA-A262-65BB92C5F779</key>
-		<dict>
-			<key>xpos</key>
-			<integer>300</integer>
-			<key>ypos</key>
-			<real>370</real>
-		</dict>
-		<key>800AEC36-5B23-48F1-A2F0-18C041F1A17A</key>
-		<dict>
-			<key>xpos</key>
-			<integer>500</integer>
-			<key>ypos</key>
-			<real>10</real>
-		</dict>
-		<key>87C75463-1570-420F-96CE-BD330C6FC18E</key>
-		<dict>
-			<key>xpos</key>
-			<integer>300</integer>
-			<key>ypos</key>
-			<real>490</real>
-		</dict>
-		<key>986B910B-B203-4CFA-807B-7922C6D6FF15</key>
-		<dict>
-			<key>xpos</key>
-			<integer>700</integer>
-			<key>ypos</key>
-			<real>490</real>
-		</dict>
-		<key>F6CA3879-13F5-4213-BA6B-082BF8B37D59</key>
-		<dict>
-			<key>xpos</key>
-			<integer>500</integer>
-			<key>ypos</key>
-			<real>610</real>
-		</dict>
-		<key>F8FA4D92-EBF7-4C91-A6E8-B026CAEE8488</key>
-		<dict>
-			<key>xpos</key>
-			<integer>300</integer>
-			<key>ypos</key>
-			<real>610</real>
-		</dict>
-	</dict>
-	<key>webaddress</key>
-	<string>http://mdreizin.github.io/chrome-bookmarks-alfred-workflow</string>
 </dict>
 </plist>

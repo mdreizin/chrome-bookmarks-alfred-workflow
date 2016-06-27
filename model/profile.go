@@ -1,6 +1,9 @@
 package model
 
-import "strings"
+import (
+	"strings"
+	"os"
+)
 
 const avatarResourcePrefix = "chrome://theme/"
 
@@ -38,6 +41,7 @@ var avatarResources = map[string]string {
 type Profile struct {
 	Name				string
 	IsActive			bool
+	IsVirtual			bool
 	IconURL				string
 	AvatarURL			string		`json:"avatar_icon"`
 	CustomAvatarURL		string		`json:"gaia_picture_file_name"`
@@ -45,6 +49,13 @@ type Profile struct {
 	DisplayName			string		`json:"gaia_name"`
 	UserName 			string		`json:"name"`
 	UserEmail 			string		`json:"user_name"`
+}
+
+var AutoProfile = Profile{
+	Name: "",
+	DisplayName: "Auto",
+	IsActive: true,
+	IsVirtual: true,
 }
 
 func (p Profile) AvatarIconURL(browser Browser, profileName string) string {
@@ -56,6 +67,10 @@ func (p Profile) AvatarIconURL(browser Browser, profileName string) string {
 		iconURL = browser.FullPathFor("Avatars", name)
 	} else {
 		iconURL = browser.FullPathFor(profileName, p.CustomAvatarURL)
+	}
+
+	if stat, err := os.Stat(iconURL); os.IsNotExist(err) || stat.IsDir() {
+		iconURL = browser.IconURL
 	}
 
 	return iconURL

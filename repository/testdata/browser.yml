@@ -3,16 +3,14 @@
   description: "Google Chrome"
   path: "~/Library/Application Support/Google/Chrome"
   iconUrl: "img/chrome.png"
-  profileName: ""
+  profileName: Profile\ 1
 
 - name: "canary"
   description: "Google Chrome Canary"
   path: "~/Library/Application Support/Google/Chrome Canary"
   iconUrl: "img/canary.png"
-  profileName: ""
 
 - name: "chromium"
   description: "Chromium"
   path: "~/Library/Application Support/Chromium"
   iconUrl: "img/chromium.png"
-  profileName: ""

@@ -13,14 +13,14 @@ func TestJsonProfileRepository_GetProfiles(t *testing.T) {
 	profiles, err := repository.GetProfiles(browser)
 
 	assert.NoError(err)
-	assert.Len(profiles, 2)
+	assert.Len(profiles, 3)
 
 	browser.ProfileName = "Default"
 
 	profiles, err = repository.GetProfiles(browser)
 
 	assert.NoError(err)
-	assert.Len(profiles, 2)
+	assert.Len(profiles, 3)
 }
 
 func TestJsonProfileRepository_GetProfiles_ReadFile(t *testing.T) {

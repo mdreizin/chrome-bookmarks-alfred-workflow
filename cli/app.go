@@ -6,51 +6,57 @@ import (
 	"os"
 	"github.com/urfave/cli"
 	"github.com/ruedap/go-alfred"
-	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/workflow"
+	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/model"
 	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/service"
+	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/stringutil"
 )
 
 var cwd, _ = os.Getwd()
 
+const (
+	browserFile = "browser-file"
+	profileFile = "profile-file"
+	bookmarkFile = "bookmark-file"
+)
+
 func extractConfig(c *cli.Context) map[string]string {
 	return map[string]string {
-		"browser-file": c.String("browser-file"),
-		"profile-file": c.String("profile-file"),
-		"bookmark-file": c.String("bookmark-file"),
+		browserFile: c.String(browserFile),
+		profileFile: c.String(profileFile),
+		bookmarkFile: c.String(bookmarkFile),
 	}
 }
 
 func newApp() *cli.App {
 	flags := []cli.Flag{
 		cli.StringFlag{
-			Name: "browser-file, brf",
+			Name: browserFile,
 			Value: path.Join(cwd, "browser.yml"),
-			EnvVar: "BROWSER_FILENAME",
+			EnvVar: stringutil.KebabCase(browserFile),
 		},
 		cli.StringFlag{
-			Name: "profile-file, prf",
+			Name: profileFile,
 			Value: "Local State",
-			EnvVar: "PROFILE_FILENAME",
+			EnvVar: stringutil.KebabCase(profileFile),
 		},
 		cli.StringFlag{
-			Name: "bookmark-file, bof",
+			Name: bookmarkFile,
 			Value: "Bookmarks",
-			EnvVar: "BOOKMARK_FILENAME",
+			EnvVar: stringutil.KebabCase(bookmarkFile),
 		},
 		cli.StringFlag{
-			Name: "query, q",
+			Name: "query",
 		},
 	}
 
 	app := cli.NewApp()
 	app.Name = "cli"
-	app.Version = workflow.Version
-	app.Usage = workflow.Description
-	app.Author = workflow.Author
-	app.Email = workflow.Email
+	app.Version = model.WorkflowVersion
+	app.Usage = model.WorkflowDescription
+	app.Author = model.WorkflowAuthor
+	app.Email = model.WorkflowEmail
 	app.Commands = cli.Commands{cli.Command{
 		Name: "bookmarks",
-		Aliases: []string{"b"},
 		Flags: flags,
 		Action: func(c *cli.Context) error {
 			name := c.Args().First()
@@ -87,7 +93,6 @@ func newApp() *cli.App {
 		},
 	}, cli.Command{
 		Name: "profiles",
-		Aliases: []string{"p"},
 		Flags: flags,
 		Action: func(c *cli.Context) error {
 			name := c.Args().First()
@@ -105,17 +110,28 @@ func newApp() *cli.App {
 				r := alfred.NewResponse()
 
 				for _, profile := range profiles {
-					title := profile.Name
+					title := ""
+					subtitle := ""
+
+					if profile.IsVirtual {
+						title = profile.DisplayName
+					} else if profile.Name != "" {
+						title = profile.Name
+					}
 
 					if profile.IsActive {
 						title = fmt.Sprintf("%s (Active)", title)
+					}
+
+					if !profile.IsVirtual && profile.Name != "" {
+						subtitle = browser.PathFor(profile.Name)
 					}
 
 					r.AddItem(&alfred.ResponseItem{
 						Valid: true,
 						UID: profile.Name,
 						Title: title,
-						Subtitle: browser.PathFor(browser.Name, profile.Name),
+						Subtitle: subtitle,
 						Arg: profile.Name,
 						Icon: profile.IconURL,
 					})
@@ -125,6 +141,28 @@ func newApp() *cli.App {
 			}
 
 			fmt.Print(xml)
+
+			return err
+		},
+	}, cli.Command{
+		Name:  "select-profile",
+		Flags: flags,
+		Action: func(c *cli.Context) error {
+			name := c.Args().First()
+			query := c.String("query")
+			bookmarkService := service.NewBookmarkService(extractConfig(c))
+			browsers, _ := bookmarkService.GetBrowsers()
+			browser, _ := browsers.FindByName(name)
+
+			browser.ProfileName = query
+
+			err := bookmarkService.UpdateBrowser(browser)
+
+			if err != nil {
+				fmt.Print("Unable to update profile %s", err)
+			} else {
+				fmt.Print("Profile has been successfully updated")
+			}
 
 			return err
 		},

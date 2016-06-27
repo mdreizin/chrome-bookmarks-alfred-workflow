@@ -80,11 +80,6 @@
 			"Rev": "d9b45f19996c645d38c9266d1f5cf1990e930119"
 		},
 		{
-			"ImportPath": "github.com/pborman/uuid",
-			"Comment": "v1.0-11-gc55201b",
-			"Rev": "c55201b036063326c5b1b89ccfe45a184973d073"
-		},
-		{
 			"ImportPath": "github.com/pmezard/go-difflib/difflib",
 			"Rev": "792786c7400a136282c1664665ae0a8db921c6c2"
 		},
@@ -96,6 +91,11 @@
 		{
 			"ImportPath": "github.com/ruedap/go-alfred",
 			"Rev": "43da5a9945937f63f00ecf71042ef4df295ce84d"
+		},
+		{
+			"ImportPath": "github.com/satori/go.uuid",
+			"Comment": "v1.1.0",
+			"Rev": "879c5887cd475cd7864858769793b2ceb0d44feb"
 		},
 		{
 			"ImportPath": "github.com/stretchr/testify/assert",

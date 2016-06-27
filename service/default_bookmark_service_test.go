@@ -29,7 +29,7 @@ func TestDefaultBookmarkService_GetProfiles(t *testing.T) {
 	profiles, err := bookmarkService.GetProfiles(browser, "")
 
 	assert.NoError(err)
-	assert.Len(profiles, 1)
+	assert.Len(profiles, 2)
 
 	profiles, err = bookmarkService.GetProfiles(browser, "Default")
 
@@ -56,4 +56,26 @@ func TestDefaultBookmarkService_GetBookmarks(t *testing.T) {
 
 	assert.NoError(err)
 	assert.Len(bookmarks, 1)
+}
+
+func TestDefaultBookmarkService_UpdateBrowser(t *testing.T) {
+	assert := assert.New(t)
+	config := map[string]string {
+		"browser-file": "testdata/browser.yml",
+		"profile-file": "Profiles.json",
+		"bookmark-file": "Bookmarks.json",
+	}
+	bookmarkService := NewBookmarkService(config)
+	browsers, _ := bookmarkService.GetBrowsers()
+	browser, _ := browsers.FindByName("chrome")
+
+	browser.ProfileName = "Default"
+
+	err := bookmarkService.UpdateBrowser(browser)
+
+	browsers, _ = bookmarkService.GetBrowsers()
+	browser, _ = browsers.FindByName("chrome")
+
+	assert.NoError(err)
+	assert.Equal("Default", browser.ProfileName)
 }

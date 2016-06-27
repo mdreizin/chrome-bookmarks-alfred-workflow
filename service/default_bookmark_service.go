@@ -40,6 +40,10 @@ func (s *DefaultBookmarkService) GetBrowsers() (model.BrowserSlice, error) {
 	return s.BrowserRepository().GetBrowsers()
 }
 
+func (s *DefaultBookmarkService) UpdateBrowser(b model.Browser) error {
+	return s.BrowserRepository().UpdateBrowser(b)
+}
+
 func (s *DefaultBookmarkService) GetProfiles(b model.Browser, query string) (model.ProfileSlice, error) {
 	profiles, err := s.ProfileRepository().GetProfiles(b)
 

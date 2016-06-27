@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"strings"
 	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/model"
+	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/stringutil"
 )
 
 type profileAux struct {
@@ -35,16 +36,17 @@ func (r *JsonProfileRepository) GetProfiles(browser model.Browser) (model.Profil
 		return profiles, err
 	}
 
-	profileName := aux.Root.Name
+	profileName := stringutil.DefaultIfEmpty(browser.ProfileName, aux.Root.Name)
 
-	if browser.ProfileName != "" {
-		profileName = browser.ProfileName
-	}
+	aux.Root.Profiles[model.AutoProfile.Name] = model.AutoProfile
 
 	for k, v := range aux.Root.Profiles {
+		name := stringutil.DefaultIfEmpty(v.Name, k)
+
 		profiles = profiles.Add(model.Profile{
-			Name: k,
-			IsActive: strings.EqualFold(k, profileName),
+			Name: name,
+			IsVirtual: v.IsVirtual,
+			IsActive: strings.EqualFold(name, profileName),
 			AvatarURL: v.AvatarURL,
 			IconURL: v.AvatarIconURL(browser, k),
 			CustomAvatarURL: v.CustomAvatarURL,

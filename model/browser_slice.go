@@ -36,6 +36,16 @@ func (s BrowserSlice) Find(f func(Browser) bool) (Browser, error) {
 	return Browser{}, errors.New("`Browser` is not found")
 }
 
+func (s BrowserSlice) FindIndex(f func(Browser) bool) int {
+	for i, v := range s {
+		if f(v) {
+			return i
+		}
+	}
+
+	return -1
+}
+
 func (s BrowserSlice) FindByName(name string) (Browser, error) {
 	return s.Find(func(b Browser) bool { return strings.EqualFold(b.Name, name) })
 }

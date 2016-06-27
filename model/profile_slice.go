@@ -16,7 +16,15 @@ func (s ProfileSlice) Match(query string) ProfileSlice {
 	f := s[:0]
 
 	for _, v := range s {
-		matches := fuzzy.Find(query, []string{v.Name, v.DisplayName, v.UserName, v.UserEmail})
+		targets := []string{}
+
+		for _, x := range []string{v.Name, v.DisplayName, v.UserName, v.UserEmail} {
+			if x != "" {
+				targets = append(targets, x)
+			}
+		}
+
+		matches := fuzzy.Find(query, targets)
 
 		if len(matches) > 0 {
 			f = f.Add(v)

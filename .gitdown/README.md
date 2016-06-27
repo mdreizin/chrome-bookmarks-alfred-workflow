@@ -5,20 +5,12 @@
 
 > Chrome/Canary/Chromium bookmarks search workflow for Alfred
 
-Google Chrome (`chrome`, `chrome-profiles`)
+- [x] Google Chrome (`chrome`, `chrome-profiles`)
+- [x] Google Chrome Canary (`canary`, `canary-profiles`)
+- [x] Chromium (`chromium`, `chromium-profiles`)
 
-![](https://raw.github.com/{"gitdown": "gitinfo", "name": "username"}/{"gitdown": "gitinfo", "name": "name"}/{"gitdown": "gitinfo", "name": "branch"}/.gitdown/chrome.gif)
-![](https://raw.github.com/{"gitdown": "gitinfo", "name": "username"}/{"gitdown": "gitinfo", "name": "name"}/{"gitdown": "gitinfo", "name": "branch"}/.gitdown/chrome-profiles.gif)
-
-Google Chrome Canary (`canary`, `canary-profiles`)
-
-![](https://raw.github.com/{"gitdown": "gitinfo", "name": "username"}/{"gitdown": "gitinfo", "name": "name"}/{"gitdown": "gitinfo", "name": "branch"}/.gitdown/canary.gif)
-![](https://raw.github.com/{"gitdown": "gitinfo", "name": "username"}/{"gitdown": "gitinfo", "name": "name"}/{"gitdown": "gitinfo", "name": "branch"}/.gitdown/canary-profiles.gif)
-
-Chromium (`chromium`, `chromium-profiles`)
-
-![](https://raw.github.com/{"gitdown": "gitinfo", "name": "username"}/{"gitdown": "gitinfo", "name": "name"}/{"gitdown": "gitinfo", "name": "branch"}/.gitdown/chromium.gif)
-![](https://raw.github.com/{"gitdown": "gitinfo", "name": "username"}/{"gitdown": "gitinfo", "name": "name"}/{"gitdown": "gitinfo", "name": "branch"}/.gitdown/chromium-profiles.gif)
+![](https://raw.github.com/{"gitdown": "gitinfo", "name": "username"}/{"gitdown": "gitinfo", "name": "name"}/{"gitdown": "gitinfo", "name": "branch"}/.gitdown/bookmarks.gif)
+![](https://raw.github.com/{"gitdown": "gitinfo", "name": "username"}/{"gitdown": "gitinfo", "name": "name"}/{"gitdown": "gitinfo", "name": "branch"}/.gitdown/profiles.gif)
 
 ## Setup
 

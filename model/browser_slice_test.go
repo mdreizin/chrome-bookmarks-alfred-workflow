@@ -36,3 +36,22 @@ func TestBrowserSlice_FindByName(t *testing.T) {
 
 	assert.Error(err)
 }
+
+func TestBrowserSlice_FindIndex(t *testing.T) {
+	assert := assert.New(t)
+	browsers := BrowserSlice{
+		Browser{
+			Name: "canary",
+		},
+		Browser{
+			Name: "chrome",
+		},
+	}
+	i := browsers.FindIndex(func(b Browser) bool { return b.Name == "chrome" })
+
+	assert.Equal(browsers[i], browsers[1])
+
+	i = browsers.FindIndex(func(b Browser) bool { return b.Name == "chromium" })
+
+	assert.Equal(i, -1)
+}

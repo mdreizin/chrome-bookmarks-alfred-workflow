@@ -6,6 +6,7 @@ import (
 	"bytes"
 	"io"
 	"github.com/stretchr/testify/assert"
+	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/stringutil"
 )
 
 func captureStdout(f func() error) (string, error) {
@@ -26,9 +27,9 @@ func captureStdout(f func() error) (string, error) {
 }
 
 func TestMain(m *testing.M) {
-	os.Setenv("BROWSER_FILENAME", "testdata/browser.yml")
-	os.Setenv("PROFILE_FILENAME", "Profiles.json")
-	os.Setenv("BOOKMARK_FILENAME", "Bookmarks.json")
+	os.Setenv(stringutil.KebabCase(browserFile), "testdata/browser.yml")
+	os.Setenv(stringutil.KebabCase(profileFile), "Profiles.json")
+	os.Setenv(stringutil.KebabCase(bookmarkFile), "Bookmarks.json")
 
 	os.Exit(m.Run())
 }

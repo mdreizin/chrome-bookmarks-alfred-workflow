@@ -12,10 +12,11 @@ build:
 	@go build $(PACKAGES)
 
 install:
-	@go install $(PACKAGES)
+	@go get $(PACKAGES)
 
 lint:
-	@golint $(PACKAGES)
+	@go vet $(PACKAGES)
+# @golint $(PACKAGES)
 
 test:
 	@go test $(PACKAGES) -v
@@ -38,5 +39,6 @@ coveralls:
 	@gocovmerge coverage/*-profile.cov > coverage/profile.cov
 	@goveralls -coverprofile=coverage/profile.cov -service=travis-ci
 
-workflow: install
+workflow:
+	@go install $(PACKAGES)
 	@godo

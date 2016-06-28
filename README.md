@@ -17,6 +17,7 @@
 * Run `brew install go`
 * Run `go get github.com/tools/godep`
 * Run `godep restore`
+* Run `make install`
 
 <h2 id="chrome-bookmarks-alfred-workflow-develop">Develop</h2>
 

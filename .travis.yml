@@ -18,8 +18,9 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
+before_script:
+  - make lint
 script:
   - make clean
-after_script:
   - make coveralls
   - make workflow

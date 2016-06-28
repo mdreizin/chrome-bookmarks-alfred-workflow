@@ -159,7 +159,7 @@ func newApp() *cli.App {
 			err := bookmarkService.UpdateBrowser(browser)
 
 			if err != nil {
-				fmt.Print("Unable to update profile %s", err)
+				fmt.Print(fmt.Sprintf("Unable to update profile %s", err))
 			} else {
 				fmt.Print("Profile has been successfully updated")
 			}

@@ -1,22 +1,32 @@
-[![Code Climate](https://codeclimate.com/github/mdreizin/alfred-workflows/badges/gpa.svg)](https://codeclimate.com/github/mdreizin/alfred-workflows)
+[![Travis build status](http://img.shields.io/travis/mdreizin/chrome-bookmarks-alfred-workflow/master.svg?style=flat-square)](https://travis-ci.org/mdreizin/chrome-bookmarks-alfred-workflow)
+[![Coverage Status](https://img.shields.io/coveralls/mdreizin/chrome-bookmarks-alfred-workflow/master.svg?style=flat-square)](https://coveralls.io/r/mdreizin/chrome-bookmarks-alfred-workflow?branch=master)
 
-Alfred Workflows
-================
+<h1 id="chrome-bookmarks-alfred-workflow">chrome-bookmarks-alfred-workflow</h1>
 
-Workflows for Alfred 2
+> Chrome/Canary/Chromium bookmarks search workflow for Alfred
 
-<h1 id="chrome-bookmarks">Chrome Bookmarks</h1>
+- [x] Google Chrome (`chrome`, `chrome-profiles`)
+- [x] Google Chrome Canary (`canary`, `canary-profiles`)
+- [x] Chromium (`chromium`, `chromium-profiles`)
 
-**Requirements:** Python 2.7.x or above.
+![](https://raw.github.com/mdreizin/chrome-bookmarks-alfred-workflow/master/.gitdown/bookmarks.gif)
+![](https://raw.github.com/mdreizin/chrome-bookmarks-alfred-workflow/master/.gitdown/profiles.gif)
 
-This workflow helps you search Google Chrome bookmarks by using a ```chrome``` (Google Chrome) or ```canary``` (Google Chrome Canary) or ```chromium``` (Chromium) keyword:
+<h2 id="chrome-bookmarks-alfred-workflow-setup">Setup</h2>
 
-![](https://raw.github.com/mdreizin/alfred-workflows/master/src/chrome-bookmarks/img/chrome.png)
-![](https://raw.github.com/mdreizin/alfred-workflows/master/src/chrome-bookmarks/img/canary.png)
-![](https://raw.github.com/mdreizin/alfred-workflows/master/src/chrome-bookmarks/img/chromium.png)
+* Run `brew install go`
+* Run `go get github.com/tools/godep`
+* Run `godep restore`
 
-Also you can specify which profile will be used by using a ```chrome-profiles``` (Google Chrome) or ```canary-profiles``` (Google Chrome Canary) or ```chromium-profiles``` (Chromium) keyword:
+<h2 id="chrome-bookmarks-alfred-workflow-develop">Develop</h2>
 
-![](https://raw.github.com/mdreizin/alfred-workflows/master/src/chrome-bookmarks/img/chrome_profiles.png)
-![](https://raw.github.com/mdreizin/alfred-workflows/master/src/chrome-bookmarks/img/canary_profiles.png)
-![](https://raw.github.com/mdreizin/alfred-workflows/master/src/chrome-bookmarks/img/chromium_profiles.png)
+* Run `make workflow`
+* Open `./dist` folder
+
+<h2 id="chrome-bookmarks-alfred-workflow-test">Test</h2>
+
+* Run `make test`
+
+<h2 id="chrome-bookmarks-alfred-workflow-cover">Cover</h2>
+
+* Run `make cover` or `make cover-html`

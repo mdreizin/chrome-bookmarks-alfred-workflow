@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	{{- $workflow := .Workflow}}
+	{{- $browsers := .Browsers}}
+	{{- $metadata := .Metadata}}
+	<key>bundleid</key>
+	<string>{{$workflow.BundleID}}</string>
+	<key>category</key>
+	<string>{{$workflow.Category}}</string>
+	<key>readme</key>
+	<string>{{$workflow.Readme}}</string>
+	<key>webaddress</key>
+	<string>{{$workflow.URL}}</string>
+	<key>version</key>
+	<string>{{$workflow.Version}}</string>
+	<key>createdby</key>
+	<string>{{$workflow.Author}}</string>
+	<key>description</key>
+	<string>{{$workflow.Description}}</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>{{$workflow.Name}}</string>
+	<key>connections</key>
+	<dict>
+	{{- range $b := $browsers }}
+	{{- $m := index $metadata $b.ID }}
+		<key>{{$m.BookmarkListID}}</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>{{$m.BookmarkOpenID}}</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>{{$m.ProfileSetID}}</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>6A6D5564-63F4-425C-A21B-58A66B090B74</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>{{$m.ProfileListID}}</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>{{$m.ProfileSetID}}</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	{{- end -}}
+	</dict>
+	<key>objects</key>
+	<array>
+		{{- range $b := $browsers }}
+		{{- $m := index $metadata $b.ID }}
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string>{{$b.FullName}}</string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>{{$m.BookmarkOpenID}}</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>{{$b.Name}}</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Searching bookmarks…</string>
+				<key>script</key>
+				<string>QUERY=$(./bin/normalise -form NFC "{query}")
+
+./bin/cli bookmarks "{{$b.Name}}" -query="${QUERY}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Start typing to search bookmarks…</string>
+				<key>title</key>
+				<string>{{$b.Description}} bookmarks '{query}'</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>{{$m.BookmarkListID}}</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>{{$b.Name}}-profiles</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Searching profiles...</string>
+				<key>script</key>
+				<string>QUERY=$(./bin/normalise -form NFC "{query}")
+
+./bin/cli profiles "{{$b.Name}}" -query="${QUERY}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Show all available profiles</string>
+				<key>title</key>
+				<string>{{$b.Description}} profiles '{query}'</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>{{$m.ProfileListID}}</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>QUERY=$(./bin/normalise -form NFC "{query}")
+
+./bin/cli select-profile "{{$b.Name}}" -query="${QUERY}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>{{$m.ProfileSetID}}</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		{{- end -}}
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>{{$workflow.Name}}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>6A6D5564-63F4-425C-A21B-58A66B090B74</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+</dict>
+</plist>

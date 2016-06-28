@@ -1,0 +1,21 @@
+---
+- id: "5f62cd88-0737-48db-a56a-c28761a4fcab"
+  name: "chrome"
+  fullName: "com.google.Chrome"
+  description: "Google Chrome"
+  path: "~/Library/Application Support/Google/Chrome"
+  iconUrl: "img/chrome.png"
+
+- id: "51ad66cf-5391-4b3d-98eb-9c96711b4dd3"
+  name: "canary"
+  fullName: "com.google.Chrome.canary"
+  description: "Google Chrome Canary"
+  path: "~/Library/Application Support/Google/Chrome Canary"
+  iconUrl: "img/canary.png"
+
+- id: "5c5a3de8-474a-42bf-99f6-c61f793a6625"
+  name: "chromium"
+  fullName: "org.chromium.Chromium"
+  description: "Chromium"
+  path: "~/Library/Application Support/Chromium"
+  iconUrl: "img/chromium.png"

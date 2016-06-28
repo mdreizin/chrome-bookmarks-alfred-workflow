@@ -1,0 +1,20 @@
+{
+  "profile": {
+    "info_cache": {
+      "Default": {
+        "avatar_icon": "chrome://theme/IDR_PROFILE_AVATAR_12",
+        "gaia_picture_file_name": "Google Profile Picture.png",
+        "is_using_default_avatar": false,
+        "name": "User 1",
+        "user_name": "user1@gmail.com"
+      },
+      "Profile 1": {
+        "avatar_icon": "chrome://theme/IDR_PROFILE_AVATAR_13",
+        "is_using_default_avatar": true,
+        "name": "Person 1",
+        "user_name": ""
+      }
+    },
+    "last_used": "Profile 1"
+  }
+}

@@ -2,15 +2,17 @@ package model
 
 import "github.com/satori/go.uuid"
 
-const WorkflowBundleID string = "com.mdreizin.chrome.bookmarks"
-const WorkflowName string = "Chrome Bookmarks"
-const WorkflowDescription string = "Chrome/Canary/Chromium bookmarks search workflow for Alfred"
-const WorkflowVersion string = "0.1.0"
-const WorkflowAuthor string = "Marat Dreizin"
-const WorkflowCategory string = "Productivity"
-const WorkflowEmail string = "marat.dreizin@gmail.com"
-const WorkflowURL string = "http://mdreizin.github.io/chrome-bookmarks-alfred-workflow"
-const WorkflowAlfredName string = "chrome-bookmarks.alfredworkflow"
+const (
+	WorkflowBundleID    string = "com.mdreizin.chrome.bookmarks"
+	WorkflowName        string = "Chrome Bookmarks"
+	WorkflowDescription string = "Chrome/Canary/Chromium bookmarks search workflow for Alfred"
+	WorkflowVersion     string = "0.1.0"
+	WorkflowAuthor      string = "Marat Dreizin"
+	WorkflowCategory    string = "Productivity"
+	WorkflowEmail       string = "marat.dreizin@gmail.com"
+	WorkflowURL         string = "http://mdreizin.github.io/chrome-bookmarks-alfred-workflow"
+	WorkflowAlfredName  string = "chrome-bookmarks.alfredworkflow"
+)
 
 type Workflow struct {
 	BundleID    string

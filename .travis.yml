@@ -16,10 +16,10 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-before_install:
-  - unset GO15VENDOREXPERIMENT
+install:
+  - make restore
 script:
   - make clean
-  - make vet
+  - make lint
   - make coveralls
   - make workflow

@@ -1,0 +1,151 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "ZwjpoZWFlfun9Q1JgnRc3GEC05c=",
+			"path": "github.com/MichaelTJones/walk",
+			"revision": "3af09438b0ab0e8f296410bfa646a7e635ea1fc0",
+			"revisionTime": "2014-07-07T19:30:07Z"
+		},
+		{
+			"checksumSHA1": "5rPfda8jFccr3A6heL+JAmi9K9g=",
+			"path": "github.com/davecgh/go-spew/spew",
+			"revision": "5215b55f46b2b919f50a1df0eaa5886afe4e3b3d",
+			"revisionTime": "2015-11-05T21:09:06Z"
+		},
+		{
+			"checksumSHA1": "WI+JevQX15p9zqngb1BMHvrPAgU=",
+			"path": "github.com/howeyc/gopass",
+			"revision": "66487b23f2880ba32e185121d2cd51a338ea069a",
+			"revisionTime": "2016-03-03T20:01:16Z"
+		},
+		{
+			"checksumSHA1": "6wAWOVRtaH7hX48hmw9o7noyy5Q=",
+			"path": "github.com/mattn/go-colorable",
+			"revision": "9056b7a9f2d1f2d96498d6d146acd1f9d5ed3d59",
+			"revisionTime": "2016-06-02T15:08:27Z"
+		},
+		{
+			"checksumSHA1": "NkbetqlpWBi3gP08JDneC+axTKw=",
+			"path": "github.com/mattn/go-isatty",
+			"revision": "56b76bdf51f7708750eac80fa38b952bb9f32639",
+			"revisionTime": "2015-12-11T00:06:21Z"
+		},
+		{
+			"checksumSHA1": "hBgLmZ/4mCxmnH88mqFKBkpJFUY=",
+			"path": "github.com/mgutz/ansi",
+			"revision": "c286dcecd19ff979eeb73ea444e479b903f2cfcb",
+			"revisionTime": "2015-09-14T16:22:38Z"
+		},
+		{
+			"checksumSHA1": "VmdTpgFDjDxnc3x4MZXwZ+Z32gQ=",
+			"path": "github.com/mgutz/minimist",
+			"revision": "39eb8cf573ca29344bd7d7e6ba4d7febdebd37a9",
+			"revisionTime": "2015-12-19T12:00:22Z"
+		},
+		{
+			"checksumSHA1": "MAIa4r4/QfPXhgeYx7jZHm+Srs8=",
+			"path": "github.com/mgutz/str",
+			"revision": "968bf66e3da857419e4f6e71b2d5c9ae95682dc4",
+			"revisionTime": "2015-06-23T15:38:27Z"
+		},
+		{
+			"checksumSHA1": "YTEwAlnCl0ab9G0kTVeGU3KT/tY=",
+			"path": "github.com/mgutz/to",
+			"revision": "2a0bcba0661696e339461f5efb2273f4459dd1b9",
+			"revisionTime": "2015-08-01T17:29:05Z"
+		},
+		{
+			"checksumSHA1": "St7Zj1p8EOxBWzyhYrXSVybRCMM=",
+			"path": "github.com/nozzle/throttler",
+			"revision": "d9b45f19996c645d38c9266d1f5cf1990e930119",
+			"revisionTime": "2015-05-12T20:06:54Z"
+		},
+		{
+			"checksumSHA1": "LuFv4/jlrmFNnDb/5SCSEPAM9vU=",
+			"path": "github.com/pmezard/go-difflib/difflib",
+			"revision": "792786c7400a136282c1664665ae0a8db921c6c2",
+			"revisionTime": "2016-01-10T10:55:54Z"
+		},
+		{
+			"checksumSHA1": "DF3jZEw4lCq/SEaC7DIl/R+7S70=",
+			"path": "github.com/renstrom/fuzzysearch/fuzzy",
+			"revision": "2d205ac6ec17a839a94bdbfd16d2fa6c6dada2e0",
+			"revisionTime": "2016-03-31T20:48:55Z"
+		},
+		{
+			"checksumSHA1": "9Q6/r3uOKqdu1OI2RogyEK7QEIo=",
+			"path": "github.com/ruedap/go-alfred",
+			"revision": "43da5a9945937f63f00ecf71042ef4df295ce84d",
+			"revisionTime": "2015-04-15T19:47:22Z"
+		},
+		{
+			"checksumSHA1": "1myjT8gKwUI3WNE5a/85jNPL8Fo=",
+			"path": "github.com/satori/go.uuid",
+			"revision": "879c5887cd475cd7864858769793b2ceb0d44feb",
+			"revisionTime": "2016-06-07T14:43:47Z"
+		},
+		{
+			"checksumSHA1": "iydUphwYqZRq3WhstEdGsbvBAKs=",
+			"path": "github.com/stretchr/testify/assert",
+			"revision": "d77da356e56a7428ad25149ca77381849a6a5232",
+			"revisionTime": "2016-06-15T09:26:46Z"
+		},
+		{
+			"checksumSHA1": "hx0Q1JrC6iQDYdkUdGldbzjDMV0=",
+			"path": "github.com/urfave/cli",
+			"revision": "1efa31f08b9333f1bd4882d61f9d668a70cd902e",
+			"revisionTime": "2016-06-28T05:30:56Z"
+		},
+		{
+			"checksumSHA1": "N5fb5y92DFIP+wUhi1rSwPp9vyk=",
+			"path": "golang.org/x/crypto/ssh/terminal",
+			"revision": "811831de4c4dd03a0b8737233af3b36852386373",
+			"revisionTime": "2016-06-21T01:10:02Z"
+		},
+		{
+			"checksumSHA1": "w/oQQFHCnE+S+2g5D62nfY8aDuQ=",
+			"path": "golang.org/x/sys/unix",
+			"revision": "62bee037599929a6e9146f29d10dd5208c43507d",
+			"revisionTime": "2016-06-14T22:52:37Z"
+		},
+		{
+			"checksumSHA1": "9On8Ztswx2LpA9J5aljLKiQPens=",
+			"path": "gopkg.in/godo.v2",
+			"revision": "b5fd2f0bef1ebe832e628cfad18ab1cc707f65a1",
+			"revisionTime": "2016-04-14T20:23:16Z"
+		},
+		{
+			"checksumSHA1": "7VMB2D/IOaFBJJB3gMcHH0QyEfQ=",
+			"path": "gopkg.in/godo.v2/glob",
+			"revision": "b5fd2f0bef1ebe832e628cfad18ab1cc707f65a1",
+			"revisionTime": "2016-04-14T20:23:16Z"
+		},
+		{
+			"checksumSHA1": "sTsnc06xQXdmOdRIRm5Ks80K8mE=",
+			"path": "gopkg.in/godo.v2/util",
+			"revision": "b5fd2f0bef1ebe832e628cfad18ab1cc707f65a1",
+			"revisionTime": "2016-04-14T20:23:16Z"
+		},
+		{
+			"checksumSHA1": "aeVIjqbS/Adj+4Al9k8RrJbM6JM=",
+			"path": "gopkg.in/godo.v2/watcher",
+			"revision": "b5fd2f0bef1ebe832e628cfad18ab1cc707f65a1",
+			"revisionTime": "2016-04-14T20:23:16Z"
+		},
+		{
+			"checksumSHA1": "Pm1sPF+PpipPaFeXL+AqIn85TV8=",
+			"path": "gopkg.in/godo.v2/watcher/fswatch",
+			"revision": "b5fd2f0bef1ebe832e628cfad18ab1cc707f65a1",
+			"revisionTime": "2016-04-14T20:23:16Z"
+		},
+		{
+			"checksumSHA1": "+OgOXBoiQ+X+C2dsAeiOHwBIEH0=",
+			"path": "gopkg.in/yaml.v2",
+			"revision": "a83829b6f1293c91addabc89d0571c246397bbf4",
+			"revisionTime": "2016-03-01T20:40:22Z"
+		}
+	],
+	"rootPath": "github.com/mdreizin/chrome-bookmarks-alfred-workflow"
+}

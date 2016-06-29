@@ -14,23 +14,27 @@ build:
 install:
 	@go install $(PACKAGES)
 
-get:
-	@go get $(PACKAGES)
-
 fmt:
 	@go fmt $(PACKAGES)
 
-vet:
-	@go vet $(PACKAGES)
-
-restore: get
-	@godep restore $(PACKAGES)
+restore:
+	@go get -u -v github.com/kardianos/govendor
+	@go get -u -v gopkg.in/godo.v2/cmd/godo
+	@go get -u -v github.com/axw/gocov/gocov
+	@go get -u -v github.com/matm/gocov-html
+	@go get -u -v github.com/wadey/gocovmerge
+	@go get -u -v github.com/mattn/goveralls
+	@go get -u -v github.com/golang/lint/golint
+	@govendor sync
 
 lint:
-	@golint ./...
+	@go vet $(PACKAGES)
+	@for pkg in $(PACKAGES); do \
+		golint $$(basename $$pkg); \
+	done
 
 test:
-	@go test $(PACKAGES) -v
+	@go test -v $(PACKAGES)
 
 bench:
 	@go test $(PACKAGES) -bench . -benchtime 2s -benchmem

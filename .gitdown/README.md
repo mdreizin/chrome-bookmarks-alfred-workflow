@@ -15,7 +15,7 @@
 ## Setup
 
 * Run `brew install go`
-* Run `go get github.com/tools/godep`
+* Run `go get -u github.com/kardianos/govendor`
 * Run `make restore`
 
 ## Develop

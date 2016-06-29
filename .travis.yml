@@ -1,6 +1,6 @@
 language: go
 sudo: false
-go: 1.6
+go: 1.6.2
 os: osx
 notifications:
   email: false
@@ -16,9 +16,13 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
+before_install:
+  - unset GO15VENDOREXPERIMENT
+  - go env
+install:
+  - make restore
 script:
   - make clean
   - make vet
-  - make restore
   - make coveralls
   - make workflow

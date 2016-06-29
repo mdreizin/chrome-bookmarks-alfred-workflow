@@ -1,9 +1,7 @@
 language: go
 sudo: false
-go:
-  - tip
-os:
-  - osx
+go: 1.6
+os: osx
 notifications:
   email: false
 branches:
@@ -18,9 +16,9 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-before_script:
-  - make lint
 script:
   - make clean
+  - make vet
+  - make restore
   - make coveralls
   - make workflow

@@ -18,9 +18,6 @@ deploy:
     tags: true
 before_install:
   - unset GO15VENDOREXPERIMENT
-  - go env
-install:
-  - make restore
 script:
   - make clean
   - make vet

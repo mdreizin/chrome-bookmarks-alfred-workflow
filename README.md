@@ -15,7 +15,6 @@
 <h2 id="chrome-bookmarks-alfred-workflow-setup">Setup</h2>
 
 * Run `brew install go`
-* Run `go get -u github.com/kardianos/govendor`
 * Run `make restore`
 
 <h2 id="chrome-bookmarks-alfred-workflow-develop">Develop</h2>

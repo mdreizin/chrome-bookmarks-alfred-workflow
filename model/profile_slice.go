@@ -1,9 +1,9 @@
 package model
 
 import (
-	"sort"
 	"errors"
 	"github.com/renstrom/fuzzysearch/fuzzy"
+	"sort"
 )
 
 type ProfileSlice []Profile

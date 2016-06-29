@@ -1,9 +1,9 @@
 package model
 
 import (
-	"strings"
 	"errors"
 	"github.com/renstrom/fuzzysearch/fuzzy"
+	"strings"
 )
 
 type BrowserSlice []Browser

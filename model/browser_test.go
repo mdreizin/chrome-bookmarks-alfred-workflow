@@ -1,26 +1,26 @@
 package model
 
 import (
-	"testing"
-	"path"
 	"github.com/stretchr/testify/assert"
 	"os/user"
+	"path"
 	"strings"
+	"testing"
 )
 
 const fullPath = "~/Library/Application Support/Google/Chrome"
 
-func pathFor(elem... string) string {
+func pathFor(elem ...string) string {
 	paths := append([]string{fullPath}, elem...)
 
 	return path.Join(paths...)
 }
 
-func fullPathFor(elem... string) string {
+func fullPathFor(elem ...string) string {
 	usr, _ := user.Current()
 	dir := usr.HomeDir
 
-	return strings.Replace(pathFor(elem...), "~/", dir + "/", 1)
+	return strings.Replace(pathFor(elem...), "~/", dir+"/", 1)
 }
 
 func TestBrowser_PathFor(t *testing.T) {

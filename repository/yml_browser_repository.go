@@ -1,15 +1,15 @@
 package repository
 
 import (
-	"io/ioutil"
-	"gopkg.in/yaml.v2"
 	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/model"
+	"gopkg.in/yaml.v2"
+	"io/ioutil"
 	"regexp"
 	"strings"
 )
 
 type YmlBrowserRepository struct {
-	filename	string
+	filename string
 }
 
 func (r *YmlBrowserRepository) GetBrowsers() (model.BrowserSlice, error) {

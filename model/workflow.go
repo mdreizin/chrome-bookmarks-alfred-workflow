@@ -13,26 +13,26 @@ const WorkflowURL string = "http://mdreizin.github.io/chrome-bookmarks-alfred-wo
 const WorkflowAlfredName string = "chrome-bookmarks.alfredworkflow"
 
 type Workflow struct {
-	BundleID		string
-	Version			string
-	Name			string
-	Description		string
-	Category		string
-	Author			string
-	URL				string
-	Readme			string
+	BundleID    string
+	Version     string
+	Name        string
+	Description string
+	Category    string
+	Author      string
+	URL         string
+	Readme      string
 }
 
 func NewWorkflow() Workflow {
 	return Workflow{
-		BundleID: WorkflowBundleID,
-		Version: WorkflowVersion,
-		Name: WorkflowName,
+		BundleID:    WorkflowBundleID,
+		Version:     WorkflowVersion,
+		Name:        WorkflowName,
 		Description: WorkflowDescription,
-		Category: WorkflowCategory,
-		Author: WorkflowAuthor,
-		URL: WorkflowURL,
-		Readme: "",
+		Category:    WorkflowCategory,
+		Author:      WorkflowAuthor,
+		URL:         WorkflowURL,
+		Readme:      "",
 	}
 }
 
@@ -43,8 +43,8 @@ func (w Workflow) MetadataFor(browsers BrowserSlice) map[string]WorkflowMetadata
 		metadata[v.ID] = WorkflowMetadata{
 			BookmarkListID: uuid.NewV4().String(),
 			BookmarkOpenID: uuid.NewV4().String(),
-			ProfileListID: uuid.NewV4().String(),
-			ProfileSetID: uuid.NewV4().String(),
+			ProfileListID:  uuid.NewV4().String(),
+			ProfileSetID:   uuid.NewV4().String(),
 		}
 	}
 

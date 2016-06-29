@@ -1,21 +1,21 @@
 package model
 
 import (
-	"testing"
 	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 func TestProfileSlice_Match(t *testing.T) {
 	assert := assert.New(t)
 	profiles := ProfileSlice{
 		Profile{
-			Name: "Default",
-			UserName: "User 1",
+			Name:      "Default",
+			UserName:  "User 1",
 			UserEmail: "user1@gmail.com",
 		},
 		Profile{
-			Name: "User2",
-			UserName: "User 2",
+			Name:      "User2",
+			UserName:  "User 2",
 			UserEmail: "user1@gmail.com",
 		},
 	}
@@ -30,20 +30,20 @@ func TestProfileSlice_Sort(t *testing.T) {
 	assert := assert.New(t)
 	profiles := ProfileSlice{
 		Profile{
-			Name: "User2",
-			UserName: "User 2",
+			Name:      "User2",
+			UserName:  "User 2",
 			UserEmail: "user2@gmail.com",
 		},
 		Profile{
-			Name: "Default",
-			UserName: "User 1",
+			Name:      "Default",
+			UserName:  "User 1",
 			UserEmail: "user1@gmail.com",
 		},
 	}.Sort()
 
 	assert.Equal(Profile{
-		Name: "Default",
-		UserName: "User 1",
+		Name:      "Default",
+		UserName:  "User 1",
 		UserEmail: "user1@gmail.com",
 	}, profiles[0])
 }
@@ -52,26 +52,26 @@ func TestProfileSlice_FirstActive(t *testing.T) {
 	assert := assert.New(t)
 	profiles := ProfileSlice{
 		Profile{
-			Name: "User2",
-			UserName: "User 2",
+			Name:      "User2",
+			UserName:  "User 2",
 			UserEmail: "user2@gmail.com",
-			IsActive: true,
+			IsActive:  true,
 		},
 		Profile{
-			Name: "Default",
-			UserName: "User 1",
+			Name:      "Default",
+			UserName:  "User 1",
 			UserEmail: "user1@gmail.com",
-			IsActive: false,
+			IsActive:  false,
 		},
 	}
 	profile, err := profiles.FirstActive()
 
 	assert.NoError(err)
 	assert.Equal(Profile{
-		Name: "User2",
-		UserName: "User 2",
+		Name:      "User2",
+		UserName:  "User 2",
 		UserEmail: "user2@gmail.com",
-		IsActive: true,
+		IsActive:  true,
 	}, profile)
 
 	profiles[0].IsActive = false

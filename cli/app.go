@@ -2,27 +2,27 @@ package main
 
 import (
 	"fmt"
-	"path"
-	"os"
-	"github.com/urfave/cli"
-	"github.com/ruedap/go-alfred"
 	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/model"
 	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/service"
 	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/stringutil"
+	"github.com/ruedap/go-alfred"
+	"github.com/urfave/cli"
+	"os"
+	"path"
 )
 
 var cwd, _ = os.Getwd()
 
 const (
-	browserFile = "browser-file"
-	profileFile = "profile-file"
+	browserFile  = "browser-file"
+	profileFile  = "profile-file"
 	bookmarkFile = "bookmark-file"
 )
 
 func extractConfig(c *cli.Context) map[string]string {
-	return map[string]string {
-		browserFile: c.String(browserFile),
-		profileFile: c.String(profileFile),
+	return map[string]string{
+		browserFile:  c.String(browserFile),
+		profileFile:  c.String(profileFile),
 		bookmarkFile: c.String(bookmarkFile),
 	}
 }
@@ -30,18 +30,18 @@ func extractConfig(c *cli.Context) map[string]string {
 func newApp() *cli.App {
 	flags := []cli.Flag{
 		cli.StringFlag{
-			Name: browserFile,
-			Value: path.Join(cwd, "browser.yml"),
+			Name:   browserFile,
+			Value:  path.Join(cwd, "browser.yml"),
 			EnvVar: stringutil.KebabCase(browserFile),
 		},
 		cli.StringFlag{
-			Name: profileFile,
-			Value: "Local State",
+			Name:   profileFile,
+			Value:  "Local State",
 			EnvVar: stringutil.KebabCase(profileFile),
 		},
 		cli.StringFlag{
-			Name: bookmarkFile,
-			Value: "Bookmarks",
+			Name:   bookmarkFile,
+			Value:  "Bookmarks",
 			EnvVar: stringutil.KebabCase(bookmarkFile),
 		},
 		cli.StringFlag{
@@ -56,7 +56,7 @@ func newApp() *cli.App {
 	app.Author = model.WorkflowAuthor
 	app.Email = model.WorkflowEmail
 	app.Commands = cli.Commands{cli.Command{
-		Name: "bookmarks",
+		Name:  "bookmarks",
 		Flags: flags,
 		Action: func(c *cli.Context) error {
 			name := c.Args().First()
@@ -75,12 +75,12 @@ func newApp() *cli.App {
 
 				for _, bookmark := range bookmarks {
 					r.AddItem(&alfred.ResponseItem{
-						Valid: true,
-						UID: bookmark.URL,
-						Title: bookmark.Name,
+						Valid:    true,
+						UID:      bookmark.URL,
+						Title:    bookmark.Name,
 						Subtitle: bookmark.URL,
-						Arg: bookmark.URL,
-						Icon: bookmark.IconURL,
+						Arg:      bookmark.URL,
+						Icon:     bookmark.IconURL,
 					})
 				}
 
@@ -92,7 +92,7 @@ func newApp() *cli.App {
 			return err
 		},
 	}, cli.Command{
-		Name: "profiles",
+		Name:  "profiles",
 		Flags: flags,
 		Action: func(c *cli.Context) error {
 			name := c.Args().First()
@@ -128,12 +128,12 @@ func newApp() *cli.App {
 					}
 
 					r.AddItem(&alfred.ResponseItem{
-						Valid: true,
-						UID: profile.Name,
-						Title: title,
+						Valid:    true,
+						UID:      profile.Name,
+						Title:    title,
 						Subtitle: subtitle,
-						Arg: profile.Name,
-						Icon: profile.IconURL,
+						Arg:      profile.Name,
+						Icon:     profile.IconURL,
 					})
 				}
 

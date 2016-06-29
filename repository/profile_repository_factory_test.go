@@ -1,8 +1,8 @@
 package repository
 
 import (
-	"testing"
 	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 func TestNewProfileRepository(t *testing.T) {

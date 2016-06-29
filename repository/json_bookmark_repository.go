@@ -1,22 +1,22 @@
 package repository
 
 import (
-	"io/ioutil"
 	"encoding/json"
 	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/model"
+	"io/ioutil"
 )
 
 type bookmarkTree struct {
 	model.Bookmark
-	Type		string				`json:"type"`
-	Children	[]bookmarkTree		`json:"children,omitempty"`
+	Type     string         `json:"type"`
+	Children []bookmarkTree `json:"children,omitempty"`
 }
 
 type bookmarkAux struct {
 	Roots struct {
-		BookmarkBar bookmarkTree 	`json:"bookmark_bar"`
-		Other bookmarkTree			`json:"other"`
-		Synced bookmarkTree			`json:"synced"`
+		BookmarkBar bookmarkTree `json:"bookmark_bar"`
+		Other       bookmarkTree `json:"other"`
+		Synced      bookmarkTree `json:"synced"`
 	} `json:"roots"`
 }
 
@@ -31,7 +31,7 @@ func (t bookmarkTree) Walk(f func(bookmarkTree)) {
 }
 
 type JsonBookmarkRepository struct {
-	filename	string
+	filename string
 }
 
 func (r *JsonBookmarkRepository) GetBookmarks(browser model.Browser) (model.BookmarkSlice, error) {
@@ -54,8 +54,8 @@ func (r *JsonBookmarkRepository) GetBookmarks(browser model.Browser) (model.Book
 	walk := func(t bookmarkTree) {
 		if t.Type == "url" {
 			bookmarks = bookmarks.Add(model.Bookmark{
-				Name: t.Name,
-				URL: t.URL,
+				Name:    t.Name,
+				URL:     t.URL,
 				IconURL: browser.IconURL,
 			})
 		}

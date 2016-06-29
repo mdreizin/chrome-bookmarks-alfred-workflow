@@ -1,8 +1,8 @@
 package model
 
 import (
-	"testing"
 	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 func TestBookmarkSlice_Match(t *testing.T) {
@@ -12,11 +12,11 @@ func TestBookmarkSlice_Match(t *testing.T) {
 	bookmarks := BookmarkSlice{
 		Bookmark{
 			Name: "github.com",
-			URL: "https://github.com",
+			URL:  "https://github.com",
 		},
 		Bookmark{
 			Name: unicode,
-			URL: "https://en.wikipedia.org/wiki/Unicode",
+			URL:  "https://en.wikipedia.org/wiki/Unicode",
 		},
 	}
 
@@ -31,16 +31,16 @@ func TestBookmarkSlice_Sort(t *testing.T) {
 	bookmarks := BookmarkSlice{
 		Bookmark{
 			Name: "wikipedia.org",
-			URL: "https://en.wikipedia.org/wiki/Unicode",
+			URL:  "https://en.wikipedia.org/wiki/Unicode",
 		},
 		Bookmark{
 			Name: "github.com",
-			URL: "https://github.com",
+			URL:  "https://github.com",
 		},
 	}.Sort()
 
 	assert.Equal(Bookmark{
 		Name: "github.com",
-		URL: "https://github.com",
+		URL:  "https://github.com",
 	}, bookmarks[0])
 }

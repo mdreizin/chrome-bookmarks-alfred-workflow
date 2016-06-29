@@ -1,9 +1,9 @@
 package repository
 
 import (
-	"testing"
-	"github.com/stretchr/testify/assert"
 	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/model"
+	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 func TestJsonBookmarkRepository_GetBookmarks(t *testing.T) {

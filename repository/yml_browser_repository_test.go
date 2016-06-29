@@ -1,11 +1,11 @@
 package repository
 
 import (
-	"testing"
 	"github.com/stretchr/testify/assert"
+	"io/ioutil"
 	"os"
 	"path"
-	"io/ioutil"
+	"testing"
 )
 
 func TestYmlBrowserRepository_GetBrowsers(t *testing.T) {

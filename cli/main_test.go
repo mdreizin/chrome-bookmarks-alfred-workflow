@@ -1,12 +1,12 @@
 package main
 
 import (
+	"bytes"
+	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/stringutil"
+	"github.com/stretchr/testify/assert"
+	"io"
 	"os"
 	"testing"
-	"bytes"
-	"io"
-	"github.com/stretchr/testify/assert"
-	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/stringutil"
 )
 
 func captureStdout(f func() error) (string, error) {

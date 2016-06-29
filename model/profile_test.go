@@ -1,15 +1,15 @@
 package model
 
 import (
-	"testing"
 	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 func TestProfile_AvatarIconURL(t *testing.T) {
 	assert := assert.New(t)
 	browser := Browser{Path: "testdata", IconURL: "img/chrome.png"}
 	profile := Profile{
-		AvatarURL: "chrome://theme/IDR_PROFILE_AVATAR_12",
+		AvatarURL:       "chrome://theme/IDR_PROFILE_AVATAR_12",
 		CustomAvatarURL: "avatar.png",
 		IsDefaultAvatar: false,
 	}

@@ -1,11 +1,11 @@
 package main
 
 import (
-	"testing"
-	"io/ioutil"
-	"github.com/stretchr/testify/assert"
 	"fmt"
 	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/model"
+	"github.com/stretchr/testify/assert"
+	"io/ioutil"
+	"testing"
 )
 
 func runApp(args []string) (string, error) {

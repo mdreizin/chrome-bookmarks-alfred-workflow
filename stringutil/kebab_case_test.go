@@ -1,8 +1,8 @@
 package stringutil
 
 import (
-	"testing"
 	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 func TestKebabCase(t *testing.T) {

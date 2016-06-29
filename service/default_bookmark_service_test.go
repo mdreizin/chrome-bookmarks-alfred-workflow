@@ -1,13 +1,13 @@
 package service
 
 import (
-	"testing"
 	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 func TestDefaultBookmarkService_GetBrowsers(t *testing.T) {
 	assert := assert.New(t)
-	config := map[string]string {
+	config := map[string]string{
 		"browser-file": "testdata/browser.yml",
 	}
 	bookmarkService := NewBookmarkService(config)
@@ -19,7 +19,7 @@ func TestDefaultBookmarkService_GetBrowsers(t *testing.T) {
 
 func TestDefaultBookmarkService_GetProfiles(t *testing.T) {
 	assert := assert.New(t)
-	config := map[string]string {
+	config := map[string]string{
 		"browser-file": "testdata/browser.yml",
 		"profile-file": "Profiles.json",
 	}
@@ -39,9 +39,9 @@ func TestDefaultBookmarkService_GetProfiles(t *testing.T) {
 
 func TestDefaultBookmarkService_GetBookmarks(t *testing.T) {
 	assert := assert.New(t)
-	config := map[string]string {
-		"browser-file": "testdata/browser.yml",
-		"profile-file": "Profiles.json",
+	config := map[string]string{
+		"browser-file":  "testdata/browser.yml",
+		"profile-file":  "Profiles.json",
 		"bookmark-file": "Bookmarks.json",
 	}
 	bookmarkService := NewBookmarkService(config)
@@ -60,9 +60,9 @@ func TestDefaultBookmarkService_GetBookmarks(t *testing.T) {
 
 func TestDefaultBookmarkService_UpdateBrowser(t *testing.T) {
 	assert := assert.New(t)
-	config := map[string]string {
-		"browser-file": "testdata/browser.yml",
-		"profile-file": "Profiles.json",
+	config := map[string]string{
+		"browser-file":  "testdata/browser.yml",
+		"profile-file":  "Profiles.json",
 		"bookmark-file": "Bookmarks.json",
 	}
 	bookmarkService := NewBookmarkService(config)

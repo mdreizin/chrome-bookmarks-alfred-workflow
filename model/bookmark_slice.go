@@ -1,8 +1,8 @@
 package model
 
 import (
-	"sort"
 	"github.com/renstrom/fuzzysearch/fuzzy"
+	"sort"
 )
 
 type BookmarkSlice []Bookmark

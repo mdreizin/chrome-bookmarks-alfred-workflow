@@ -1,15 +1,15 @@
 package service
 
 import (
-	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/repository"
 	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/model"
+	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/repository"
 )
 
 type DefaultBookmarkService struct {
-	config					map[string]string
-	browserRepository 		repository.BrowserRepository
-	profileRepository		repository.ProfileRepository
-	bookmarkRepository 		repository.BookmarkRepository
+	config             map[string]string
+	browserRepository  repository.BrowserRepository
+	profileRepository  repository.ProfileRepository
+	bookmarkRepository repository.BookmarkRepository
 }
 
 func (s *DefaultBookmarkService) BrowserRepository() repository.BrowserRepository {
@@ -48,7 +48,7 @@ func (s *DefaultBookmarkService) GetProfiles(b model.Browser, query string) (mod
 	profiles, err := s.ProfileRepository().GetProfiles(b)
 
 	if err == nil {
-		if (query != "") {
+		if query != "" {
 			profiles = profiles.Match(query)
 		}
 
@@ -73,7 +73,7 @@ func (s *DefaultBookmarkService) GetBookmarks(browser model.Browser, query strin
 	bookmarks, err := s.BookmarkRepository().GetBookmarks(browser)
 
 	if err == nil {
-		if (query != "") {
+		if query != "" {
 			bookmarks = bookmarks.Match(query)
 		}
 

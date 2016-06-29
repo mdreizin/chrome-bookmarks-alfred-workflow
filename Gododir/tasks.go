@@ -1,17 +1,17 @@
 package main
 
 import (
-	do "gopkg.in/godo.v2"
-	"path"
 	"fmt"
-	"os"
-	"text/template"
 	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/model"
 	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/service"
+	do "gopkg.in/godo.v2"
+	"os"
+	"path"
+	"text/template"
 )
 
 const (
-	src = "./workflow"
+	src  = "./workflow"
 	dest = "./dist"
 )
 
@@ -41,10 +41,10 @@ func tasks(p *do.Project) {
 		ensureDir(c, dest)
 
 		files := map[string][]string{
-			path.Join(src, "bin"): {dest},
-			path.Join(src, "img"): {dest},
-			path.Join(src, "browser.yml"): {dest},
-			path.Join(src, "icon.png"): {dest},
+			path.Join(src, "bin"):                        {dest},
+			path.Join(src, "img"):                        {dest},
+			path.Join(src, "browser.yml"):                {dest},
+			path.Join(src, "icon.png"):                   {dest},
 			path.Join(os.Getenv("GOPATH"), "bin", "cli"): {path.Join(dest, "bin")},
 		}
 
@@ -52,8 +52,8 @@ func tasks(p *do.Project) {
 			m := metadata[v.ID]
 			ext := path.Ext(v.IconURL)
 			s := []string{
-				path.Join(dest, m.BookmarkListID + ext),
-				path.Join(dest, m.ProfileListID + ext),
+				path.Join(dest, m.BookmarkListID+ext),
+				path.Join(dest, m.ProfileListID+ext),
 			}
 
 			files[path.Join(src, v.IconURL)] = s
@@ -77,10 +77,10 @@ func tasks(p *do.Project) {
 		f, _ := os.Create(path.Join(dest, "info.plist"))
 
 		data := struct {
-			Workflow	model.Workflow
-			Browsers	model.BrowserSlice
-			Metadata	map[string]model.WorkflowMetadata
-		} {
+			Workflow model.Workflow
+			Browsers model.BrowserSlice
+			Metadata map[string]model.WorkflowMetadata
+		}{
 			workflow,
 			browsers,
 			metadata,

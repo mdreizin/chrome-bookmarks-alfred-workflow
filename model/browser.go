@@ -1,24 +1,24 @@
 package model
 
 import (
+	"os/user"
 	"path"
 	"strings"
-	"os/user"
 )
 
 const (
 	tilde = "~/"
-	sep = "/"
+	sep   = "/"
 )
 
 type Browser struct {
-	ID				string	`yaml:"id,omitempty"`
-	Name			string	`yaml:"name"`
-	FullName		string	`yaml:"fullName,omitempty"`
-	Description		string	`yaml:"description"`
-	Path			string	`yaml:"path"`
-	IconURL			string	`yaml:"iconUrl"`
-	ProfileName		string	`yaml:"profileName,omitempty"`
+	ID          string `yaml:"id,omitempty"`
+	Name        string `yaml:"name"`
+	FullName    string `yaml:"fullName,omitempty"`
+	Description string `yaml:"description"`
+	Path        string `yaml:"path"`
+	IconURL     string `yaml:"iconUrl"`
+	ProfileName string `yaml:"profileName,omitempty"`
 }
 
 func (b Browser) PathFor(elem ...string) string {
@@ -34,7 +34,7 @@ func (b Browser) FullPathFor(elem ...string) string {
 		usr, _ := user.Current()
 		dir := usr.HomeDir
 
-		fullPath = strings.Replace(fullPath, tilde, dir + sep, 1)
+		fullPath = strings.Replace(fullPath, tilde, dir+sep, 1)
 	}
 
 	return fullPath

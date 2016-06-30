@@ -12,6 +12,12 @@
 ![](https://raw.github.com/{"gitdown": "gitinfo", "name": "username"}/{"gitdown": "gitinfo", "name": "name"}/{"gitdown": "gitinfo", "name": "branch"}/.gitdown/bookmarks.gif)
 ![](https://raw.github.com/{"gitdown": "gitinfo", "name": "username"}/{"gitdown": "gitinfo", "name": "name"}/{"gitdown": "gitinfo", "name": "branch"}/.gitdown/profiles.gif)
 
+## Options
+
+`*-profiles`
+
+`Auto` checks active browser profile and uses it to search bookmarks.
+
 ## Setup
 
 * Run `brew install go`

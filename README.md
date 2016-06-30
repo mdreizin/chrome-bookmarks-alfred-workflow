@@ -12,6 +12,12 @@
 ![](https://raw.github.com/mdreizin/chrome-bookmarks-alfred-workflow/master/.gitdown/bookmarks.gif)
 ![](https://raw.github.com/mdreizin/chrome-bookmarks-alfred-workflow/master/.gitdown/profiles.gif)
 
+<h2 id="chrome-bookmarks-alfred-workflow-options">Options</h2>
+
+`*-profiles`
+
+`Auto` checks active browser profile and uses it to search bookmarks.
+
 <h2 id="chrome-bookmarks-alfred-workflow-setup">Setup</h2>
 
 * Run `brew install go`

@@ -14,7 +14,7 @@
 
 <h2 id="chrome-bookmarks-alfred-workflow-download">Download</h2>
 
-All available release you can find [here](https://github.com/mdreizin/chrome-bookmarks-alfred-workflow/releases)
+All available releases you can find [here](https://github.com/mdreizin/chrome-bookmarks-alfred-workflow/releases).
 
 <h2 id="chrome-bookmarks-alfred-workflow-options">Options</h2>
 

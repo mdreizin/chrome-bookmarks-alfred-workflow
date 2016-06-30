@@ -14,7 +14,7 @@
 
 ## Download
 
-All available release you can find [here]({"gitdown": "gitinfo", "name": "url"}/releases)
+All available releases you can find [here]({"gitdown": "gitinfo", "name": "url"}/releases).
 
 ## Options
 

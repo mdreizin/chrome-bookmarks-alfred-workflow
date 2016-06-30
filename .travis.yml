@@ -7,7 +7,6 @@ notifications:
 branches:
   only:
     - master
-    - ^v\d+\.\d+\.\d+[\-[\dA-Za-z\-\.]+]?[\+[\dA-Za-z\-\.]+]?$
   except:
     - gh-pages
 deploy:

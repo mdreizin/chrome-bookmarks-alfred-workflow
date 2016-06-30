@@ -28,8 +28,8 @@ restore:
 	@govendor sync
 
 lint:
-	@go vet $(PACKAGES)
 	@for pkg in $(PACKAGES); do \
+		go tool vet $$(basename $$pkg); \
 		golint $$(basename $$pkg); \
 	done
 

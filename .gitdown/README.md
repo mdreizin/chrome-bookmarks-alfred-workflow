@@ -12,6 +12,10 @@
 ![](https://raw.github.com/{"gitdown": "gitinfo", "name": "username"}/{"gitdown": "gitinfo", "name": "name"}/{"gitdown": "gitinfo", "name": "branch"}/.gitdown/bookmarks.gif)
 ![](https://raw.github.com/{"gitdown": "gitinfo", "name": "username"}/{"gitdown": "gitinfo", "name": "name"}/{"gitdown": "gitinfo", "name": "branch"}/.gitdown/profiles.gif)
 
+## Download
+
+All available release you can find [here]({"gitdown": "gitinfo", "name": "url"}/releases)
+
 ## Options
 
 `*-profiles`

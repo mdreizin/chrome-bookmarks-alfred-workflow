@@ -12,6 +12,10 @@
 ![](https://raw.github.com/mdreizin/chrome-bookmarks-alfred-workflow/master/.gitdown/bookmarks.gif)
 ![](https://raw.github.com/mdreizin/chrome-bookmarks-alfred-workflow/master/.gitdown/profiles.gif)
 
+<h2 id="chrome-bookmarks-alfred-workflow-download">Download</h2>
+
+All available release you can find [here](https://github.com/mdreizin/chrome-bookmarks-alfred-workflow/releases)
+
 <h2 id="chrome-bookmarks-alfred-workflow-options">Options</h2>
 
 `*-profiles`

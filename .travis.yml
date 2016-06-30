@@ -9,7 +9,7 @@ branches:
     - gh-pages
 deploy:
   provider: releases
-  api_key: {{ GH_TOKEN }}
+  api_key: "$GH_TOKEN"
   file: dist/chrome-bookmarks.alfredworkflow
   skip_cleanup: true
   on:

@@ -16,6 +16,7 @@ deploy:
     tags: true
 cache:
   directories:
+    - $GOPATH
     - vendor
 before_install:
   - brew install glide

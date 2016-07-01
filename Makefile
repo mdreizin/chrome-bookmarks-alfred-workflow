@@ -25,7 +25,7 @@ restore:
 	@go get -u -v github.com/wadey/gocovmerge
 	@go get -u -v github.com/mattn/goveralls
 	@go get -u -v github.com/golang/lint/golint
-	@glide install
+	@glide up
 
 lint:
 	@for pkg in $(PACKAGES); do \

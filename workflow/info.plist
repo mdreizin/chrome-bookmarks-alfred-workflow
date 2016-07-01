@@ -89,7 +89,7 @@
 			<key>uid</key>
 			<string>{{$m.BookmarkOpenID}}</string>
 			<key>version</key>
-			<integer>1</integer>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -134,7 +134,7 @@
 			<key>uid</key>
 			<string>{{$m.BookmarkListID}}</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -179,7 +179,7 @@
 			<key>uid</key>
 			<string>{{$m.ProfileListID}}</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -204,7 +204,7 @@
 			<key>uid</key>
 			<string>{{$m.ProfileSetID}}</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>0</integer>
 		</dict>
 		{{- end -}}
 		<dict>
@@ -226,7 +226,7 @@
 			<key>uid</key>
 			<string>6A6D5564-63F4-425C-A21B-58A66B090B74</string>
 			<key>version</key>
-			<integer>1</integer>
+			<integer>0</integer>
 		</dict>
 	</array>
 </dict>

@@ -6,7 +6,7 @@ const (
 	WorkflowBundleID    string = "com.mdreizin.chrome.bookmarks"
 	WorkflowName        string = "Chrome Bookmarks"
 	WorkflowDescription string = "Chrome/Canary/Chromium bookmarks search workflow for Alfred"
-	WorkflowVersion     string = "0.1.3"
+	WorkflowVersion     string = "0.1.4"
 	WorkflowAuthor      string = "Marat Dreizin"
 	WorkflowCategory    string = "Productivity"
 	WorkflowEmail       string = "marat.dreizin@gmail.com"

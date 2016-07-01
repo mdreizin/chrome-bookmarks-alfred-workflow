@@ -1,6 +1,7 @@
 package model
 
 import (
+	"fmt"
 	"regexp"
 	"sort"
 	"strings"
@@ -19,7 +20,7 @@ func (s BookmarkSlice) Match(query string) BookmarkSlice {
 	regexps := []*regexp.Regexp{}
 
 	for _, field := range fields {
-		re := regexp.MustCompile(regexp.QuoteMeta(field))
+		re := regexp.MustCompile(fmt.Sprintf("(?i)%s", regexp.QuoteMeta(field)))
 
 		regexps = append(regexps, re)
 	}

@@ -2,6 +2,7 @@ package model
 
 import (
 	"errors"
+	"fmt"
 	"regexp"
 	"sort"
 )
@@ -15,7 +16,7 @@ func (s ProfileSlice) Add(v Profile) ProfileSlice {
 func (s ProfileSlice) Match(query string) ProfileSlice {
 	f := ProfileSlice{}
 
-	re := regexp.MustCompile(regexp.QuoteMeta(query))
+	re := regexp.MustCompile(fmt.Sprintf("(?i)%s", regexp.QuoteMeta(query)))
 
 	for _, v := range s {
 		if re.MatchString(v.Name) || re.MatchString(v.DisplayName) || re.MatchString(v.UserName) || re.MatchString(v.UserEmail) {

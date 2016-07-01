@@ -2,6 +2,7 @@ package model
 
 import (
 	"errors"
+	"fmt"
 	"regexp"
 	"strings"
 )
@@ -15,7 +16,7 @@ func (s BrowserSlice) Add(v Browser) BrowserSlice {
 func (s BrowserSlice) Match(query string) BrowserSlice {
 	f := BrowserSlice{}
 
-	re := regexp.MustCompile(regexp.QuoteMeta(query))
+	re := regexp.MustCompile(fmt.Sprintf("(?i)%s", regexp.QuoteMeta(query)))
 
 	for _, v := range s {
 		if re.MatchString(v.Name) {

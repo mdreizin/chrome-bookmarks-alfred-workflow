@@ -34,6 +34,7 @@ func TestBookmarkSlice_Match(t *testing.T) {
 	assert.Len(bookmarks.Match("noop"), 0)
 	assert.Len(bookmarks.Match("react"), 2)
 	assert.Len(bookmarks.Match("react redux"), 1)
+	assert.Len(bookmarks.Match("React Redux"), 1)
 }
 
 func TestBookmarkSlice_Sort(t *testing.T) {

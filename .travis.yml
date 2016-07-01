@@ -20,6 +20,7 @@ cache:
     - vendor
 before_install:
   - brew install glide
+  - glide --version
 install:
   - make restore
 script:

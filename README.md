@@ -24,7 +24,7 @@ All available releases you can find [here](https://github.com/mdreizin/chrome-bo
 
 <h2 id="chrome-bookmarks-alfred-workflow-setup">Setup</h2>
 
-* Run `brew install go`
+* Run `brew install go glide`
 * Run `make restore`
 
 <h2 id="chrome-bookmarks-alfred-workflow-develop">Develop</h2>

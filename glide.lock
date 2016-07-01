@@ -1,0 +1,50 @@
+hash: 19605261b8cdb762c7128a1bad72439a445b1891fa3f62cd4b0cc3ff779ae559
+updated: 2016-07-01T14:50:20.808296132+03:00
+imports:
+- name: github.com/howeyc/gopass
+  version: 66487b23f2880ba32e185121d2cd51a338ea069a
+- name: github.com/mattn/go-colorable
+  version: 9056b7a9f2d1f2d96498d6d146acd1f9d5ed3d59
+- name: github.com/mattn/go-isatty
+  version: 56b76bdf51f7708750eac80fa38b952bb9f32639
+- name: github.com/mgutz/ansi
+  version: c286dcecd19ff979eeb73ea444e479b903f2cfcb
+- name: github.com/mgutz/minimist
+  version: 39eb8cf573ca29344bd7d7e6ba4d7febdebd37a9
+- name: github.com/mgutz/str
+  version: 968bf66e3da857419e4f6e71b2d5c9ae95682dc4
+- name: github.com/mgutz/to
+  version: 2a0bcba0661696e339461f5efb2273f4459dd1b9
+- name: github.com/MichaelTJones/walk
+  version: 3af09438b0ab0e8f296410bfa646a7e635ea1fc0
+- name: github.com/nozzle/throttler
+  version: d9b45f19996c645d38c9266d1f5cf1990e930119
+- name: github.com/ruedap/go-alfred
+  version: 43da5a9945937f63f00ecf71042ef4df295ce84d
+- name: github.com/satori/go.uuid
+  version: 879c5887cd475cd7864858769793b2ceb0d44feb
+- name: github.com/stretchr/testify
+  version: d77da356e56a7428ad25149ca77381849a6a5232
+  subpackages:
+  - assert
+- name: github.com/urfave/cli
+  version: 1efa31f08b9333f1bd4882d61f9d668a70cd902e
+- name: golang.org/x/crypto
+  version: 811831de4c4dd03a0b8737233af3b36852386373
+  subpackages:
+  - ssh/terminal
+- name: golang.org/x/sys
+  version: 62bee037599929a6e9146f29d10dd5208c43507d
+  subpackages:
+  - unix
+- name: gopkg.in/godo.v2
+  version: b5fd2f0bef1ebe832e628cfad18ab1cc707f65a1
+  subpackages:
+  - cmd/godo
+  - glob
+  - util
+  - watcher
+  - watcher/fswatch
+- name: gopkg.in/yaml.v2
+  version: a83829b6f1293c91addabc89d0571c246397bbf4
+devImports: []

@@ -1,0 +1,12 @@
+package: github.com/mdreizin/chrome-bookmarks-alfred-workflow
+import:
+- package: github.com/ruedap/go-alfred
+- package: github.com/satori/go.uuid
+- package: github.com/urfave/cli
+- package: gopkg.in/godo.v2
+  subpackages:
+  - cmd/godo
+- package: gopkg.in/yaml.v2
+- package: github.com/stretchr/testify
+  subpackages:
+  - assert

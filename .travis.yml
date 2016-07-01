@@ -14,10 +14,6 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-cache:
-  directories:
-    - $GOPATH
-    - vendor
 before_install:
   - brew update
   - brew install glide

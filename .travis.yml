@@ -19,6 +19,7 @@ cache:
     - $GOPATH
     - vendor
 before_install:
+  - brew update
   - brew install glide
   - glide --version
 install:

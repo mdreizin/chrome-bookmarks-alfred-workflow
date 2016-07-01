@@ -2,7 +2,7 @@ package model
 
 import (
 	"errors"
-	"github.com/renstrom/fuzzysearch/fuzzy"
+	"regexp"
 	"strings"
 )
 
@@ -15,10 +15,10 @@ func (s BrowserSlice) Add(v Browser) BrowserSlice {
 func (s BrowserSlice) Match(query string) BrowserSlice {
 	f := s[:0]
 
-	for _, v := range s {
-		matches := fuzzy.Find(query, []string{v.Name})
+	re := regexp.MustCompile(regexp.QuoteMeta(query))
 
-		if len(matches) > 0 {
+	for _, v := range s {
+		if re.MatchString(v.Name) {
 			f = f.Add(v)
 		}
 	}

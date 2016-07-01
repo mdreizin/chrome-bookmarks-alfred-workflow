@@ -1,8 +1,9 @@
 package model
 
 import (
-	"github.com/renstrom/fuzzysearch/fuzzy"
+	"regexp"
 	"sort"
+	"strings"
 )
 
 type BookmarkSlice []Bookmark
@@ -14,11 +15,21 @@ func (s BookmarkSlice) Add(v Bookmark) BookmarkSlice {
 func (s BookmarkSlice) Match(query string) BookmarkSlice {
 	f := s[:0]
 
-	for _, v := range s {
-		matches := fuzzy.Find(query, []string{v.Name, v.URL})
+	fields := strings.Fields(query)
+	regexps := []*regexp.Regexp{}
 
-		if len(matches) > 0 {
-			f = f.Add(v)
+	for _, field := range fields {
+		re := regexp.MustCompile(regexp.QuoteMeta(field))
+
+		regexps = append(regexps, re)
+	}
+
+	for _, v := range s {
+		for _, re := range regexps {
+			if re.MatchString(v.Name) || re.MatchString(v.URL) {
+				f = f.Add(v)
+				break
+			}
 		}
 	}
 

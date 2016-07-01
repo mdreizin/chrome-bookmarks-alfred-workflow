@@ -99,7 +99,7 @@
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>escaping</key>
-				<integer>127</integer>
+				<integer>126</integer>
 				<key>keyword</key>
 				<string>{{$b.Name}}</string>
 				<key>queuedelaycustom</key>
@@ -144,7 +144,7 @@
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>escaping</key>
-				<integer>127</integer>
+				<integer>126</integer>
 				<key>keyword</key>
 				<string>{{$b.Name}}-profiles</string>
 				<key>queuedelaycustom</key>
@@ -156,7 +156,7 @@
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>runningsubtext</key>
-				<string>Searching profiles...</string>
+				<string>Searching profiles…</string>
 				<key>script</key>
 				<string>QUERY=$(./bin/normalise -form NFC "{query}")
 

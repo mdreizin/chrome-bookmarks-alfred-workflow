@@ -18,12 +18,20 @@ func TestBookmarkSlice_Match(t *testing.T) {
 			Name: unicode,
 			URL:  "https://en.wikipedia.org/wiki/Unicode",
 		},
+		Bookmark{
+			Name: "react",
+			URL:  "https://facebook.github.io/react/",
+		},
+		Bookmark{
+			Name: "react redux",
+			URL:  "http://redux.js.org/docs/basics/UsageWithReact.html",
+		},
 	}
 
 	assert.Len(bookmarks.Match("github.com"), 1)
-	assert.Len(bookmarks.Match("hub"), 1)
 	assert.Len(bookmarks.Match(unicode), 1)
 	assert.Len(bookmarks.Match("noop"), 0)
+	assert.Len(bookmarks.Match("react redux"), 2)
 }
 
 func TestBookmarkSlice_Sort(t *testing.T) {

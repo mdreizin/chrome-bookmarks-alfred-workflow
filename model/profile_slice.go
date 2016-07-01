@@ -2,7 +2,7 @@ package model
 
 import (
 	"errors"
-	"github.com/renstrom/fuzzysearch/fuzzy"
+	"regexp"
 	"sort"
 )
 
@@ -15,18 +15,10 @@ func (s ProfileSlice) Add(v Profile) ProfileSlice {
 func (s ProfileSlice) Match(query string) ProfileSlice {
 	f := s[:0]
 
+	re := regexp.MustCompile(regexp.QuoteMeta(query))
+
 	for _, v := range s {
-		targets := []string{}
-
-		for _, x := range []string{v.Name, v.DisplayName, v.UserName, v.UserEmail} {
-			if x != "" {
-				targets = append(targets, x)
-			}
-		}
-
-		matches := fuzzy.Find(query, targets)
-
-		if len(matches) > 0 {
+		if re.MatchString(v.Name) || re.MatchString(v.DisplayName) || re.MatchString(v.UserName) || re.MatchString(v.UserEmail) {
 			f = f.Add(v)
 		}
 	}

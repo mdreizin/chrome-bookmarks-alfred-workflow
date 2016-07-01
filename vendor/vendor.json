@@ -69,12 +69,6 @@
 			"revisionTime": "2016-01-10T10:55:54Z"
 		},
 		{
-			"checksumSHA1": "DF3jZEw4lCq/SEaC7DIl/R+7S70=",
-			"path": "github.com/renstrom/fuzzysearch/fuzzy",
-			"revision": "2d205ac6ec17a839a94bdbfd16d2fa6c6dada2e0",
-			"revisionTime": "2016-03-31T20:48:55Z"
-		},
-		{
 			"checksumSHA1": "9Q6/r3uOKqdu1OI2RogyEK7QEIo=",
 			"path": "github.com/ruedap/go-alfred",
 			"revision": "43da5a9945937f63f00ecf71042ef4df295ce84d",

@@ -14,6 +14,14 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
+cache:
+  directories:
+    - $GOPATH
+    - vendor
+before_install:
+  - brew update
+  - brew install glide
+  - glide --version
 install:
   - make restore
 script:

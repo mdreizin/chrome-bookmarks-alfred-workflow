@@ -24,7 +24,7 @@ All available releases you can find [here]({"gitdown": "gitinfo", "name": "url"}
 
 ## Setup
 
-* Run `brew install go`
+* Run `brew install go glide`
 * Run `make restore`
 
 ## Develop

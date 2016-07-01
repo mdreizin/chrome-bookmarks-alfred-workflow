@@ -13,7 +13,7 @@ func (s BookmarkSlice) Add(v Bookmark) BookmarkSlice {
 }
 
 func (s BookmarkSlice) Match(query string) BookmarkSlice {
-	f := s[:0]
+	f := BookmarkSlice{}
 
 	fields := strings.Fields(query)
 	regexps := []*regexp.Regexp{}
@@ -25,11 +25,22 @@ func (s BookmarkSlice) Match(query string) BookmarkSlice {
 	}
 
 	for _, v := range s {
+		every := false
+
 		for _, re := range regexps {
-			if re.MatchString(v.Name) || re.MatchString(v.URL) {
-				f = f.Add(v)
+			m := re.MatchString(v.Name) || re.MatchString(v.URL)
+
+			if !m {
+				every = false
+
 				break
+			} else {
+				every = true
 			}
+		}
+
+		if every == true {
+			f = f.Add(v)
 		}
 	}
 

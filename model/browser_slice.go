@@ -13,7 +13,7 @@ func (s BrowserSlice) Add(v Browser) BrowserSlice {
 }
 
 func (s BrowserSlice) Match(query string) BrowserSlice {
-	f := s[:0]
+	f := BrowserSlice{}
 
 	re := regexp.MustCompile(regexp.QuoteMeta(query))
 

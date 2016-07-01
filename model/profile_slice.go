@@ -13,7 +13,7 @@ func (s ProfileSlice) Add(v Profile) ProfileSlice {
 }
 
 func (s ProfileSlice) Match(query string) ProfileSlice {
-	f := s[:0]
+	f := ProfileSlice{}
 
 	re := regexp.MustCompile(regexp.QuoteMeta(query))
 

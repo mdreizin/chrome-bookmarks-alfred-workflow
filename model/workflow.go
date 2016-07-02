@@ -6,7 +6,7 @@ const (
 	WorkflowBundleID    string = "com.mdreizin.chrome.bookmarks"
 	WorkflowName        string = "Chrome Bookmarks"
 	WorkflowDescription string = "Chrome/Canary/Chromium bookmarks search workflow for Alfred"
-	WorkflowVersion     string = "0.1.4"
+	WorkflowVersion     string = "0.1.5"
 	WorkflowAuthor      string = "Marat Dreizin"
 	WorkflowCategory    string = "Productivity"
 	WorkflowEmail       string = "marat.dreizin@gmail.com"
@@ -43,7 +43,7 @@ func (w Workflow) MetadataFor(browsers BrowserSlice) map[string]WorkflowMetadata
 
 	for _, v := range browsers {
 		metadata[v.ID] = WorkflowMetadata{
-			BookmarkListID: uuid.NewV4().String(),
+			BookmarkListID: v.ID,
 			BookmarkOpenID: uuid.NewV4().String(),
 			ProfileListID:  uuid.NewV4().String(),
 			ProfileSetID:   uuid.NewV4().String(),

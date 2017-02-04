@@ -39,6 +39,3 @@ All available releases you can find [here](https://github.com/mdreizin/chrome-bo
 <h2 id="chrome-bookmarks-alfred-workflow-cover">Cover</h2>
 
 * Run `make cover` or `make cover-html`
-
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/mdreizin/chrome-bookmarks-alfred-workflow.svg)](https://greenkeeper.io/)

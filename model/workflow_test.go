@@ -12,7 +12,7 @@ func TestWorkflow_MetadataFor(t *testing.T) {
 		browser,
 	}
 	workflow := NewWorkflow()
-	metadata := workflow.MetadataFor(browsers)
+	metadata := workflow.GenerateMetadata(browsers)
 
 	test.NotEmpty(metadata[browser.ID])
 }

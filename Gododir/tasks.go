@@ -16,7 +16,7 @@ func tasks(p *do.Project) {
 	bookmarkService := service.NewBookmarkService(config)
 	browsers, _ := bookmarkService.GetBrowsers()
 	workflow := model.NewWorkflow()
-	metadata := workflow.MetadataFor(browsers)
+	metadata := workflow.GenerateMetadata(browsers)
 
 	p.Task("default", do.Series{"clean", do.Parallel{"copy", "generate"}, "compress"}, nil)
 	p.Task("clean", nil, cleanTask(dest))

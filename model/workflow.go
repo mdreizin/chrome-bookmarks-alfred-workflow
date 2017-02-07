@@ -40,7 +40,7 @@ func NewWorkflow() Workflow {
 	}
 }
 
-func (w Workflow) MetadataFor(browsers BrowserSlice) map[string]WorkflowMetadata {
+func (w Workflow) GenerateMetadata(browsers BrowserSlice) map[string]WorkflowMetadata {
 	metadata := map[string]WorkflowMetadata{}
 
 	for _, v := range browsers {

@@ -6,7 +6,7 @@ import (
 )
 
 func TestVersionWithoutPrefix(t *testing.T) {
-	assert := assert.New(t)
+	test := assert.New(t)
 
-	assert.Equal("1.0.0", VersionWithoutPrefix("v1.0.0"))
+	test.Equal("1.0.0", VersionWithoutPrefix("v1.0.0"))
 }

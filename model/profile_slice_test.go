@@ -6,7 +6,7 @@ import (
 )
 
 func TestProfileSlice_Match(t *testing.T) {
-	assert := assert.New(t)
+	test := assert.New(t)
 	profiles := ProfileSlice{
 		Profile{
 			Name:      "Default",
@@ -20,14 +20,14 @@ func TestProfileSlice_Match(t *testing.T) {
 		},
 	}
 
-	assert.Len(profiles.Match("User 1"), 1)
-	assert.Len(profiles.Match("User 2"), 1)
-	assert.Len(profiles.Match("User"), 2)
-	assert.Len(profiles.Match("gmail.com"), 2)
+	test.Len(profiles.Match("User 1"), 1)
+	test.Len(profiles.Match("User 2"), 1)
+	test.Len(profiles.Match("User"), 2)
+	test.Len(profiles.Match("gmail.com"), 2)
 }
 
 func TestProfileSlice_Sort(t *testing.T) {
-	assert := assert.New(t)
+	test := assert.New(t)
 	profiles := ProfileSlice{
 		Profile{
 			Name:      "User2",
@@ -41,7 +41,7 @@ func TestProfileSlice_Sort(t *testing.T) {
 		},
 	}.Sort()
 
-	assert.Equal(Profile{
+	test.Equal(Profile{
 		Name:      "Default",
 		UserName:  "User 1",
 		UserEmail: "user1@gmail.com",
@@ -49,7 +49,7 @@ func TestProfileSlice_Sort(t *testing.T) {
 }
 
 func TestProfileSlice_FirstActive(t *testing.T) {
-	assert := assert.New(t)
+	test := assert.New(t)
 	profiles := ProfileSlice{
 		Profile{
 			Name:      "User2",
@@ -66,8 +66,8 @@ func TestProfileSlice_FirstActive(t *testing.T) {
 	}
 	profile, err := profiles.FirstActive()
 
-	assert.NoError(err)
-	assert.Equal(Profile{
+	test.NoError(err)
+	test.Equal(Profile{
 		Name:      "User2",
 		UserName:  "User 2",
 		UserEmail: "user2@gmail.com",
@@ -78,5 +78,5 @@ func TestProfileSlice_FirstActive(t *testing.T) {
 
 	profile, err = profiles.FirstActive()
 
-	assert.Error(err)
+	test.Error(err)
 }

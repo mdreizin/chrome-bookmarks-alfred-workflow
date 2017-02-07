@@ -9,26 +9,26 @@ import (
 )
 
 func TestYmlBrowserRepository_GetBrowsers(t *testing.T) {
-	assert := assert.New(t)
+	test := assert.New(t)
 	repository := YmlBrowserRepository{filename: "testdata/browser.yml"}
 	browsers, err := repository.GetBrowsers()
 
-	assert.NoError(err)
-	assert.Len(browsers, 3)
-	assert.Equal("Profile 1", browsers[0].ProfileName)
+	test.NoError(err)
+	test.Len(browsers, 3)
+	test.Equal("Profile 1", browsers[0].ProfileName)
 }
 
 func TestYmlBrowserRepository_GetBrowsers_ReadFileError(t *testing.T) {
-	assert := assert.New(t)
+	test := assert.New(t)
 	repository := YmlBrowserRepository{filename: "testdata"}
 	browsers, err := repository.GetBrowsers()
 
-	assert.Error(err)
-	assert.Len(browsers, 0)
+	test.Error(err)
+	test.Len(browsers, 0)
 }
 
 func TestYmlBrowserRepository_UpdateBrowser(t *testing.T) {
-	assert := assert.New(t)
+	test := assert.New(t)
 	filename := path.Join("testdata", "marat", "browser.yml") // uuid.NewV4().String()
 	dirname := path.Dir(filename)
 	bytes, _ := ioutil.ReadFile("testdata/browser.yml")
@@ -44,12 +44,12 @@ func TestYmlBrowserRepository_UpdateBrowser(t *testing.T) {
 
 	err := repository.UpdateBrowser(browser)
 
-	assert.NoError(err)
+	test.NoError(err)
 
 	browsers, _ = repository.GetBrowsers()
 	browser, _ = browsers.FindByName("chrome")
 
-	assert.Equal("Default", browser.ProfileName)
+	test.Equal("Default", browser.ProfileName)
 
 	os.RemoveAll(dirname)
 }

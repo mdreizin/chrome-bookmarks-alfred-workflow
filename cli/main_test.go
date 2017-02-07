@@ -35,7 +35,7 @@ func TestMain(m *testing.M) {
 }
 
 func TestRun(t *testing.T) {
-	assert := assert.New(t)
+	test := assert.New(t)
 
 	os.Args = []string{"cli", "bookmarks", "chrome"}
 
@@ -45,5 +45,5 @@ func TestRun(t *testing.T) {
 		return nil
 	})
 
-	assert.NoError(err)
+	test.NoError(err)
 }

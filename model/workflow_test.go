@@ -6,7 +6,7 @@ import (
 )
 
 func TestWorkflow_MetadataFor(t *testing.T) {
-	assert := assert.New(t)
+	test := assert.New(t)
 	browser := Browser{ID: "1"}
 	browsers := BrowserSlice{
 		browser,
@@ -14,5 +14,5 @@ func TestWorkflow_MetadataFor(t *testing.T) {
 	workflow := NewWorkflow()
 	metadata := workflow.MetadataFor(browsers)
 
-	assert.NotEmpty(metadata[browser.ID])
+	test.NotEmpty(metadata[browser.ID])
 }

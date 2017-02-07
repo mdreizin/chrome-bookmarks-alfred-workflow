@@ -6,8 +6,8 @@ import (
 )
 
 func TestNewBrowserRepository(t *testing.T) {
-	assert := assert.New(t)
+	test := assert.New(t)
 	browserRepository := NewBrowserRepository("browser.yml")
 
-	assert.IsType(&YmlBrowserRepository{}, browserRepository)
+	test.IsType(&YmlBrowserRepository{}, browserRepository)
 }

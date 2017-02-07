@@ -15,6 +15,7 @@ deploy:
   on:
     tags: true
 before_install:
+  - mkdir -p $GOPATH/bin
   - curl https://glide.sh/get | sh
   - glide --version
 install:

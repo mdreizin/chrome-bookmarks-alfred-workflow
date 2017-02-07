@@ -47,8 +47,8 @@ func newApp() *cli.App {
 	}
 
 	app := cli.NewApp()
-	app.Name = "cli"
-	app.Version = model.WorkflowVersion
+	app.Name = model.WorkflowAppName
+	app.Version = stringutil.VersionWithoutPrefix(version)
 	app.Usage = model.WorkflowDescription
 	app.Author = model.WorkflowAuthor
 	app.Email = model.WorkflowEmail

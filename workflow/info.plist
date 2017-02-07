@@ -115,7 +115,7 @@
 				<key>script</key>
 				<string>QUERY=$(./bin/normalise -form NFC "{query}")
 
-./bin/cli bookmarks "{{$b.Name}}" -query="${QUERY}"</string>
+./bin/{{$workflow.AppName}} bookmarks "{{$b.Name}}" -query="${QUERY}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -160,7 +160,7 @@
 				<key>script</key>
 				<string>QUERY=$(./bin/normalise -form NFC "{query}")
 
-./bin/cli profiles "{{$b.Name}}" -query="${QUERY}"</string>
+./bin/{{$workflow.AppName}} profiles "{{$b.Name}}" -query="${QUERY}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -191,7 +191,7 @@
 				<key>script</key>
 				<string>QUERY=$(./bin/normalise -form NFC "{query}")
 
-./bin/cli select-profile "{{$b.Name}}" -query="${QUERY}"</string>
+./bin/{{$workflow.AppName}} select-profile "{{$b.Name}}" -query="${QUERY}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -229,5 +229,49 @@
 			<integer>0</integer>
 		</dict>
 	</array>
+	<key>uidata</key>
+	<dict>
+		{{- $offset := 150 -}}
+		{{- $gutter := 20 -}}
+		{{- $rows := len $browsers -}}
+		{{- range $i, $b := $browsers }}
+		{{- $m := index $metadata $b.ID }}
+		<key>{{$m.BookmarkListID}}</key>
+		<dict>
+			<key>xpos</key>
+			<integer>20</integer>
+			<key>ypos</key>
+			<integer>{{ $i | mul $offset | add $gutter }}</integer>
+		</dict>
+		<key>{{$m.BookmarkOpenID}}</key>
+		<dict>
+			<key>xpos</key>
+			<integer>220</integer>
+			<key>ypos</key>
+			<integer>{{ $i | mul $offset | add $gutter }}</integer>
+		</dict>
+		<key>{{$m.ProfileListID}}</key>
+		<dict>
+			<key>xpos</key>
+			<integer>420</integer>
+			<key>ypos</key>
+			<integer>{{ $i | mul $offset | add $gutter }}</integer>
+		</dict>
+		<key>{{$m.ProfileSetID}}</key>
+		<dict>
+			<key>xpos</key>
+			<integer>620</integer>
+			<key>ypos</key>
+			<integer>{{ $i | mul $offset | add $gutter }}</integer>
+		</dict>
+		{{- end -}}
+		<key>6A6D5564-63F4-425C-A21B-58A66B090B74</key>
+		<dict>
+			<key>xpos</key>
+			<integer>820</integer>
+			<key>ypos</key>
+			<integer>{{ div $rows 2 | mul $offset | add $gutter }}</integer>
+		</dict>
+	</dict>
 </dict>
 </plist>

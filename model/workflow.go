@@ -3,10 +3,10 @@ package model
 import "github.com/satori/go.uuid"
 
 const (
+	WorkflowAppName     string = "chrome-bookmarks"
 	WorkflowBundleID    string = "com.mdreizin.chrome.bookmarks"
 	WorkflowName        string = "Chrome Bookmarks"
 	WorkflowDescription string = "Chrome/Canary/Chromium bookmarks search workflow for Alfred"
-	WorkflowVersion     string = "0.1.5"
 	WorkflowAuthor      string = "Marat Dreizin"
 	WorkflowCategory    string = "Productivity"
 	WorkflowEmail       string = "marat.dreizin@gmail.com"
@@ -23,22 +23,24 @@ type Workflow struct {
 	Author      string
 	URL         string
 	Readme      string
+	AppName     string
 }
 
 func NewWorkflow() Workflow {
 	return Workflow{
 		BundleID:    WorkflowBundleID,
-		Version:     WorkflowVersion,
+		Version:     "dev",
 		Name:        WorkflowName,
 		Description: WorkflowDescription,
 		Category:    WorkflowCategory,
 		Author:      WorkflowAuthor,
 		URL:         WorkflowURL,
 		Readme:      "",
+		AppName:     WorkflowAppName,
 	}
 }
 
-func (w Workflow) MetadataFor(browsers BrowserSlice) map[string]WorkflowMetadata {
+func (w Workflow) GenerateMetadata(browsers BrowserSlice) map[string]WorkflowMetadata {
 	metadata := map[string]WorkflowMetadata{}
 
 	for _, v := range browsers {

@@ -6,8 +6,8 @@ import (
 )
 
 func TestNewProfileRepository(t *testing.T) {
-	assert := assert.New(t)
+	test := assert.New(t)
 	profileRepository := NewProfileRepository("Profiles.json")
 
-	assert.IsType(&JsonProfileRepository{}, profileRepository)
+	test.IsType(&JsonProfileRepository{}, profileRepository)
 }

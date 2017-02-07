@@ -13,11 +13,11 @@ func copyTask(src string, dest string, browsers model.BrowserSlice, metadata map
 		ensureDir(c, dest)
 
 		files := map[string][]string{
-			path.Join(src, "bin"):                        {dest},
-			path.Join(src, "img"):                        {dest},
-			path.Join(src, "browser.yml"):                {dest},
-			path.Join(src, "icon.png"):                   {dest},
-			path.Join(os.Getenv("GOPATH"), "bin", "cli"): {path.Join(dest, "bin")},
+			path.Join(src, "bin"):                                        {dest},
+			path.Join(src, "img"):                                        {dest},
+			path.Join(src, "browser.yml"):                                {dest},
+			path.Join(src, "icon.png"):                                   {dest},
+			path.Join(os.Getenv("GOPATH"), "bin", model.WorkflowAppName): {path.Join(dest, "bin")},
 		}
 
 		for _, v := range browsers {

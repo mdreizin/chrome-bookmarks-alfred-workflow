@@ -6,8 +6,8 @@ import (
 )
 
 func TestNewBookmarkService(t *testing.T) {
-	assert := assert.New(t)
+	test := assert.New(t)
 	bookmarkService := NewBookmarkService(nil)
 
-	assert.IsType(&DefaultBookmarkService{}, bookmarkService)
+	test.IsType(&DefaultBookmarkService{}, bookmarkService)
 }

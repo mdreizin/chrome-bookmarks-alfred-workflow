@@ -5,8 +5,8 @@ import (
 	"testing"
 )
 
-func TestKebabCase(t *testing.T) {
+func TestVersionWithoutPrefix(t *testing.T) {
 	test := assert.New(t)
 
-	test.Equal("FOO_BAR", KebabCase("foo-bar"))
+	test.Equal("1.0.0", VersionWithoutPrefix("v1.0.0"))
 }

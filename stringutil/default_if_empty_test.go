@@ -6,8 +6,8 @@ import (
 )
 
 func TestDefaultIfEmpty(t *testing.T) {
-	assert := assert.New(t)
+	test := assert.New(t)
 
-	assert.Equal("Foo", DefaultIfEmpty("Foo", "Bar"))
-	assert.Equal("Bar", DefaultIfEmpty("", "Bar"))
+	test.Equal("Foo", DefaultIfEmpty("Foo", "Bar"))
+	test.Equal("Bar", DefaultIfEmpty("", "Bar"))
 }

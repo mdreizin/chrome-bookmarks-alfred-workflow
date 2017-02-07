@@ -6,7 +6,7 @@ import (
 )
 
 func TestProfile_AvatarIconURL(t *testing.T) {
-	assert := assert.New(t)
+	test := assert.New(t)
 	browser := Browser{Path: "testdata", IconURL: "img/chrome.png"}
 	profile := Profile{
 		AvatarURL:       "chrome://theme/IDR_PROFILE_AVATAR_12",
@@ -14,9 +14,9 @@ func TestProfile_AvatarIconURL(t *testing.T) {
 		IsDefaultAvatar: false,
 	}
 
-	assert.Equal("img/chrome.png", profile.AvatarIconURL(browser, "Default"))
+	test.Equal("img/chrome.png", profile.AvatarIconURL(browser, "Default"))
 
 	profile.IsDefaultAvatar = true
 
-	assert.Equal("testdata/Avatars/avatar_ninja.png", profile.AvatarIconURL(browser, "Default"))
+	test.Equal("testdata/Avatars/avatar_ninja.png", profile.AvatarIconURL(browser, "Default"))
 }

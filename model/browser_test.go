@@ -24,16 +24,16 @@ func fullPathFor(elem ...string) string {
 }
 
 func TestBrowser_PathFor(t *testing.T) {
-	assert := assert.New(t)
+	test := assert.New(t)
 	browser := &Browser{Path: fullPath}
 
-	assert.Equal(path.Join(fullPath, "Default"), browser.PathFor("Default"))
+	test.Equal(path.Join(fullPath, "Default"), browser.PathFor("Default"))
 }
 
 func TestBrowser_FullPathFor(t *testing.T) {
-	assert := assert.New(t)
+	test := assert.New(t)
 	browser := &Browser{Path: fullPath}
 
-	assert.Equal(fullPathFor(), browser.FullPathFor())
-	assert.Equal(fullPathFor("Default"), browser.FullPathFor("Default"))
+	test.Equal(fullPathFor(), browser.FullPathFor())
+	test.Equal(fullPathFor("Default"), browser.FullPathFor("Default"))
 }

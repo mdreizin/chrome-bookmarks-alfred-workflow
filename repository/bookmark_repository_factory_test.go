@@ -6,8 +6,8 @@ import (
 )
 
 func TestNewBookmarkRepository(t *testing.T) {
-	assert := assert.New(t)
+	test := assert.New(t)
 	bookmarkRepository := NewBookmarkRepository("Bookmarks.json")
 
-	assert.IsType(&JsonBookmarkRepository{}, bookmarkRepository)
+	test.IsType(&JsonBookmarkRepository{}, bookmarkRepository)
 }

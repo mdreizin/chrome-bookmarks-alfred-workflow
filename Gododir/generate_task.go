@@ -1,9 +1,12 @@
 package main
 
 import (
+	"bytes"
+	"github.com/Masterminds/sprig"
 	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/model"
+	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/stringutil"
 	do "gopkg.in/godo.v2"
-	"os"
+	"io/ioutil"
 	"path"
 	"text/template"
 )
@@ -12,20 +15,27 @@ func generateTask(src string, dest string, workflow model.Workflow, browsers mod
 	return func(c *do.Context) {
 		ensureDir(c, dest)
 
-		t, _ := template.ParseFiles(path.Join(src, "info.plist"))
-		f, _ := os.Create(path.Join(dest, "info.plist"))
+		if content, err := ioutil.ReadFile(path.Join(src, "info.plist")); err == nil {
+			if t, err := template.New("Workflow").Funcs(sprig.TxtFuncMap()).Parse(string(content)); err == nil {
+				version := c.Args.AsString("version")
+				workflow.Version = stringutil.VersionWithoutPrefix(version)
 
-		data := struct {
-			Workflow model.Workflow
-			Browsers model.BrowserSlice
-			Metadata map[string]model.WorkflowMetadata
-		}{
-			workflow,
-			browsers,
-			metadata,
+				data := struct {
+					Workflow model.Workflow
+					Browsers model.BrowserSlice
+					Metadata map[string]model.WorkflowMetadata
+				}{
+					workflow,
+					browsers,
+					metadata,
+				}
+
+				wr := bytes.NewBufferString("")
+
+				if err := t.Execute(wr, data); err == nil {
+					ioutil.WriteFile(path.Join(dest, "info.plist"), wr.Bytes(), 0644)
+				}
+			}
 		}
-
-		t.Execute(f, data)
-		f.Close()
 	}
 }

@@ -5,6 +5,7 @@
   description: "Google Chrome"
   path: "~/Library/Application Support/Google/Chrome"
   iconUrl: "img/chrome.png"
+  profileName: "Default"
 
 - id: "51ad66cf-5391-4b3d-98eb-9c96711b4dd3"
   name: "canary"
@@ -12,6 +13,7 @@
   description: "Google Chrome Canary"
   path: "~/Library/Application Support/Google/Chrome Canary"
   iconUrl: "img/canary.png"
+  profileName: "Default"
 
 - id: "5c5a3de8-474a-42bf-99f6-c61f793a6625"
   name: "chromium"
@@ -19,3 +21,4 @@
   description: "Chromium"
   path: "~/Library/Application Support/Chromium"
   iconUrl: "img/chromium.png"
+  profileName: "Default"

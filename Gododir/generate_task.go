@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/model"
+	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/stringutil"
 	do "gopkg.in/godo.v2"
 	"os"
 	"path"
@@ -14,6 +15,9 @@ func generateTask(src string, dest string, workflow model.Workflow, browsers mod
 
 		t, _ := template.ParseFiles(path.Join(src, "info.plist"))
 		f, _ := os.Create(path.Join(dest, "info.plist"))
+		version := c.Args.AsString("version")
+
+		workflow.Version = stringutil.VersionWithoutPrefix(version)
 
 		data := struct {
 			Workflow model.Workflow

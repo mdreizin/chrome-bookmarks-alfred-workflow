@@ -1,6 +1,13 @@
 PACKAGES = $$(go list ./... | grep -v /vendor/)
+ifdef TRAVIS_TAG
+	VERSION=$(TRAVIS_TAG)
+else
+	VERSION=latest
+endif
+BIN_NAME:=chrome-bookmarks
+GOBUILD_ARGS:=-ldflags "-X main.version=$(VERSION)"
 
-.PHONY: clean build install lint test bench cover cover-html coveralls workflow
+.PHONY: clean build fmt deps lint test bench cover cover-html coveralls workflow
 
 clean:
 	@go clean $(PACKAGES)
@@ -9,15 +16,12 @@ clean:
 	@- rm -rf gododir/godobin-*
 
 build:
-	@go build $(PACKAGES)
-
-install:
-	@go install $(PACKAGES)
+	@go build $(GOBUILD_ARGS) -o $$GOPATH/bin/$(BIN_NAME) ./cli/...;
 
 fmt:
 	@go fmt $(PACKAGES)
 
-restore:
+deps:
 	@go get -u -v github.com/kardianos/govendor
 	@go get -u -v gopkg.in/godo.v2/cmd/godo
 	@go get -u -v github.com/axw/gocov/gocov
@@ -54,5 +58,5 @@ coveralls:
 	@gocovmerge coverage/*-profile.cov > coverage/profile.cov
 	@goveralls -coverprofile=coverage/profile.cov -service=travis-ci
 
-workflow: install
-	@godo
+workflow: build
+	@godo -- --version=$(VERSION)

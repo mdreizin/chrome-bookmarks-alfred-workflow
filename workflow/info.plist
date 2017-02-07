@@ -115,7 +115,7 @@
 				<key>script</key>
 				<string>QUERY=$(./bin/normalise -form NFC "{query}")
 
-./bin/cli bookmarks "{{$b.Name}}" -query="${QUERY}"</string>
+./bin/{{$workflow.AppName}} bookmarks "{{$b.Name}}" -query="${QUERY}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -160,7 +160,7 @@
 				<key>script</key>
 				<string>QUERY=$(./bin/normalise -form NFC "{query}")
 
-./bin/cli profiles "{{$b.Name}}" -query="${QUERY}"</string>
+./bin/{{$workflow.AppName}} profiles "{{$b.Name}}" -query="${QUERY}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -191,7 +191,7 @@
 				<key>script</key>
 				<string>QUERY=$(./bin/normalise -form NFC "{query}")
 
-./bin/cli select-profile "{{$b.Name}}" -query="${QUERY}"</string>
+./bin/{{$workflow.AppName}} select-profile "{{$b.Name}}" -query="${QUERY}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>

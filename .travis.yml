@@ -19,7 +19,7 @@ before_install:
   - brew install glide
   - glide --version
 install:
-  - make restore
+  - make deps
 script:
   - make clean
   - make lint

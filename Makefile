@@ -1,6 +1,6 @@
 PACKAGES = $$(go list ./... | grep -v /vendor/)
 
-.PHONY: clean build install lint test bench cover cover-html coveralls readme workflow
+.PHONY: clean build install lint test bench cover cover-html coveralls workflow
 
 clean:
 	@go clean $(PACKAGES)
@@ -56,6 +56,3 @@ coveralls:
 
 workflow: install
 	@godo
-
-readme:
-	@npm run gitdown

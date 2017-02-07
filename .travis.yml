@@ -1,7 +1,7 @@
 language: go
 sudo: false
 go: 1.6.2
-os: osx
+os: linux
 notifications:
   email: false
 branches:
@@ -15,8 +15,7 @@ deploy:
   on:
     tags: true
 before_install:
-  - brew update
-  - brew install glide
+  - curl https://glide.sh/get | sh
   - glide --version
 install:
   - make deps

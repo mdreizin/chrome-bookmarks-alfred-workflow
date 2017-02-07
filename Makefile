@@ -16,7 +16,7 @@ clean:
 	@- rm -rf gododir/godobin-*
 
 build:
-	@go build $(GOBUILD_ARGS) -o $$GOPATH/bin/$(BIN_NAME) ./cli/...;
+	@env GOOS=darwin GOARCH=amd64 go build $(GOBUILD_ARGS) -o $$GOPATH/bin/$(BIN_NAME) ./cli/...;
 
 fmt:
 	@go fmt $(PACKAGES)

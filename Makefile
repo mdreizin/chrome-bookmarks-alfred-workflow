@@ -1,8 +1,8 @@
 PACKAGES = $$(go list ./... | grep -v /vendor/)
 ifdef TRAVIS_TAG
-	VERSION=$(TRAVIS_TAG)
+VERSION=$(TRAVIS_TAG)
 else
-	VERSION=latest
+VERSION=latest
 endif
 BUILD_DIR:=build
 COVER_DIR:=coverage

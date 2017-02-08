@@ -9,7 +9,7 @@ import (
 
 func tasks(p *do.Project) {
 	src := "./workflow"
-	dest := "./dist"
+	dest := "./build"
 	config := map[string]string{
 		"browser-file": path.Join(src, "browser.yml"),
 	}

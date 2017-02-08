@@ -11,12 +11,10 @@ GOBUILD_ARGS:=-ldflags "-X main.version=$(VERSION)"
 
 clean:
 	@go clean $(PACKAGES)
-	@- rm -rf dist
-	@- rm -rf coverage
-	@- rm -rf gododir/godobin-*
+	@- rm -rf build coverage gododir/godobin-* $$GOPATH/bin/$(BIN_NAME)
 
 build:
-	@env GOOS=darwin GOARCH=amd64 go build $(GOBUILD_ARGS) -o $$GOPATH/bin/$(BIN_NAME) ./cli/...;
+	@GOOS=darwin GOARCH=amd64 go build $(GOBUILD_ARGS) -o $$GOPATH/bin/$(BIN_NAME) ./cli/...;
 
 fmt:
 	@go fmt $(PACKAGES)

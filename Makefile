@@ -4,6 +4,9 @@ ifdef TRAVIS_TAG
 else
 	VERSION=latest
 endif
+BUILD_DIR:=build
+COVER_DIR:=coverage
+BIN_DIR:=$$GOPATH/bin
 BIN_NAME:=chrome-bookmarks
 GOBUILD_ARGS:=-ldflags "-X main.version=$(VERSION)"
 
@@ -11,10 +14,14 @@ GOBUILD_ARGS:=-ldflags "-X main.version=$(VERSION)"
 
 clean:
 	@go clean $(PACKAGES)
-	@- rm -rf build coverage gododir/godobin-* $$GOPATH/bin/$(BIN_NAME)
+	@- rm -rf ${COVER_DIR} ${BUILD_DIR} gododir/godobin-* ${BIN_DIR}/$(BIN_NAME)
 
 build:
-	@GOOS=darwin GOARCH=amd64 go build $(GOBUILD_ARGS) -o $$GOPATH/bin/$(BIN_NAME) ./cli/...;
+	@if [[ "${TRAVIS}" == "true" ]]; then \
+		gox $(GOBUILD_ARGS) -os="darwin" -arch="amd64" -osarch="!darwin/arm64" -output="${BIN_DIR}/${BIN_NAME}" ./cli/...; \
+	else \
+		go build $(GOBUILD_ARGS) -o ${BIN_DIR}/$(BIN_NAME) ./cli/...; \
+	fi
 
 fmt:
 	@go fmt $(PACKAGES)
@@ -27,6 +34,7 @@ deps:
 	@go get -u -v github.com/wadey/gocovmerge
 	@go get -u -v github.com/mattn/goveralls
 	@go get -u -v github.com/golang/lint/golint
+	go get -u -v github.com/mitchellh/gox
 	@glide install
 
 lint:
@@ -45,16 +53,16 @@ cover:
 	@gocov test $(PACKAGES) | gocov report
 
 cover-html:
-	@- mkdir -p coverage
-	@gocov test $(PACKAGES) | gocov-html > coverage/profile.html
+	@- mkdir -p ${COVER_DIR}
+	@gocov test $(PACKAGES) | gocov-html > ${COVER_DIR}/profile.html
 
 coveralls:
-	@- mkdir -p coverage
+	@- mkdir -p ${COVER_DIR}
 	@for pkg in $(PACKAGES); do \
-		go test $$pkg -coverprofile="coverage/$$(basename $$pkg)-profile.cov"; \
+		go test $$pkg -coverprofile="${COVER_DIR}/$$(basename $$pkg)-profile.cov"; \
 	done
-	@gocovmerge coverage/*-profile.cov > coverage/profile.cov
-	@goveralls -coverprofile=coverage/profile.cov -service=travis-ci
+	@gocovmerge ${COVER_DIR}/*-profile.cov > ${COVER_DIR}/profile.cov
+	@goveralls -coverprofile=${COVER_DIR}/profile.cov -service=travis-ci
 
 workflow: build
 	@godo -- --version=$(VERSION)

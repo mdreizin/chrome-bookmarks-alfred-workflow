@@ -17,7 +17,7 @@ clean:
 	@- rm -rf ${COVER_DIR} ${BUILD_DIR} gododir/godobin-* ${BIN_DIR}/$(BIN_NAME)
 
 build:
-	@if [[ "${TRAVIS}" == "true" ]]; then \
+	@if [ "${TRAVIS}" == "true" ]; then \
 		gox $(GOBUILD_ARGS) -os="darwin" -arch="amd64" -osarch="!darwin/arm64" -output="${BIN_DIR}/${BIN_NAME}" ./cli/...; \
 	else \
 		go build $(GOBUILD_ARGS) -o ${BIN_DIR}/$(BIN_NAME) ./cli/...; \

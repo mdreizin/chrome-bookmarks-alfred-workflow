@@ -8,8 +8,8 @@
 - [x] Google Chrome Canary (`canary`, `canary-profiles`)
 - [x] Chromium (`chromium`, `chromium-profiles`)
 
-![](https://raw.github.com/mdreizin/chrome-bookmarks-alfred-workflow/master/screenshot-bookmarks.gif)
-![](https://raw.github.com/mdreizin/chrome-bookmarks-alfred-workflow/master/screenshot-profiles.gif)
+![](screenshot-bookmarks.gif)
+![](screenshot-profiles.gif)
 
 ## Download
 

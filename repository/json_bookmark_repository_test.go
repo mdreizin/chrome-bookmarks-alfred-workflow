@@ -8,9 +8,9 @@ import (
 
 func TestJsonBookmarkRepository_GetBookmarks(t *testing.T) {
 	test := assert.New(t)
-	repository := JsonBookmarkRepository{filename: "Bookmarks.json"}
+	bookmarkRepository := JsonBookmarkRepository{filename: "Bookmarks.json"}
 	browser := model.Browser{Path: "testdata/Default"}
-	bookmarks, err := repository.GetBookmarks(browser)
+	bookmarks, err := bookmarkRepository.GetBookmarks(browser)
 
 	test.NoError(err)
 	test.Len(bookmarks, 7)
@@ -18,9 +18,9 @@ func TestJsonBookmarkRepository_GetBookmarks(t *testing.T) {
 
 func TestJsonBookmarkRepository_GetBookmarks_ReadFileError(t *testing.T) {
 	test := assert.New(t)
-	repository := JsonBookmarkRepository{filename: ""}
+	bookmarkRepository := JsonBookmarkRepository{filename: ""}
 	browser := model.Browser{Path: "testdata/Default"}
-	bookmarks, err := repository.GetBookmarks(browser)
+	bookmarks, err := bookmarkRepository.GetBookmarks(browser)
 
 	test.Error(err)
 	test.Len(bookmarks, 0)
@@ -28,9 +28,9 @@ func TestJsonBookmarkRepository_GetBookmarks_ReadFileError(t *testing.T) {
 
 func TestJsonBookmarkRepository_GetBookmarks_UnmarshalError(t *testing.T) {
 	test := assert.New(t)
-	repository := JsonBookmarkRepository{filename: "Bookmarks"}
+	bookmarkRepository := JsonBookmarkRepository{filename: "Bookmarks"}
 	browser := model.Browser{Path: "testdata/Default"}
-	bookmarks, err := repository.GetBookmarks(browser)
+	bookmarks, err := bookmarkRepository.GetBookmarks(browser)
 
 	test.Error(err)
 	test.Len(bookmarks, 0)

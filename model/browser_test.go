@@ -16,24 +16,24 @@ func pathFor(elem ...string) string {
 	return path.Join(paths...)
 }
 
-func fullPathFor(elem ...string) string {
+func resolvePath(elem ...string) string {
 	usr, _ := user.Current()
 	dir := usr.HomeDir
 
 	return strings.Replace(pathFor(elem...), "~/", dir+"/", 1)
 }
 
-func TestBrowser_PathFor(t *testing.T) {
+func TestBrowser_JoinPath(t *testing.T) {
 	test := assert.New(t)
 	browser := &Browser{Path: fullPath}
 
-	test.Equal(path.Join(fullPath, "Default"), browser.PathFor("Default"))
+	test.Equal(path.Join(fullPath, "Default"), browser.JoinPath("Default"))
 }
 
-func TestBrowser_FullPathFor(t *testing.T) {
+func TestBrowser_ResolvePath(t *testing.T) {
 	test := assert.New(t)
 	browser := &Browser{Path: fullPath}
 
-	test.Equal(fullPathFor(), browser.FullPathFor())
-	test.Equal(fullPathFor("Default"), browser.FullPathFor("Default"))
+	test.Equal(resolvePath(), browser.ResolvePath())
+	test.Equal(resolvePath("Default"), browser.ResolvePath("Default"))
 }

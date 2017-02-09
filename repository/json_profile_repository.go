@@ -21,7 +21,7 @@ type JsonProfileRepository struct {
 
 func (r *JsonProfileRepository) GetProfiles(browser model.Browser) (model.ProfileSlice, error) {
 	profiles := model.ProfileSlice{}
-	filename := browser.FullPathFor(r.filename)
+	filename := browser.ResolvePath(r.filename)
 
 	bytes, err := ioutil.ReadFile(filename)
 

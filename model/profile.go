@@ -64,9 +64,9 @@ func (p Profile) AvatarIconURL(browser Browser, profileName string) string {
 	if p.IsDefaultAvatar {
 		name := avatarResources[strings.Replace(p.AvatarURL, avatarResourcePrefix, "", -1)]
 
-		iconURL = browser.FullPathFor("Avatars", name)
+		iconURL = browser.ResolvePath("Avatars", name)
 	} else {
-		iconURL = browser.FullPathFor(profileName, p.CustomAvatarURL)
+		iconURL = browser.ResolvePath(profileName, p.CustomAvatarURL)
 	}
 
 	if stat, err := os.Stat(iconURL); os.IsNotExist(err) || stat.IsDir() {

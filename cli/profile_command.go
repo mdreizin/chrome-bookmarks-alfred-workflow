@@ -41,7 +41,7 @@ func profileCommand(flags []cli.Flag) cli.Command {
 					}
 
 					if !profile.IsVirtual && profile.Name != "" {
-						subtitle = browser.PathFor(profile.Name)
+						subtitle = browser.JoinPath(profile.Name)
 					}
 
 					r.AddItem(&alfred.ResponseItem{

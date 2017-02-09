@@ -27,7 +27,7 @@ func TestBrowser_JoinPath(t *testing.T) {
 	test := assert.New(t)
 	browser := &Browser{Path: fullPath}
 
-	test.Equal(path.Join(fullPath, "Default"), browser.JoinPath("Default"))
+	test.Equal(path.Join(fullPath, DefaultProfileName), browser.JoinPath(DefaultProfileName))
 }
 
 func TestBrowser_ResolvePath(t *testing.T) {
@@ -35,5 +35,5 @@ func TestBrowser_ResolvePath(t *testing.T) {
 	browser := &Browser{Path: fullPath}
 
 	test.Equal(resolvePath(), browser.ResolvePath())
-	test.Equal(resolvePath("Default"), browser.ResolvePath("Default"))
+	test.Equal(resolvePath(DefaultProfileName), browser.ResolvePath(DefaultProfileName))
 }

@@ -14,9 +14,9 @@ func TestProfile_AvatarIconURL(t *testing.T) {
 		IsDefaultAvatar: false,
 	}
 
-	test.Equal("img/chrome.png", profile.AvatarIconURL(browser, "Default"))
+	test.Equal("img/chrome.png", profile.AvatarIconURL(browser, DefaultProfileName))
 
 	profile.IsDefaultAvatar = true
 
-	test.Equal("testdata/Avatars/avatar_ninja.png", profile.AvatarIconURL(browser, "Default"))
+	test.Equal("testdata/Avatars/avatar_ninja.png", profile.AvatarIconURL(browser, DefaultProfileName))
 }

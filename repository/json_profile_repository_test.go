@@ -8,16 +8,16 @@ import (
 
 func TestJsonProfileRepository_GetProfiles(t *testing.T) {
 	test := assert.New(t)
-	repository := JsonProfileRepository{filename: "Profiles.json"}
+	profileRepository := JsonProfileRepository{filename: "Profiles.json"}
 	browser := model.Browser{Path: "testdata"}
-	profiles, err := repository.GetProfiles(browser)
+	profiles, err := profileRepository.GetProfiles(browser)
 
 	test.NoError(err)
 	test.Len(profiles, 3)
 
-	browser.ProfileName = "Default"
+	browser.ProfileName = model.DefaultProfileName
 
-	profiles, err = repository.GetProfiles(browser)
+	profiles, err = profileRepository.GetProfiles(browser)
 
 	test.NoError(err)
 	test.Len(profiles, 3)
@@ -25,9 +25,9 @@ func TestJsonProfileRepository_GetProfiles(t *testing.T) {
 
 func TestJsonProfileRepository_GetProfiles_ReadFile(t *testing.T) {
 	test := assert.New(t)
-	repository := JsonProfileRepository{filename: "Profiles.json"}
+	profileRepository := JsonProfileRepository{filename: "Profiles.json"}
 	browser := model.Browser{Path: "testdata/Default"}
-	profiles, err := repository.GetProfiles(browser)
+	profiles, err := profileRepository.GetProfiles(browser)
 
 	test.Error(err)
 	test.Len(profiles, 0)
@@ -35,9 +35,9 @@ func TestJsonProfileRepository_GetProfiles_ReadFile(t *testing.T) {
 
 func TestJsonProfileRepository_GetProfiles_Unmarshal(t *testing.T) {
 	test := assert.New(t)
-	repository := JsonProfileRepository{filename: "Profiles"}
+	profileRepository := JsonProfileRepository{filename: "Profiles"}
 	browser := model.Browser{Path: "testdata"}
-	profiles, err := repository.GetProfiles(browser)
+	profiles, err := profileRepository.GetProfiles(browser)
 
 	test.Error(err)
 	test.Len(profiles, 0)

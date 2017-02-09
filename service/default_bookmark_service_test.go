@@ -1,6 +1,7 @@
 package service
 
 import (
+	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/model"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
@@ -31,7 +32,7 @@ func TestDefaultBookmarkService_GetProfiles(t *testing.T) {
 	test.NoError(err)
 	test.Len(profiles, 2)
 
-	profiles, err = bookmarkService.GetProfiles(browser, "Default")
+	profiles, err = bookmarkService.GetProfiles(browser, model.DefaultProfileName)
 
 	test.NoError(err)
 	test.Len(profiles, 1)
@@ -69,7 +70,7 @@ func TestDefaultBookmarkService_UpdateBrowser(t *testing.T) {
 	browsers, _ := bookmarkService.GetBrowsers()
 	browser, _ := browsers.FindByName("chrome")
 
-	browser.ProfileName = "Default"
+	browser.ProfileName = model.DefaultProfileName
 
 	err := bookmarkService.UpdateBrowser(browser)
 
@@ -77,5 +78,5 @@ func TestDefaultBookmarkService_UpdateBrowser(t *testing.T) {
 	browser, _ = browsers.FindByName("chrome")
 
 	test.NoError(err)
-	test.Equal("Default", browser.ProfileName)
+	test.Equal(model.DefaultProfileName, browser.ProfileName)
 }

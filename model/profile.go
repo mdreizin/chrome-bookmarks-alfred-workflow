@@ -38,6 +38,8 @@ var avatarResources = map[string]string{
 	"IDR_PROFILE_AVATAR_26": "avatar_placeholder.png",
 }
 
+const DefaultProfileName = "Default"
+
 type Profile struct {
 	Name            string
 	IsActive        bool

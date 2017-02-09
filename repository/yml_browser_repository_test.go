@@ -1,6 +1,7 @@
 package repository
 
 import (
+	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/model"
 	"github.com/stretchr/testify/assert"
 	"io/ioutil"
 	"os"
@@ -10,8 +11,8 @@ import (
 
 func TestYmlBrowserRepository_GetBrowsers(t *testing.T) {
 	test := assert.New(t)
-	repository := YmlBrowserRepository{filename: "testdata/browser.yml"}
-	browsers, err := repository.GetBrowsers()
+	browserRepository := YmlBrowserRepository{filename: "testdata/browser.yml"}
+	browsers, err := browserRepository.GetBrowsers()
 
 	test.NoError(err)
 	test.Len(browsers, 3)
@@ -20,8 +21,8 @@ func TestYmlBrowserRepository_GetBrowsers(t *testing.T) {
 
 func TestYmlBrowserRepository_GetBrowsers_ReadFileError(t *testing.T) {
 	test := assert.New(t)
-	repository := YmlBrowserRepository{filename: "testdata"}
-	browsers, err := repository.GetBrowsers()
+	browserRepository := YmlBrowserRepository{filename: "testdata"}
+	browsers, err := browserRepository.GetBrowsers()
 
 	test.Error(err)
 	test.Len(browsers, 0)
@@ -40,7 +41,7 @@ func TestYmlBrowserRepository_UpdateBrowser(t *testing.T) {
 	browsers, _ := repository.GetBrowsers()
 	browser, _ := browsers.FindByName("chrome")
 
-	browser.ProfileName = "Default"
+	browser.ProfileName = model.DefaultProfileName
 
 	err := repository.UpdateBrowser(browser)
 
@@ -49,7 +50,7 @@ func TestYmlBrowserRepository_UpdateBrowser(t *testing.T) {
 	browsers, _ = repository.GetBrowsers()
 	browser, _ = browsers.FindByName("chrome")
 
-	test.Equal("Default", browser.ProfileName)
+	test.Equal(model.DefaultProfileName, browser.ProfileName)
 
 	os.RemoveAll(dirname)
 }

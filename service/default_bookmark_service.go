@@ -61,14 +61,17 @@ func (s *DefaultBookmarkService) GetProfiles(b model.Browser, query string) (mod
 func (s *DefaultBookmarkService) GetBookmarks(browser model.Browser, query string) (model.BookmarkSlice, error) {
 	bookmarks := model.BookmarkSlice{}
 	profiles, _ := s.GetProfiles(browser, "")
+	profileName := model.DefaultProfileName
 
 	if browser.ProfileName == "" {
 		profile, _ := profiles.FirstActive()
 
 		if profile.Name != "" {
-			browser.ProfileName = profile.Name
+			profileName = profile.Name
 		}
 	}
+
+	browser.ProfileName = profileName
 
 	bookmarks, err := s.BookmarkRepository().GetBookmarks(browser)
 

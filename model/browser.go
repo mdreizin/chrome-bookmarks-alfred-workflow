@@ -1,7 +1,7 @@
 package model
 
 import (
-	"os/user"
+	"os"
 	"path"
 	"strings"
 )
@@ -21,20 +21,19 @@ type Browser struct {
 	ProfileName string `yaml:"profileName,omitempty"`
 }
 
-func (b Browser) PathFor(elem ...string) string {
+func (b Browser) JoinPath(elem ...string) string {
 	paths := append([]string{b.Path}, elem...)
 
 	return path.Join(paths...)
 }
 
-func (b Browser) FullPathFor(elem ...string) string {
-	fullPath := b.PathFor(elem...)
+func (b Browser) ResolvePath(elem ...string) string {
+	fullPath := b.JoinPath(elem...)
 
 	if fullPath[:2] == tilde {
-		usr, _ := user.Current()
-		dir := usr.HomeDir
+		homeDir := os.Getenv("HOME")
 
-		fullPath = strings.Replace(fullPath, tilde, dir+sep, 1)
+		fullPath = strings.Replace(fullPath, tilde, homeDir+sep, 1)
 	}
 
 	return fullPath

@@ -36,7 +36,7 @@ type JsonBookmarkRepository struct {
 
 func (r *JsonBookmarkRepository) GetBookmarks(browser model.Browser) (model.BookmarkSlice, error) {
 	bookmarks := model.BookmarkSlice{}
-	filename := browser.FullPathFor(browser.ProfileName, r.filename)
+	filename := browser.ResolvePath(browser.ProfileName, r.filename)
 
 	bytes, err := ioutil.ReadFile(filename)
 

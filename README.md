@@ -29,7 +29,7 @@ All available releases you can find [here](https://github.com/mdreizin/chrome-bo
 ## Develop
 
 * Run `make workflow`
-* Open `./dist` folder
+* Open `./build` folder
 
 ## Test
 

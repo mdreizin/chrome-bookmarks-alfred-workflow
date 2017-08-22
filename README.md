@@ -1,4 +1,4 @@
-[![Travis build status](http://img.shields.io/travis/mdreizin/chrome-bookmarks-alfred-workflow/master.svg)](https://travis-ci.org/mdreizin/chrome-bookmarks-alfred-workflow)
+[![Travis build status](https://img.shields.io/travis/mdreizin/chrome-bookmarks-alfred-workflow/master.svg)](https://travis-ci.org/mdreizin/chrome-bookmarks-alfred-workflow)
 [![Coverage Status](https://img.shields.io/coveralls/mdreizin/chrome-bookmarks-alfred-workflow/master.svg)](https://coveralls.io/r/mdreizin/chrome-bookmarks-alfred-workflow?branch=master)
 
 # chrome-bookmarks-alfred-workflow
@@ -23,18 +23,18 @@ All available releases you can find [here](https://github.com/mdreizin/chrome-bo
 
 ## Setup
 
-* Run `brew install go glide`
-* Run `make deps`
+- Run `brew install go glide`
+- Run `make deps`
 
 ## Develop
 
-* Run `make workflow`
-* Open `./build` folder
+- Run `make workflow`
+- Open `./build` folder
 
 ## Test
 
-* Run `make test`
+- Run `make test`
 
 ## Cover
 
-* Run `make cover` or `make cover-html`
+- Run `make cover` or `make cover-html`

@@ -27,7 +27,6 @@ fmt:
 	@go fmt $(PACKAGES)
 
 deps:
-	@go get -u -v github.com/kardianos/govendor
 	@go get -u -v gopkg.in/godo.v2/cmd/godo
 	@go get -u -v github.com/axw/gocov/gocov
 	@go get -u -v github.com/matm/gocov-html

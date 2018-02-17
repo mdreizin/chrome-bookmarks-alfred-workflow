@@ -27,13 +27,14 @@ fmt:
 	@go fmt $(PACKAGES)
 
 deps:
+	@go get -v golang.org/x/sys/unix
 	@go get -v gopkg.in/godo.v2/cmd/godo
 	@go get -v github.com/axw/gocov/gocov
 	@go get -v github.com/matm/gocov-html
 	@go get -v github.com/mattn/goveralls
 	@go get -v github.com/golang/lint/golint
 	@go get -v github.com/mitchellh/gox
-	# @dep ensure
+	@dep ensure
 
 lint:
 	@go vet $(PACKAGES)

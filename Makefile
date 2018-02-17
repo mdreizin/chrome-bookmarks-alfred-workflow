@@ -33,7 +33,7 @@ deps:
 	@go get -v github.com/mattn/goveralls
 	@go get -v github.com/golang/lint/golint
 	@go get -v github.com/mitchellh/gox
-	@dep ensure
+	# @dep ensure
 
 lint:
 	@go vet $(PACKAGES)

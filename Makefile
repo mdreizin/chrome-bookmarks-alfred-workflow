@@ -27,21 +27,17 @@ fmt:
 	@go fmt $(PACKAGES)
 
 deps:
-	@go get -u -v github.com/kardianos/govendor
 	@go get -u -v gopkg.in/godo.v2/cmd/godo
 	@go get -u -v github.com/axw/gocov/gocov
 	@go get -u -v github.com/matm/gocov-html
-	@go get -u -v github.com/wadey/gocovmerge
 	@go get -u -v github.com/mattn/goveralls
 	@go get -u -v github.com/golang/lint/golint
-	go get -u -v github.com/mitchellh/gox
-	@glide install
+	@go get -u -v github.com/mitchellh/gox
+	@dep ensure
 
 lint:
-	@for pkg in $(PACKAGES); do \
-		go tool vet $$(basename $$pkg); \
-		golint $$(basename $$pkg); \
-	done
+	@go vet $(PACKAGES)
+	@golint $(PACKAGES)
 
 test:
 	@go test -v $(PACKAGES)
@@ -58,10 +54,7 @@ cover-html:
 
 coveralls:
 	@- mkdir -p ${COVER_DIR}
-	@for pkg in $(PACKAGES); do \
-		go test $$pkg -coverprofile="${COVER_DIR}/$$(basename $$pkg)-profile.cov"; \
-	done
-	@gocovmerge ${COVER_DIR}/*-profile.cov > ${COVER_DIR}/profile.cov
+	@go test $(PACKAGES) -coverprofile="${COVER_DIR}/profile.cov"
 	@goveralls -coverprofile=${COVER_DIR}/profile.cov -service=travis-ci
 
 workflow: build

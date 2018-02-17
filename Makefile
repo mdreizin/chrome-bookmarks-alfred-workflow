@@ -37,10 +37,8 @@ deps:
 	@dep ensure
 
 lint:
-	@for pkg in $(PACKAGES); do \
-		go tool vet $$(basename $$pkg); \
-		golint $$(basename $$pkg); \
-	done
+	@go vet $(PACKAGES)
+	@golint $(PACKAGES)
 
 test:
 	@go test -v $(PACKAGES)

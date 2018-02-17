@@ -1,6 +1,6 @@
 language: go
 sudo: false
-go: 1.10
+go: 1.9
 os: linux
 notifications:
   email: false

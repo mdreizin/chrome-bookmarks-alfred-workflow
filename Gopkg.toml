@@ -25,6 +25,15 @@
 #   unused-packages = true
 
 
+required = [
+    "gopkg.in/godo.v2/cmd/godo",
+    "github.com/axw/gocov/gocov",
+    "github.com/matm/gocov-html",
+    "github.com/mattn/goveralls",
+    "github.com/golang/lint/golint",
+    "github.com/mitchellh/gox"
+]
+
 [[constraint]]
   name = "github.com/Masterminds/sprig"
   version = "2.8.0"

@@ -18,14 +18,43 @@
   revision = "9c37978a95bd5c709a15883b6242714ea6709e64"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/axw/gocov"
+  packages = [
+    ".",
+    "gocov",
+    "gocov/internal/testflag",
+    "gocovutil"
+  ]
+  revision = "3a69a0d2a4ef1f263e2d92b041a69593d6964fe8"
+
+[[projects]]
   name = "github.com/davecgh/go-spew"
   packages = ["spew"]
   revision = "5215b55f46b2b919f50a1df0eaa5886afe4e3b3d"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/golang/lint"
+  packages = [
+    ".",
+    "golint"
+  ]
+  revision = "ead987a65e5c7e053cf9633f9eac1f734f6b4fe3"
+
+[[projects]]
   name = "github.com/howeyc/gopass"
   packages = ["."]
   revision = "66487b23f2880ba32e185121d2cd51a338ea069a"
+
+[[projects]]
+  name = "github.com/matm/gocov-html"
+  packages = [
+    ".",
+    "cov"
+  ]
+  revision = "b72939949367438bf52c0cf976f22daa6777b509"
+  version = "v1.1"
 
 [[projects]]
   name = "github.com/mattn/go-colorable"
@@ -37,6 +66,12 @@
   name = "github.com/mattn/go-isatty"
   packages = ["."]
   revision = "56b76bdf51f7708750eac80fa38b952bb9f32639"
+
+[[projects]]
+  name = "github.com/mattn/goveralls"
+  packages = ["."]
+  revision = "b71a1e4855f87991aff01c2c833a75a07059c61c"
+  version = "v0.0.2"
 
 [[projects]]
   name = "github.com/mgutz/ansi"
@@ -59,6 +94,18 @@
   name = "github.com/mgutz/to"
   packages = ["."]
   revision = "2a0bcba0661696e339461f5efb2273f4459dd1b9"
+
+[[projects]]
+  name = "github.com/mitchellh/gox"
+  packages = ["."]
+  revision = "c9740af9c6574448fd48eb30a71f964014c7a837"
+  version = "v0.4.0"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/mitchellh/iochan"
+  packages = ["."]
+  revision = "87b45ffd0e9581375c491fef3d32130bb15c5bd7"
 
 [[projects]]
   name = "github.com/nozzle/throttler"
@@ -105,9 +152,21 @@
   revision = "62bee037599929a6e9146f29d10dd5208c43507d"
 
 [[projects]]
+  branch = "master"
+  name = "golang.org/x/tools"
+  packages = [
+    "cover",
+    "go/gcexportdata",
+    "go/gcimporter15",
+    "go/types/typeutil"
+  ]
+  revision = "f8f2f88271bf2c23f28a09d288d26507a9503c97"
+
+[[projects]]
   name = "gopkg.in/godo.v2"
   packages = [
     ".",
+    "cmd/godo",
     "glob",
     "util",
     "watcher",
@@ -124,6 +183,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "f29d011092529bc5334f42a3e5709fe6e7cf4efe67bc0ea5a6fb61da9ed32243"
+  inputs-digest = "beca35cd51cb7bb93bad30cd6bef4dc67fd804d0d9e82e701e02df529fcfa9c5"
   solver-name = "gps-cdcl"
   solver-version = 1

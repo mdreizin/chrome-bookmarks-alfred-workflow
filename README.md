@@ -2,14 +2,15 @@
 [![Coverage Status](https://img.shields.io/coveralls/mdreizin/chrome-bookmarks-alfred-workflow/master.svg)](https://coveralls.io/r/mdreizin/chrome-bookmarks-alfred-workflow?branch=master)
 
 # chrome-bookmarks-alfred-workflow
+
 > Chrome/Canary/Chromium bookmarks search workflow for Alfred
 
 - [x] Google Chrome (`chrome`, `chrome-profiles`)
 - [x] Google Chrome Canary (`canary`, `canary-profiles`)
 - [x] Chromium (`chromium`, `chromium-profiles`)
 
-![](screenshot-bookmarks.gif)
-![](screenshot-profiles.gif)
+![Search Bookmarks](screenshot-bookmarks.gif)
+![Select Profiles](screenshot-profiles.gif)
 
 ## Download
 

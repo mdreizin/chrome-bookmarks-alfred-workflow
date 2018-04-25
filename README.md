@@ -6,9 +6,9 @@
 
 > Chrome/Canary/Chromium bookmarks search workflow for Alfred
 
-*   [x] Google Chrome (`chrome`, `chrome-profiles`)
-*   [x] Google Chrome Canary (`canary`, `canary-profiles`)
-*   [x] Chromium (`chromium`, `chromium-profiles`)
+- [x] Google Chrome (`chrome`, `chrome-profiles`)
+- [x] Google Chrome Canary (`canary`, `canary-profiles`)
+- [x] Chromium (`chromium`, `chromium-profiles`)
 
 ![Search Bookmarks](screenshot-bookmarks.gif)
 ![Select Profiles](screenshot-profiles.gif)
@@ -25,18 +25,18 @@ All available releases you can find [here](https://github.com/mdreizin/chrome-bo
 
 ## Setup
 
-*   Run `brew install go glide`
-*   Run `make deps`
+- Run `brew install go glide`
+- Run `make deps`
 
 ## Develop
 
-*   Run `make workflow`
-*   Open `./build` folder
+- Run `make workflow`
+- Open `./build` folder
 
 ## Test
 
-*   Run `make test`
+- Run `make test`
 
 ## Cover
 
-*   Run `make cover` or `make cover-html`
+- Run `make cover` or `make cover-html`

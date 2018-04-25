@@ -10,7 +10,7 @@ BIN_DIR:=$$GOPATH/bin
 BIN_NAME:=chrome-bookmarks
 GOBUILD_ARGS:=-ldflags "-X main.version=$(VERSION)"
 
-.PHONY: clean build fmt deps lint test bench cover cover-html coveralls workflow
+.PHONY: clean build fmt deps lint test bench cover cover-html workflow
 
 clean:
 	@go clean $(PACKAGES)

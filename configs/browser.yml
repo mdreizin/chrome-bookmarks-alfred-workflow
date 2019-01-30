@@ -1,0 +1,21 @@
+---
+- name: "chrome"
+  fullName: "com.google.Chrome"
+  description: "Google Chrome"
+  path: "~/Library/Application Support/Google/Chrome"
+  iconUrl: "chrome.png"
+  profileName: "Default"
+
+- name: "canary"
+  fullName: "com.google.Chrome.canary"
+  description: "Google Chrome Canary"
+  path: "~/Library/Application Support/Google/Chrome Canary"
+  iconUrl: "canary.png"
+  profileName: "Default"
+
+- name: "chromium"
+  fullName: "org.chromium.Chromium"
+  description: "Chromium"
+  path: "~/Library/Application Support/Chromium"
+  iconUrl: "chromium.png"
+  profileName: "Default"

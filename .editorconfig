@@ -14,7 +14,7 @@ indent_style = tab
 indent_style = space
 indent_size = 2
 
-[*.plist]
+[*.plist.gohtml]
 indent_style = tab
 
 [*.yml]

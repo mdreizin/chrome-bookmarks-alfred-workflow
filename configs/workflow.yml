@@ -1,0 +1,18 @@
+---
+chrome:
+  bookmarkListId: "5f62cd88-0737-48db-a56a-c28761a4fcab"
+  bookmarkOpenId: "f66a1d83-c6fe-409b-b3bd-d8ccce841491"
+  profileListId: "5ce75d7f-c847-4000-a386-3e460dab8f9b"
+  profileSetId: "980c9bc1-366c-4c72-bea7-c1ec7ba6ed6d"
+
+canary:
+  bookmarkListId: "51ad66cf-5391-4b3d-98eb-9c96711b4dd3"
+  bookmarkOpenId: "840775c1-f247-4b1b-8a1e-5679e96b52cf"
+  profileListId: "52effb47-f969-4fe6-91ed-7ae255c79786"
+  profileSetId: "9dff45f0-2c9e-4c12-b65d-4a70427682fe"
+
+chromium:
+  bookmarkListId: "5c5a3de8-474a-42bf-99f6-c61f793a6625"
+  bookmarkOpenId: "fe18d1b8-0883-4dae-b463-48b6c86b89b4"
+  profileListId: "0dbb6f03-744b-4821-8483-d3e773df15d6"
+  profileSetId: "c7b2c7e1-29f0-4b00-84d5-7c3a8bf69549"

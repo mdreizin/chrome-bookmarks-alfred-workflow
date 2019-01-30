@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	{{- $Metadata := .Metadata }}
+	<key>bundleid</key>
+	<string>com.mdreizin.chrome.bookmarks</string>
+	<key>category</key>
+	<string>Productivity</string>
+	<key>readme</key>
+	<string></string>
+	<key>webaddress</key>
+	<string>https://mdreizin.github.io/chrome-bookmarks-alfred-workflow</string>
+	<key>version</key>
+	<string>{{ .Version }}</string>
+	<key>createdby</key>
+	<string>Marat Dreizin</string>
+	<key>description</key>
+	<string>Chrome/Canary/Chromium bookmarks search workflow for Alfred</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Chrome Bookmarks</string>
+	<key>connections</key>
+	<dict>
+	{{- range $b := .Browsers }}
+	{{- $m := index $Metadata $b.Name }}
+		<key>{{$m.BookmarkListID}}</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>{{$m.BookmarkOpenID}}</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>{{$m.ProfileSetID}}</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>6A6D5564-63F4-425C-A21B-58A66B090B74</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>{{$m.ProfileListID}}</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>{{$m.ProfileSetID}}</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	{{- end -}}
+	</dict>
+	<key>objects</key>
+	<array>
+		{{- range $b := .Browsers }}
+		{{- $m := index $Metadata $b.Name }}
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string>{{$b.FullName}}</string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>{{$m.BookmarkOpenID}}</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>126</integer>
+				<key>keyword</key>
+				<string>{{$b.Name}}</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Searching bookmarks…</string>
+				<key>script</key>
+				<string>QUERY=$(./normalise -form NFC "{query}")
+
+./workflow -command="bookmark-list" -browser="{{$b.Name}}" -query="${QUERY}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Start typing to search bookmarks…</string>
+				<key>title</key>
+				<string>{{$b.Description}} bookmarks '{query}'</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>{{$m.BookmarkListID}}</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>126</integer>
+				<key>keyword</key>
+				<string>{{$b.Name}}-profiles</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Searching profiles…</string>
+				<key>script</key>
+				<string>QUERY=$(./normalise -form NFC "{query}")
+
+./workflow -command="profile-list" -browser="{{$b.Name}}" -query="${QUERY}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Show all available profiles</string>
+				<key>title</key>
+				<string>{{$b.Description}} profiles '{query}'</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>{{$m.ProfileListID}}</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>QUERY=$(./normalise -form NFC "{query}")
+
+./workflow -command="profile-set" -browser="{{$b.Name}}" -query="${QUERY}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>{{$m.ProfileSetID}}</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		{{- end -}}
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Chrome Bookmarks</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>6A6D5564-63F4-425C-A21B-58A66B090B74</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>uidata</key>
+	<dict>
+		{{- $offset := 150 -}}
+		{{- $gutter := 20 -}}
+		{{- $rows := len .Browsers -}}
+		{{- range $i, $b := .Browsers }}
+		{{- $m := index $Metadata $b.Name }}
+		<key>{{$m.BookmarkListID}}</key>
+		<dict>
+			<key>xpos</key>
+			<integer>20</integer>
+			<key>ypos</key>
+			<integer>{{ $i | mul $offset | add $gutter }}</integer>
+		</dict>
+		<key>{{$m.BookmarkOpenID}}</key>
+		<dict>
+			<key>xpos</key>
+			<integer>220</integer>
+			<key>ypos</key>
+			<integer>{{ $i | mul $offset | add $gutter }}</integer>
+		</dict>
+		<key>{{$m.ProfileListID}}</key>
+		<dict>
+			<key>xpos</key>
+			<integer>420</integer>
+			<key>ypos</key>
+			<integer>{{ $i | mul $offset | add $gutter }}</integer>
+		</dict>
+		<key>{{$m.ProfileSetID}}</key>
+		<dict>
+			<key>xpos</key>
+			<integer>620</integer>
+			<key>ypos</key>
+			<integer>{{ $i | mul $offset | add $gutter }}</integer>
+		</dict>
+		{{- end -}}
+		<key>6A6D5564-63F4-425C-A21B-58A66B090B74</key>
+		<dict>
+			<key>xpos</key>
+			<integer>820</integer>
+			<key>ypos</key>
+			<integer>{{ div $rows 2 | mul $offset | add $gutter }}</integer>
+		</dict>
+	</dict>
+</dict>
+</plist>

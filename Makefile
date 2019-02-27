@@ -5,7 +5,7 @@ else
 VERSION=dev
 endif
 BUILD_DIR:=build
-COVER_DIR:=c.out
+COVER_FILE:=c.out
 CONF_DIR:=configs
 ASSET_DIR:=assets
 THIRD_DIR:=third_party
@@ -16,7 +16,7 @@ GOBUILD_ARGS:=-ldflags "-X main.version=$(VERSION)"
 .PHONY: clean build fmt deps lint test bench cover cover-html
 
 clean:
-	@rm -rf ${COVER_DIR} ${BUILD_DIR}
+	@rm -rf ${BUILD_DIR}
 
 build: clean
 	@mkdir -p ${BUILD_DIR}
@@ -51,8 +51,8 @@ bench:
 	@go test ./... -bench . -benchtime 2s -benchmem
 
 cover:
-	@- rm -rf c.out
-	@go test ./... -coverprofile=c.out
+	@- rm -rf ${COVER_FILE}
+	@go test ./... -coverprofile=${COVER_FILE}
 
 cover-html: cover
 	@go tool cover -html=c.out

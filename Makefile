@@ -56,4 +56,4 @@ cover:
 	@go test ./... -coverprofile=${COVER_FILE}
 
 cover-html: cover
-	@go tool cover -html=c.out
+	@go tool cover -html=${COVER_FILE}

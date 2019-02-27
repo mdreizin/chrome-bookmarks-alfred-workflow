@@ -10,7 +10,7 @@
 - [x] Google Chrome Canary (`canary`, `canary-profiles`)
 - [x] Chromium (`chromium`, `chromium-profiles`)
 
-![Screencast](./screencast.mp4)
+![Screenshot](./screenshot.png)
 
 ## Commands
 

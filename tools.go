@@ -3,6 +3,6 @@
 package tools
 
 import (
-	_ "github.com/golang/lint/golint"
 	_ "github.com/mitchellh/gox"
+	_ "golang.org/x/lint/golint"
 )

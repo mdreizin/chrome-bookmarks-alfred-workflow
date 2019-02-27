@@ -9,7 +9,6 @@ import (
 type bookmarkTree struct {
 	Bookmark
 	Type     string         `json:"type"`
-	Name     string         `json:"name"`
 	Children []bookmarkTree `json:"children,omitempty"`
 }
 

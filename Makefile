@@ -16,9 +16,10 @@ GOBUILD_ARGS:=-ldflags "-X main.version=$(VERSION)"
 .PHONY: clean build fmt deps lint test bench cover cover-html
 
 clean:
-	@rm -rf ${BUILD_DIR}
+	@rm -rf ${BUILD_DIR} ${COVER_FILE}
 
-build: clean
+build:
+	@rm -rf ${BUILD_DIR}
 	@mkdir -p ${BUILD_DIR}
 	@go run $(GOBUILD_ARGS) cmd/workflow-gen/main.go -workflow-tmpl-file="configs/info.plist.gohtml" -workflow-file="configs/workflow.yml" -browser-file="configs/browser.yml" -asset-dir="${ASSET_DIR}" -out-dir="${BUILD_DIR}"
 ifeq ($(TRAVIS),true)

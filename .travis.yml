@@ -1,6 +1,6 @@
 language: go
 sudo: false
-go: "1.10"
+go: "1.12"
 os: linux
 notifications:
   email: false
@@ -14,16 +14,11 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-cache:
-  directories:
-    - $GOPATH/pkg/dep
 env:
   global:
-    - DEP_VERSION=0.4.1
-    - CC_VERSION=0.5.1
+    - CC_VERSION=latest
+    - GO111MODULE=on
 before_install:
-  - curl -L -s https://github.com/golang/dep/releases/download/v${DEP_VERSION}/dep-linux-amd64 -o $GOPATH/bin/dep
-  - chmod +x $GOPATH/bin/dep
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-${CC_VERSION}-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
 install:
@@ -34,6 +29,6 @@ script:
   - make clean
   - make lint
   - make cover
-  - make workflow
+  - make build
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

@@ -1,53 +1,58 @@
-PACKAGES = $$(go list ./... | grep -v /vendor/)
+SHELL:=/bin/bash
 ifdef TRAVIS_TAG
 VERSION=$(TRAVIS_TAG)
 else
-VERSION=latest
+VERSION=dev
 endif
 BUILD_DIR:=build
-COVER_DIR:=coverage
-BIN_DIR:=$$GOPATH/bin
-BIN_NAME:=chrome-bookmarks
+COVER_DIR:=c.out
+CONF_DIR:=configs
+ASSET_DIR:=assets
+THIRD_DIR:=third_party
+WORKFLOW_NAME:=workflow
+ARCHIVE_NAME:=chrome-bookmarks.alfredworkflow
 GOBUILD_ARGS:=-ldflags "-X main.version=$(VERSION)"
 
-.PHONY: clean build fmt deps lint test bench cover cover-html workflow
+.PHONY: clean build fmt deps lint test bench cover cover-html
 
 clean:
-	@go clean $(PACKAGES)
-	@- rm -rf ${COVER_DIR} ${BUILD_DIR} gododir/godobin-* ${BIN_DIR}/$(BIN_NAME)
+	@rm -rf ${COVER_DIR} ${BUILD_DIR}
 
-build:
+build: clean
+	@mkdir -p ${BUILD_DIR}
+	@go run $(GOBUILD_ARGS) cmd/workflow-gen/main.go -workflow-tmpl-file="configs/info.plist.gohtml" -workflow-file="configs/workflow.yml" -browser-file="configs/browser.yml" -asset-dir="${ASSET_DIR}" -out-dir="${BUILD_DIR}"
 ifeq ($(TRAVIS),true)
-	@gox $(GOBUILD_ARGS) -os="darwin" -arch="amd64" -osarch="!darwin/arm64" -output="${BIN_DIR}/${BIN_NAME}" ./cli/...
+	@gox $(GOBUILD_ARGS) -os="darwin" -arch="amd64" -osarch="!darwin/arm64" -output="${BUILD_DIR}/${WORKFLOW_NAME}" ./cmd/workflow
 else
-	@go build $(GOBUILD_ARGS) -o ${BIN_DIR}/$(BIN_NAME) ./cli/...
+	@go build $(GOBUILD_ARGS) -o ${BUILD_DIR}/$(WORKFLOW_NAME) ./cmd/workflow
 endif
+	@cp ${CONF_DIR}/browser.yml ${BUILD_DIR}
+	@cp ${ASSET_DIR}/*.* ${BUILD_DIR}/
+	@cp ${ASSET_DIR}/chrome.png ${BUILD_DIR}/icon.png
+	@cp ${THIRD_DIR}/normalise ${BUILD_DIR}
+	@pushd ${BUILD_DIR} &> /dev/null && \
+		zip -rX ${ARCHIVE_NAME} ./* -x ${ARCHIVE_NAME} &> /dev/null && \
+	popd &> /dev/null
 
-fmt:
-	@go fmt $(PACKAGES)
+format:
+	@go fmt ./...
 
 deps:
-	@go get -u -v gopkg.in/godo.v2/cmd/godo
-	@go get -u -v github.com/golang/lint/golint
-	@go get -u -v github.com/mitchellh/gox
-	@dep ensure
+	@grep -o '".*"' tools.go | tr -d '"' | tr -s '\r\n' ' ' | go install `xargs -0`
 
 lint:
-	@go vet $(PACKAGES)
-	@golint $(PACKAGES)
+	@go vet ./...
+	@golint ./...
 
 test:
-	@go test -v $(PACKAGES)
+	@go test -v ./...
 
 bench:
-	@go test $(PACKAGES) -bench . -benchtime 2s -benchmem
+	@go test ./... -bench . -benchtime 2s -benchmem
 
 cover:
 	@- rm -rf c.out
-	@go test $(PACKAGES) -coverprofile=c.out
+	@go test ./... -coverprofile=c.out
 
-cover-html:
-	@cover && go tool cover -html=c.out
-
-workflow: build
-	@godo -- --version=$(VERSION)
+cover-html: cover
+	@go tool cover -html=c.out

@@ -1,5 +1,0 @@
-- name: chrome
-  description: Google Chrome
-  path: testdata
-  iconUrl: img/chrome.png
-  profileName: Default

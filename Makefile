@@ -1,3 +1,4 @@
+SHELL:=/bin/bash
 ifdef TRAVIS_TAG
 VERSION=$(TRAVIS_TAG)
 else

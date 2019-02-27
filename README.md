@@ -37,8 +37,12 @@
 
 - Run `make cover` or `make cover-html`
 
-## How to add missing `chromium`-based browser?
+## QA
+
+### How to add missing `chromium`-based browser?
 
 1. Add missing browser config to [`./configs/browser.yaml`](./configs/browser.yml) file.
 2. Put missing browser icon in [`./assets`](./assets) directory.
 3. Add missing workflow config to [`./configs/workflow.yml`](./configs/workflow.yml) file.
+4. Run `make build` and install `./build/chrome-bookmarks.alfredworkflow` to test chnages
+5. Open PR

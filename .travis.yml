@@ -17,6 +17,7 @@ deploy:
 env:
   global:
     - CC_VERSION=latest
+    - GO111MODULE=on
 before_install:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-${CC_VERSION}-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter

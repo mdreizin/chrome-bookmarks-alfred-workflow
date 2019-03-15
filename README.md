@@ -1,6 +1,6 @@
-[![Travis build status](https://img.shields.io/travis/mdreizin/chrome-bookmarks-alfred-workflow/master.svg)](https://travis-ci.org/mdreizin/chrome-bookmarks-alfred-workflow)
-[![Code Climate GPA](https://img.shields.io/codeclimate/maintainability/mdreizin/chrome-bookmarks-alfred-workflow.svg)](https://codeclimate.com/github/mdreizin/chrome-bookmarks-alfred-workflow)
-[![Code Climate Coverage](https://img.shields.io/codeclimate/coverage/mdreizin/chrome-bookmarks-alfred-workflow.svg)](https://codeclimate.com/github/mdreizin/chrome-bookmarks-alfred-workflow)
+[![Travis build status](https://travis-ci.org/mdreizin/chrome-bookmarks-alfred-workflow.svg?branch=master)](https://travis-ci.org/mdreizin/chrome-bookmarks-alfred-workflow)
+[![Maintainability](https://api.codeclimate.com/v1/badges/03b12a836565bd04674c/maintainability)](https://codeclimate.com/github/mdreizin/gatsby-plugin-robots-txt/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/03b12a836565bd04674c/test_coverage)](https://codeclimate.com/github/mdreizin/gatsby-plugin-robots-txt/test_coverage)
 
 # chrome-bookmarks
 

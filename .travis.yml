@@ -29,6 +29,5 @@ after_script:
   - sonar-scanner
 addons:
   sonarcloud:
-    organization: "mdreizin_chrome-bookmarks-alfred-workflow"
     token:
       secure: "$SONAR_TOKEN"

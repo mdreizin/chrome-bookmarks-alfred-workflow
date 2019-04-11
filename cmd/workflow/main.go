@@ -79,6 +79,7 @@ func run() error {
 				wf.NewItem(bookmark.Name).
 					Subtitle(bookmark.URL).
 					Arg(bookmark.URL).
+					Valid(true).
 					NewModifier(aw.ModCmd).
 					Subtitle(strings.Join(bookmark.Path, " → "))
 			}

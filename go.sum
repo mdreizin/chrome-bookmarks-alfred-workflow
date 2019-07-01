@@ -6,6 +6,7 @@ github.com/Masterminds/sprig v2.18.0+incompatible h1:QoGhlbC6pter1jxKnjMFxT8EqsL
 github.com/Masterminds/sprig v2.18.0+incompatible/go.mod h1:y6hNFY5UBTIWBxnzTeuNhlNS5hqE0NB0E6fgfo2Br3o=
 github.com/Masterminds/sprig v2.20.0+incompatible h1:dJTKKuUkYW3RMFdQFXPU/s6hg10RgctmTjRcbZ98Ap8=
 github.com/Masterminds/sprig v2.20.0+incompatible/go.mod h1:y6hNFY5UBTIWBxnzTeuNhlNS5hqE0NB0E6fgfo2Br3o=
+github.com/bmatcuk/doublestar v1.1.1/go.mod h1:UD6OnuiIn0yFxxA2le/rnRU1G4RaI4UvFv1sNto9p6w=
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/deanishe/awgo v0.15.0 h1:ExG+fHtI7gLRVOk0RPsniVl4ks4gpt6YkHSk3w1ABYs=
@@ -16,6 +17,8 @@ github.com/deanishe/awgo v0.16.2 h1:kl2LZcuHyb9ii1z4fg9pPRQa5kGguGDI+dy64hyOuDI=
 github.com/deanishe/awgo v0.16.2/go.mod h1:2a+ukSNkaIH6WWhuzH8f4yAOrODLct7bxaXaT6da9Gc=
 github.com/deanishe/awgo v0.19.0 h1:iAI6qqQh7KPyq/s3IUfdIdtQoSwY6QuIR07Nbe1sR7c=
 github.com/deanishe/awgo v0.19.0/go.mod h1:rtdbFKArLgBakX2b2YMXTYcar6Dv/o4zm+E99J+SihU=
+github.com/deanishe/awgo v0.20.1 h1:IiUlMfKUMtnOH5U0WULM2t2P0xoVpPHtV7L9MDgGOWY=
+github.com/deanishe/awgo v0.20.1/go.mod h1:2cRIRY+pgEcNHNAXzRyrrIiCpSHpvebc5dyDzeH5bV8=
 github.com/golang/protobuf v1.2.0/go.mod h1:6lQm79b+lXiMfvg/cZm0SGofjICqVBUtrP5yJMmIC1U=
 github.com/google/uuid v1.1.1 h1:Gkbcsh/GbpXz7lPftLA3P6TYMwjCLYm83jiFQZF/3gY=
 github.com/google/uuid v1.1.1/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=

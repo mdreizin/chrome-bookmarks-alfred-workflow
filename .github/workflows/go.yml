@@ -17,7 +17,7 @@ jobs:
         go get -v -t -d ./...
         make deps
       env:
-        GO111MODULE=on
+        GO111MODULE: 'on'
     - name: Lint
       run: make lint
     - name: Test

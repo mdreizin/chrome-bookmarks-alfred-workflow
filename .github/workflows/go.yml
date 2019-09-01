@@ -12,10 +12,12 @@ jobs:
       id: go
     - name: Checkout
       uses: actions/checkout@v1
-    - name: Install Dependencies
+    - name: Install
       run: |
         go get -v -t -d ./...
         make deps
+      env:
+        GO111MODULE=on
     - name: Lint
       run: make lint
     - name: Test

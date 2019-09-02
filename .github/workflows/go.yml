@@ -19,7 +19,7 @@ jobs:
       env:
         GO111MODULE: 'on'
     - name: Lint
-      run: PATH=$PATH:$GOROOT/bin make lint
+      run: PATH="$(go env GOPATH)/bin:$PATH" make lint
     - name: Test
       run: make cover
     - name: Build

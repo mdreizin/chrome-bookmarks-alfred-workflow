@@ -21,12 +21,12 @@ jobs:
     - name: Lint
       run: make lint
       env:
-        PATH: '$PATH:$GOPATH/bin'
+        PATH: '$PATH:$GOROOT/bin'
     - name: Test
       run: make cover
       env:
-        PATH: '$PATH:$GOPATH/bin'
+        PATH: '$PATH:$GOROOT/bin'
     - name: Build
       run: make build
       env:
-        PATH: '$PATH:$GOPATH/bin'
+        PATH: '$PATH:$GOROOT/bin'

@@ -17,10 +17,16 @@ jobs:
         go get -v -t -d ./...
         make deps
       env:
-        GO111MODULE: 'on'
+        PATH: '$PATH:$GOPATH/bin'
     - name: Lint
       run: make lint
+      env:
+        PATH: '$PATH:$GOPATH/bin'
     - name: Test
       run: make cover
+      env:
+        PATH: '$PATH:$GOPATH/bin'
     - name: Build
       run: make build
+      env:
+        PATH: '$PATH:$GOPATH/bin'

@@ -17,7 +17,7 @@ jobs:
         go get -v -t -d ./...
         make deps
       env:
-        PATH: '$PATH:$GOPATH/bin'
+        GO111MODULE: 'on'
     - name: Lint
       run: make lint
       env:

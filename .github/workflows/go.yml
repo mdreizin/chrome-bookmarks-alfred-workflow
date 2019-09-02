@@ -19,14 +19,8 @@ jobs:
       env:
         GO111MODULE: 'on'
     - name: Lint
-      run: make lint
-      env:
-        PATH: '$PATH:$GOROOT/bin'
+      run: PATH=$PATH:$GOROOT/bin make lint
     - name: Test
       run: make cover
-      env:
-        PATH: '$PATH:$GOROOT/bin'
     - name: Build
       run: make build
-      env:
-        PATH: '$PATH:$GOROOT/bin'

@@ -13,8 +13,6 @@ jobs:
       uses: actions/checkout@v1
     - name: Install
       run: |
-        curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-${CC_VERSION}-linux-amd64 > ./cc-test-reporter
-        chmod +x ./cc-test-reporter
         go get -v -t -d ./...
         make deps
       env:

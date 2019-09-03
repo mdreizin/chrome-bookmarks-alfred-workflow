@@ -26,7 +26,8 @@ jobs:
       run: |
         ./cc-test-reporter before-build
         make cover
-        ./cc-test-reporter after-build --debug --prefix ${GITHUB_WORKSPACE} --exit-code $?
+        echo $?
+        ./cc-test-reporter after-build --exit-code $?
       env:
         CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
     - name: Build

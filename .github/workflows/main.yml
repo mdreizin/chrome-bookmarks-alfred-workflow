@@ -13,14 +13,22 @@ jobs:
       uses: actions/checkout@v1
     - name: Install
       run: |
+        curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-${CC_VERSION}-linux-amd64 > ./cc-test-reporter
+        chmod +x ./cc-test-reporter
         go get -v -t -d ./...
         make deps
       env:
+        CC_VERSION: 'latest'
         GO111MODULE: 'on'
     - name: Lint
       run: PATH="$(go env GOPATH)/bin:$PATH" make lint
     - name: Test
-      run: make cover
+      run: |
+        ./cc-test-reporter before-build
+        make cover
+        ./cc-test-reporter after-build --exit-code $?
+      env:
+        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
     - name: Build
       run: PATH="$(go env GOPATH)/bin:$PATH" VERSION=${GITHUB_REF} make build
       env:

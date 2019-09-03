@@ -23,12 +23,12 @@ jobs:
     - name: Lint
       run: PATH="$(go env GOPATH)/bin:$PATH" make lint
     - name: Test
-      run: |
-        ./cc-test-reporter before-build --debug
-        make cover
-        ./cc-test-reporter after-build --debug --prefix chrome-bookmarks-alfred-workflow --exit-code $?
+      run: make cover
+    - name: SonarCloud
+      uses: sonarsource/sonarcloud-github-action@master
       env:
-        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     - name: Build
       run: PATH="$(go env GOPATH)/bin:$PATH" VERSION=${GITHUB_REF} make build
       env:

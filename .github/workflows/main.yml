@@ -26,10 +26,8 @@ jobs:
       run: |
         ./cc-test-reporter before-build --debug
         make cover
-        ./cc-test-reporter after-build --debug --exit-code $?
+        ./cc-test-reporter after-build --debug --prefix chrome-bookmarks-alfred-workflow --exit-code $?
       env:
-        GIT_COMMIT_SHA: ${{ github.sha }}
-        GIT_BRANCH: ${{ github.ref }}
         CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
     - name: Build
       run: PATH="$(go env GOPATH)/bin:$PATH" VERSION=${GITHUB_REF} make build

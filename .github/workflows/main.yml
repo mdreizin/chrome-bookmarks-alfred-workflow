@@ -26,7 +26,7 @@ jobs:
       run: |
         ./cc-test-reporter before-build
         make cover
-        ./cc-test-reporter after-build --exit-code $?
+        ./cc-test-reporter after-build --debug --exit-code $?
       env:
         CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
     - name: Build

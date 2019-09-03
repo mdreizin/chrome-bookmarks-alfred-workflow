@@ -23,4 +23,6 @@ jobs:
     - name: Test
       run: make cover
     - name: Build
-      run: make build
+      run: PATH="$(go env GOPATH)/bin:$PATH" VERSION=${GITHUB_SHA} make build
+      env:
+        CI: true

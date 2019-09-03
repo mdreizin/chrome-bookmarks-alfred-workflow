@@ -24,11 +24,12 @@ jobs:
       run: PATH="$(go env GOPATH)/bin:$PATH" make lint
     - name: Test
       run: |
-        ./cc-test-reporter before-build
+        ./cc-test-reporter before-build --debug
         make cover
-        ./cc-test-reporter format-coverage --prefix $(basename $(go list -m))
-        ./cc-test-reporter after-build --exit-code $?
+        ./cc-test-reporter after-build --debug --exit-code $?
       env:
+        GIT_COMMIT_SHA: ${{ github.sha }}
+        GIT_BRANCH: ${{ github.ref }}
         CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
     - name: Build
       run: PATH="$(go env GOPATH)/bin:$PATH" VERSION=${GITHUB_REF} make build

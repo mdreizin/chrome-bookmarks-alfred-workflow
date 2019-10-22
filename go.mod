@@ -1,5 +1,7 @@
 module github.com/mdreizin/chrome-bookmarks-alfred-workflow
 
+go 1.13
+
 require (
 	github.com/Masterminds/goutils v1.1.0 // indirect
 	github.com/Masterminds/semver v1.4.2 // indirect

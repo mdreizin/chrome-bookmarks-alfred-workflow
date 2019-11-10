@@ -13,6 +13,8 @@ jobs:
       uses: actions/checkout@v1
     - name: Install
       run: |
+        curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+        chmod +x ./cc-test-reporter
         go get -v -t -d ./...
         make deps
       env:
@@ -21,6 +23,13 @@ jobs:
       run: PATH="$(go env GOPATH)/bin:$PATH" make lint
     - name: Test
       run: make cover
+    - name: Code Climate
+      run: |
+        ./cc-test-reporter format-coverage -t gocov c.out
+        ./cc-test-reporter upload-coverage
+      env:
+        GIT_BRANCH: ${{ github.ref }}
+        GIT_COMMIT_SHA: ${{ github.sha }}
     - name: Build
       run: PATH="$(go env GOPATH)/bin:$PATH" VERSION=${GITHUB_REF} make build
       env:

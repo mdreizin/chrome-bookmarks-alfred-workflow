@@ -1,6 +1,6 @@
-[![Travis build status](https://travis-ci.org/mdreizin/chrome-bookmarks-alfred-workflow.svg?branch=master)](https://travis-ci.org/mdreizin/chrome-bookmarks-alfred-workflow)
-[![Maintainability](https://api.codeclimate.com/v1/badges/03b12a836565bd04674c/maintainability)](https://codeclimate.com/github/mdreizin/gatsby-plugin-robots-txt/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/03b12a836565bd04674c/test_coverage)](https://codeclimate.com/github/mdreizin/gatsby-plugin-robots-txt/test_coverage)
+[![Actions Build Status](https://github.com/mdreizin/chrome-bookmarks-alfred-workflow/workflows/CI/badge.svg)](https://github.com/mdreizin/chrome-bookmarks-alfred-workflow/actions)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=chrome-bookmarks-alfred-workflow&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=chrome-bookmarks-alfred-workflow)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=chrome-bookmarks-alfred-workflow&metric=coverage)](https://sonarcloud.io/dashboard?id=chrome-bookmarks-alfred-workflow)
 
 # chrome-bookmarks
 

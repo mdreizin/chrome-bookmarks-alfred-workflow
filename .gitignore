@@ -74,3 +74,6 @@ fabric.properties
 ### Project template
 build/
 dist/
+
+# SonarQube
+.scannerwork

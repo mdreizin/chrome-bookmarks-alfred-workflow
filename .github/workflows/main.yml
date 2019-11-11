@@ -1,0 +1,39 @@
+name: CI
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup
+      uses: actions/setup-go@v1
+      with:
+        go-version: 1.13
+      id: go
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Install
+      run: |
+        go get -v -t -d ./...
+        make deps
+      env:
+        GO111MODULE: 'on'
+    - name: Lint
+      run: PATH="$(go env GOPATH)/bin:$PATH" make lint
+    - name: Test
+      run: make cover
+    - name: Build
+      run: PATH="$(go env GOPATH)/bin:$PATH" VERSION=${GITHUB_REF} make build
+      env:
+        CI: true
+    - name: Sonar
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: build/chrome-bookmarks.alfredworkflow
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

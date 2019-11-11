@@ -1,7 +1,5 @@
 SHELL:=/bin/bash
-ifdef TRAVIS_TAG
-VERSION=$(TRAVIS_TAG)
-else
+ifndef VERSION
 VERSION=dev
 endif
 BUILD_DIR:=build
@@ -22,7 +20,7 @@ build:
 	@rm -rf ${BUILD_DIR}
 	@mkdir -p ${BUILD_DIR}
 	@go run $(GOBUILD_ARGS) cmd/workflow-gen/main.go -workflow-tmpl-file="configs/info.plist.gohtml" -workflow-file="configs/workflow.yml" -browser-file="configs/browser.yml" -asset-dir="${ASSET_DIR}" -out-dir="${BUILD_DIR}"
-ifeq ($(TRAVIS),true)
+ifeq ($(CI),true)
 	@gox $(GOBUILD_ARGS) -os="darwin" -arch="amd64" -osarch="!darwin/arm64" -output="${BUILD_DIR}/${WORKFLOW_NAME}" ./cmd/workflow
 else
 	@go build $(GOBUILD_ARGS) -o ${BUILD_DIR}/$(WORKFLOW_NAME) ./cmd/workflow

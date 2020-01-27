@@ -35,6 +35,8 @@ github.com/deanishe/awgo v0.21.0 h1:p0EgcmEoUj5q/joi7e7KQ0fL0FTeElyfR4FgOsPOaT0=
 github.com/deanishe/awgo v0.21.0/go.mod h1:mWVSFCwpd+G+jCzHz00Euyhi2avtS9rnOfl+s7cSDhk=
 github.com/deanishe/awgo v0.22.0 h1:3w4pHmI/n+cTFEixQMBdLPxAj2+iN6pEeciv3wTfNqU=
 github.com/deanishe/awgo v0.22.0/go.mod h1:mWVSFCwpd+G+jCzHz00Euyhi2avtS9rnOfl+s7cSDhk=
+github.com/deanishe/awgo v0.22.1 h1:N61eAOqc2u2zMQjY0Srd3mAn1gaj/9nU4YaTe3aaHU0=
+github.com/deanishe/awgo v0.22.1/go.mod h1:FIvY0LMPTrqEqSDy79rcSqL6+oFUhFL9qlXBi+qQKks=
 github.com/deanishe/go-env v0.4.0 h1:tpu14o16gJGTN/w2gxntwxu2l5Eby30jSrnlgOfjzwk=
 github.com/deanishe/go-env v0.4.0/go.mod h1:RgEcGAqdRnt8ybQteAbv1Ys2lWIRE7TlgON/sbdjuaY=
 github.com/docopt/docopt-go v0.0.0-20180111231733-ee0de3bc6815/go.mod h1:WwZ+bS3ebgob9U8Nd0kOddGdZWjyMGR8Wziv+TBNwSE=
@@ -64,6 +66,8 @@ github.com/mitchellh/reflectwalk v1.0.0/go.mod h1:mSTlrgnPZtwu0c4WaC2kGObEpuNDbx
 github.com/olekukonko/tablewriter v0.0.1/go.mod h1:vsDQFd/mU46D+Z4whnwzcISnGGzXWMclvtLoiIKAKIo=
 github.com/pkg/errors v0.8.1 h1:iURUrRGxPUNPdy5/HRSm+Yj6okJ6UtLINN0Q9M4+h3I=
 github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
+github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
+github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/objx v0.1.0 h1:4G4v2dO3VZwixGIRoQ5Lfboy6nUhCyYzaqnIAPPhYs4=

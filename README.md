@@ -9,6 +9,7 @@
 - [x] Google Chrome (`chrome`, `chrome-profiles`)
 - [x] Google Chrome Canary (`canary`, `canary-profiles`)
 - [x] Chromium (`chromium`, `chromium-profiles`)
+- [x] Microsoft Edge (`edge`, `edge-profiles`)
 
 ![Screenshot](./screenshot.png)
 

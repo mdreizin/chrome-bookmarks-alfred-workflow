@@ -18,7 +18,7 @@
 | Command | Description |
 |:--|:--|
 | `<browser>` | Searches bookmarks using `query`. If you would like to show bookmark folder please press Command (or Cmd) ⌘. |
-| `<browser>-profile` | Sets active user profile. `Auto` options checks active user profile and uses it to search bookmarks. |
+| `<browser>-profiles` | Sets active user profile. `Auto` options checks active user profile and uses it to search bookmarks. |
 
 ## Setup
 

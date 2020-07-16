@@ -16,3 +16,9 @@ chromium:
   bookmarkOpenId: "fe18d1b8-0883-4dae-b463-48b6c86b89b4"
   profileListId: "0dbb6f03-744b-4821-8483-d3e773df15d6"
   profileSetId: "c7b2c7e1-29f0-4b00-84d5-7c3a8bf69549"
+
+edge:
+  bookmarkListId: "bba7dce5-3ab8-4d6b-b60b-0a657244b9e0"
+  bookmarkOpenId: "acc08389-2a8d-4943-b224-4cfb06722601"
+  profileListId: "fe077da3-9be5-42f0-bc42-dff10527b4a1"
+  profileSetId: "d049ea91-55c4-4bb0-97b0-f6512c7c6842"

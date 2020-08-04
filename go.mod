@@ -6,7 +6,7 @@ require (
 	github.com/Masterminds/goutils v1.1.0 // indirect
 	github.com/Masterminds/semver v1.4.2 // indirect
 	github.com/Masterminds/sprig v2.22.0+incompatible
-	github.com/deanishe/awgo v0.26.0
+	github.com/deanishe/awgo v0.27.0
 	github.com/google/uuid v1.1.1 // indirect
 	github.com/huandu/xstrings v1.2.0 // indirect
 	github.com/imdario/mergo v0.3.7 // indirect

@@ -11,12 +11,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Setup
-      uses: actions/setup-go@v1
+      uses: actions/setup-go@v2
       with:
         go-version: 1.13
-      id: go
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
+    - name: Restore Cache
+      uses: actions/cache@v2
+      with:
+        path: ~/go/pkg/mod
+        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+        restore-keys: |
+          ${{ runner.os }}-go-
     - name: Install
       run: |
         go get -v -t -d ./...
@@ -32,7 +38,7 @@ jobs:
       env:
         CI: true
     - name: Sonar
-      uses: sonarsource/sonarcloud-github-action@v1.1
+      uses: sonarsource/sonarcloud-github-action@v1.4
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

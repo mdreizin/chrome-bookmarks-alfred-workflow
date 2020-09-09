@@ -1,7 +1,13 @@
-name: CI
-on: [push]
+name: dev
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 jobs:
-  build:
+  ci:
     runs-on: ubuntu-latest
     steps:
     - name: Setup

@@ -19,3 +19,10 @@
   path: "~/Library/Application Support/Chromium"
   iconUrl: "chromium.png"
   profileName: "Default"
+
+- name: "edge"
+  fullName: "com.microsoft.edgemac"
+  description: "Microsoft Edge"
+  path: "~/Library/Application Support/Microsoft Edge"
+  iconUrl: "edge.png"
+  profileName: "Default"

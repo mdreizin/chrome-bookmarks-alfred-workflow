@@ -26,3 +26,11 @@
   path: "~/Library/Application Support/Microsoft Edge"
   iconUrl: "edge.png"
   profileName: "Default"
+
+- name: "vivaldi"
+  fullName: "com.vivaldi.Vivaldi"
+  description: "Vivaldi"
+  path: "~/Library/Application Support/Vivaldi"
+  iconUrl: "vivaldi.png"
+  profileName: "Default"
+

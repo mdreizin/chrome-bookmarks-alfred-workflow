@@ -22,3 +22,9 @@ edge:
   bookmarkOpenId: "acc08389-2a8d-4943-b224-4cfb06722601"
   profileListId: "fe077da3-9be5-42f0-bc42-dff10527b4a1"
   profileSetId: "d049ea91-55c4-4bb0-97b0-f6512c7c6842"
+
+vivaldi:
+  bookmarkListId: "caa9ecf5-d269-4757-b555-61b2d6dee497"
+  bookmarkOpenId: "05008a94-3fd7-44d4-aa10-b0f2a495d360"
+  profileListId: "093cb3e1-761a-4f34-83f6-36507c8c6eff"
+  profileSetId: "0d4fbc34-60ed-4223-98c9-5a93a103aa5c"

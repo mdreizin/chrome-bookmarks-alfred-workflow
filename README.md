@@ -10,6 +10,7 @@
 - [x] Google Chrome Canary (`canary`, `canary-profiles`)
 - [x] Chromium (`chromium`, `chromium-profiles`)
 - [x] Microsoft Edge (`edge`, `edge-profiles`)
+- [x] Microsoft Edge Canary (`edge-canary`, `edge-canary-profiles`)
 - [x] Vivaldi (`vivaldi`, `vivaldi-profiles`)
 
 ![Screenshot](./screenshot.png)

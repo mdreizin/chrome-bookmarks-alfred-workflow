@@ -27,6 +27,13 @@
   iconUrl: "edge.png"
   profileName: "Default"
 
+- name: "edge-canary"
+  fullName: "com.microsoft.edgemac.Canary"
+  description: "Microsoft Edge Canary"
+  path: "~/Library/Application Support/Microsoft Edge Canary"
+  iconUrl: "edge-canary.png"
+  profileName: "Default"
+
 - name: "vivaldi"
   fullName: "com.vivaldi.Vivaldi"
   description: "Vivaldi"

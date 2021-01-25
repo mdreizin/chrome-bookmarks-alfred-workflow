@@ -40,7 +40,7 @@ jobs:
       env:
         CI: true
     - name: Sonar
-      uses: sonarsource/sonarcloud-github-action@v1.4
+      uses: sonarsource/sonarcloud-github-action@v1.5
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

@@ -23,6 +23,12 @@ edge:
   profileListId: "fe077da3-9be5-42f0-bc42-dff10527b4a1"
   profileSetId: "d049ea91-55c4-4bb0-97b0-f6512c7c6842"
 
+edge-canary:
+  bookmarkListId: "d8ea0a40-6493-4e42-af3b-3630ec9eba2d"
+  bookmarkOpenId: "cd405773-829b-4eff-bb1f-a8eb2d613bc9"
+  profileListId: "f5ca2278-6a2b-48fa-ae9c-d20b76eceab2"
+  profileSetId: "107896de-aa3a-45f2-833e-c4c7d0421c13"
+
 vivaldi:
   bookmarkListId: "caa9ecf5-d269-4757-b555-61b2d6dee497"
   bookmarkOpenId: "05008a94-3fd7-44d4-aa10-b0f2a495d360"

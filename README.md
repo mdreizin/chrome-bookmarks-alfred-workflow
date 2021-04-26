@@ -12,6 +12,8 @@
 - [x] Microsoft Edge (`edge`, `edge-profiles`)
 - [x] Microsoft Edge Canary (`edge-canary`, `edge-canary-profiles`)
 - [x] Vivaldi (`vivaldi`, `vivaldi-profiles`)
+- [x] Brave (`brave`, `brave-profiles`)
+
 
 ![Screenshot](./screenshot.png)
 

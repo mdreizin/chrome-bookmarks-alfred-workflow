@@ -34,3 +34,9 @@ vivaldi:
   bookmarkOpenId: "05008a94-3fd7-44d4-aa10-b0f2a495d360"
   profileListId: "093cb3e1-761a-4f34-83f6-36507c8c6eff"
   profileSetId: "0d4fbc34-60ed-4223-98c9-5a93a103aa5c"
+
+brave:
+  bookmarkListId: "d8981fea-d3fb-4901-8296-19972d14e45f"
+  bookmarkOpenId: "4eb834a3-06e7-4459-a848-fcdba562c5ea"
+  profileListId: "ffa039c2-bec7-497f-b821-4c3c59fae1d0"
+  profileSetId: "3235199b-e056-4d26-9995-8c9e527bfa9a"

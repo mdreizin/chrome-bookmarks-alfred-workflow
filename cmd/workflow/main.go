@@ -3,14 +3,15 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/deanishe/awgo"
+	"os"
+	"path"
+	"strings"
+
+	aw "github.com/deanishe/awgo"
 	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/pkg/bookmarks"
 	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/pkg/browsers"
 	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/pkg/profiles"
 	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/pkg/workflows"
-	"os"
-	"path"
-	"strings"
 )
 
 var (
@@ -113,6 +114,8 @@ func run() error {
 
 				if profile.IsVirtual {
 					title = profile.DisplayName
+				} else if profile.UserName != "" {
+					title = profile.UserName
 				} else if profile.Name != "" {
 					title = profile.Name
 				}

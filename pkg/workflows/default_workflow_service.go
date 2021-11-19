@@ -36,22 +36,6 @@ func (s *DefaultWorkflowService) GetProfiles(b *browsers.Browser, query string) 
 }
 
 func (s *DefaultWorkflowService) GetBookmarks(browser *browsers.Browser, query string) (bookmarks.BookmarkSlice, error) {
-	profileSlice, err := s.ProfileService.GetProfiles(browser)
-
-	if err != nil {
-		return nil, err
-	}
-
-	profileName := profiles.DefaultProfileName
-
-	if browser.ProfileName == "" {
-		if profile, err := profileSlice.FirstActive(); err == nil && profile.Name != "" {
-			profileName = profile.Name
-		}
-	}
-
-	browser.ProfileName = profileName
-
 	bookmarkSlice, err := s.BookmarkService.GetBookmarks(browser)
 
 	if err != nil {

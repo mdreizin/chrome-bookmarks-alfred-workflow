@@ -6,39 +6,40 @@
 
 > Chrome/Canary/Chromium bookmarks search workflow for Alfred
 
-- [x] Google Chrome (`chrome`, `chrome-profiles`)
-- [x] Google Chrome Canary (`canary`, `canary-profiles`)
-- [x] Chromium (`chromium`, `chromium-profiles`)
-- [x] Microsoft Edge (`edge`, `edge-profiles`)
-- [x] Microsoft Edge Canary (`edge-canary`, `edge-canary-profiles`)
-- [x] Vivaldi (`vivaldi`, `vivaldi-profiles`)
+-   [x] Google Chrome (`chrome`, `chrome-profiles`)
+-   [x] Google Chrome Canary (`canary`, `canary-profiles`)
+-   [x] Chromium (`chromium`, `chromium-profiles`)
+-   [x] Microsoft Edge (`edge`, `edge-profiles`)
+-   [x] Microsoft Edge Canary (`edge-canary`, `edge-canary-profiles`)
+-   [x] Vivaldi (`vivaldi`, `vivaldi-profiles`)
+-   [x] Brave Browser (`brave`, `brave-profiles`)
 
 ![Screenshot](./screenshot.png)
 
 ## Commands
 
-| Command | Description |
-|:--|:--|
-| `<browser>` | Searches bookmarks using `query`. If you would like to show bookmark folder please press Command (or Cmd) ⌘. |
-| `<browser>-profiles` | Sets active user profile. `Auto` options checks active user profile and uses it to search bookmarks. |
+| Command              | Description                                                                                                  |
+| :------------------- | :----------------------------------------------------------------------------------------------------------- |
+| `<browser>`          | Searches bookmarks using `query`. If you would like to show bookmark folder please press Command (or Cmd) ⌘. |
+| `<browser>-profiles` | Sets active user profile. `Auto` options checks active user profile and uses it to search bookmarks.         |
 
 ## Setup
 
-- Run `brew install go`
-- Run `make deps`
+-   Run `brew install go`
+-   Run `make deps`
 
 ## Develop
 
-- Run `make build`
-- Install `./build/chrome-bookmarks.alfredworkflow`
+-   Run `make build`
+-   Install `./build/chrome-bookmarks.alfredworkflow`
 
 ## Test
 
-- Run `make test`
+-   Run `make test`
 
 ## Cover
 
-- Run `make cover` or `make cover-html`
+-   Run `make cover` or `make cover-html`
 
 ## QA
 

@@ -41,3 +41,9 @@
   iconUrl: "vivaldi.png"
   profileName: "Default"
 
+- name: "brave"
+  fullName: "com.brave.Browser"
+  description: "Brave Browser"
+  path: "~/Library/Application Support/BraveSoftware/Brave-Browser"
+  iconUrl: "brave.png"
+  profileName: "Default"

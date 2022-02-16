@@ -34,10 +34,16 @@
   iconUrl: "edge-canary.png"
   profileName: "Default"
 
+- name: "edge-beta"
+  fullName: "com.microsoft.edgemac.Beta"
+  description: "Microsoft Edge Beta"
+  path: "~/Library/Application Support/Microsoft Edge Beta"
+  iconUrl: "edge-beta.png"
+  profileName: "Default"
+
 - name: "vivaldi"
   fullName: "com.vivaldi.Vivaldi"
   description: "Vivaldi"
   path: "~/Library/Application Support/Vivaldi"
   iconUrl: "vivaldi.png"
   profileName: "Default"
-

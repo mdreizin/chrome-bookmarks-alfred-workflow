@@ -13,7 +13,7 @@ require (
 	github.com/mitchellh/copystructure v1.0.0 // indirect
 	github.com/mitchellh/gox v0.4.0
 	github.com/mitchellh/iochan v1.0.0 // indirect
-	github.com/stretchr/testify v1.7.0
+	github.com/stretchr/testify v1.7.2
 	golang.org/x/lint v0.0.0-20200302205851-738671d3881b
 	gopkg.in/yaml.v2 v2.4.0
 )

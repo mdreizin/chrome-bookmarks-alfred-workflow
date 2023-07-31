@@ -2,7 +2,6 @@ package browsers
 
 import (
 	"github.com/stretchr/testify/assert"
-	"io/ioutil"
 	"os"
 	"path"
 	"testing"
@@ -31,10 +30,10 @@ func TestYmlBrowserRepository_UpdateBrowser(t *testing.T) {
 	test := assert.New(t)
 	filename := path.Join("test", "marat", "browser.yml")
 	dirname := path.Dir(filename)
-	bytes, _ := ioutil.ReadFile("test/browser.yml")
+	bytes, _ := os.ReadFile("test/browser.yml")
 
 	_ = os.MkdirAll(dirname, 0777)
-	_ = ioutil.WriteFile(filename, bytes, 0644)
+	_ = os.WriteFile(filename, bytes, 0644)
 
 	repository := YmlBrowserRepository{Filename: filename}
 	browsersSlice, _ := repository.GetBrowsers()

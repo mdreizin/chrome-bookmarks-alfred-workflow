@@ -8,8 +8,8 @@ import (
 
 type bookmarkTree struct {
 	Bookmark
-	Type     string         `json:"type"`
-	Children []bookmarkTree `json:"children,omitempty"`
+	Type     string          `json:"type"`
+	Children []*bookmarkTree `json:"children,omitempty"`
 }
 
 type bookmarkAux struct {
@@ -32,7 +32,7 @@ func (t bookmarkTree) Walk(f func(*bookmarkTree)) {
 	for _, child := range t.Children {
 		child.Path = t.Path
 
-		f(&child)
+		f(child)
 
 		if len(child.Children) > 0 {
 			child.Walk(f)
@@ -63,7 +63,7 @@ func (r *JsonBookmarkRepository) GetBookmarks(browser *browsers.Browser) (Bookma
 
 	walk := func(t *bookmarkTree) {
 		if t.Type == "url" {
-			bookmarkSlice = bookmarkSlice.Add(Bookmark{
+			bookmarkSlice = bookmarkSlice.Add(&Bookmark{
 				Name:    t.Name,
 				URL:     t.URL,
 				Path:    t.Path,

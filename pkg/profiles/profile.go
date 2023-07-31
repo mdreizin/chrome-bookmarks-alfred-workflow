@@ -54,7 +54,7 @@ type Profile struct {
 	UserEmail       string `json:"user_name"`
 }
 
-var AutoProfile = Profile{
+var AutoProfile = &Profile{
 	Name:        "",
 	DisplayName: "Auto",
 	IsActive:    true,

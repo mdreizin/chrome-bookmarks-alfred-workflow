@@ -11,19 +11,19 @@ func TestBookmarkSlice_Match(t *testing.T) {
 
 	test := assert.New(t)
 	bookmarkSlice := BookmarkSlice{
-		Bookmark{
+		&Bookmark{
 			Name: "Golang",
 			URL:  "https://golang.org",
 		},
-		Bookmark{
+		&Bookmark{
 			Name: heartSymbol,
 			URL:  "https://unicode-table.com/en/1F5A4/",
 		},
-		Bookmark{
+		&Bookmark{
 			Name: bugSymbol,
 			URL:  "https://unicode-table.com/en/1F41B/",
 		},
-		Bookmark{
+		&Bookmark{
 			Name: "Rust",
 			URL:  "https://www.rust-lang.org",
 		},
@@ -40,17 +40,17 @@ func TestBookmarkSlice_Match(t *testing.T) {
 func TestBookmarkSlice_Sort(t *testing.T) {
 	test := assert.New(t)
 	bookmarkSlice := BookmarkSlice{
-		Bookmark{
+		&Bookmark{
 			Name: "Rust",
 			URL:  "https://www.rust-lang.org",
 		},
-		Bookmark{
+		&Bookmark{
 			Name: "Golang",
 			URL:  "https://golang.org",
 		},
 	}.Sort()
 
-	test.Equal(Bookmark{
+	test.Equal(&Bookmark{
 		Name: "Golang",
 		URL:  "https://golang.org",
 	}, bookmarkSlice[0])

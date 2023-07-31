@@ -7,7 +7,6 @@ import (
 	"github.com/Masterminds/sprig"
 	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/pkg/browsers"
 	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/pkg/workflows"
-	"io/ioutil"
 	"os"
 	"os/exec"
 	"path"
@@ -73,7 +72,7 @@ func run() error {
 		return err
 	}
 
-	content, err := ioutil.ReadFile(workflowTemplateFile)
+	content, err := os.ReadFile(workflowTemplateFile)
 
 	if err != nil {
 		return err
@@ -102,7 +101,7 @@ func run() error {
 		return err
 	}
 
-	return ioutil.WriteFile(path.Join(outDir, strings.TrimSuffix(filepath.Base(workflowTemplateFile), templateExt)), wr.Bytes(), 0644)
+	return os.WriteFile(path.Join(outDir, strings.TrimSuffix(filepath.Base(workflowTemplateFile), templateExt)), wr.Bytes(), 0644)
 }
 
 func main() {

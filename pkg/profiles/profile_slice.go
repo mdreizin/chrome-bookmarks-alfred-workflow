@@ -7,10 +7,10 @@ import (
 	"sort"
 )
 
-type ProfileSlice []Profile
+type ProfileSlice []*Profile
 
 func (s ProfileSlice) Add(v *Profile) ProfileSlice {
-	return append(s, *v)
+	return append(s, v)
 }
 
 func (s ProfileSlice) Match(query string) ProfileSlice {
@@ -20,7 +20,7 @@ func (s ProfileSlice) Match(query string) ProfileSlice {
 
 	for _, v := range s {
 		if re.MatchString(v.Name) || re.MatchString(v.DisplayName) || re.MatchString(v.UserName) || re.MatchString(v.UserEmail) {
-			f = f.Add(&v)
+			f = f.Add(v)
 		}
 	}
 
@@ -29,8 +29,8 @@ func (s ProfileSlice) Match(query string) ProfileSlice {
 
 func (s ProfileSlice) Find(f func(*Profile) bool) (*Profile, error) {
 	for _, v := range s {
-		if f(&v) {
-			return &v, nil
+		if f(v) {
+			return v, nil
 		}
 	}
 

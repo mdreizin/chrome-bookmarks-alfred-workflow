@@ -8,10 +8,10 @@ import (
 func TestBrowserSlice_Match(t *testing.T) {
 	test := assert.New(t)
 	browserSlice := BrowserSlice{
-		Browser{
+		&Browser{
 			Name: "canary",
 		},
-		Browser{
+		&Browser{
 			Name: "chrome",
 		},
 	}
@@ -24,8 +24,8 @@ func TestBrowserSlice_Match(t *testing.T) {
 func TestBrowserSlice_FindByName(t *testing.T) {
 	test := assert.New(t)
 	browserSlice := BrowserSlice{
-		Browser{Name: "canary"},
-		Browser{Name: "chrome"},
+		&Browser{Name: "canary"},
+		&Browser{Name: "chrome"},
 	}
 	browser, err := browserSlice.FindByName("chrome")
 
@@ -40,10 +40,10 @@ func TestBrowserSlice_FindByName(t *testing.T) {
 func TestBrowserSlice_FindIndex(t *testing.T) {
 	test := assert.New(t)
 	browserSlice := BrowserSlice{
-		Browser{
+		&Browser{
 			Name: "canary",
 		},
-		Browser{
+		&Browser{
 			Name: "chrome",
 		},
 	}

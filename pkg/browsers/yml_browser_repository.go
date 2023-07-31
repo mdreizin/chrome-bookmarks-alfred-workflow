@@ -3,6 +3,7 @@ package browsers
 import (
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
+	"os"
 	"regexp"
 	"strings"
 )
@@ -12,7 +13,7 @@ type YmlBrowserRepository struct {
 }
 
 func (r *YmlBrowserRepository) GetBrowsers() (BrowserSlice, error) {
-	bytes, err := ioutil.ReadFile(r.Filename)
+	bytes, err := os.ReadFile(r.Filename)
 
 	if err != nil {
 		return nil, err
@@ -44,7 +45,7 @@ func (r *YmlBrowserRepository) UpdateBrowser(b *Browser) error {
 	i := browserSlice.FindIndex(func(v *Browser) bool { return strings.EqualFold(b.Name, v.Name) })
 
 	if i >= 0 {
-		browserSlice[i] = *b
+		browserSlice[i] = b
 
 		bytes, err := yaml.Marshal(browserSlice)
 

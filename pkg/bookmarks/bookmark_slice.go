@@ -7,9 +7,9 @@ import (
 	"strings"
 )
 
-type BookmarkSlice []Bookmark
+type BookmarkSlice []*Bookmark
 
-func (s BookmarkSlice) Add(v Bookmark) BookmarkSlice {
+func (s BookmarkSlice) Add(v *Bookmark) BookmarkSlice {
 	return append(s, v)
 }
 

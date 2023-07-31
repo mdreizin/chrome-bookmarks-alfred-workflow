@@ -7,10 +7,10 @@ import (
 	"strings"
 )
 
-type BrowserSlice []Browser
+type BrowserSlice []*Browser
 
 func (s BrowserSlice) Add(b *Browser) BrowserSlice {
-	return append(s, *b)
+	return append(s, b)
 }
 
 func (s BrowserSlice) Match(query string) BrowserSlice {
@@ -20,7 +20,7 @@ func (s BrowserSlice) Match(query string) BrowserSlice {
 
 	for _, v := range s {
 		if re.MatchString(v.Name) {
-			f = f.Add(&v)
+			f = f.Add(v)
 		}
 	}
 
@@ -29,8 +29,8 @@ func (s BrowserSlice) Match(query string) BrowserSlice {
 
 func (s BrowserSlice) Find(f func(*Browser) bool) (*Browser, error) {
 	for _, v := range s {
-		if f(&v) {
-			return &v, nil
+		if f(v) {
+			return v, nil
 		}
 	}
 
@@ -39,7 +39,7 @@ func (s BrowserSlice) Find(f func(*Browser) bool) (*Browser, error) {
 
 func (s BrowserSlice) FindIndex(f func(*Browser) bool) int {
 	for i, v := range s {
-		if f(&v) {
+		if f(v) {
 			return i
 		}
 	}

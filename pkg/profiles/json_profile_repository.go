@@ -3,14 +3,14 @@ package profiles
 import (
 	"encoding/json"
 	"github.com/mdreizin/chrome-bookmarks-alfred-workflow/pkg/browsers"
-	"io/ioutil"
+	"os"
 	"strings"
 )
 
 type profileAux struct {
 	Root struct {
-		Profiles map[string]Profile `json:"info_cache"`
-		Name     string             `json:"last_used,omitempty"`
+		Profiles map[string]*Profile `json:"info_cache"`
+		Name     string              `json:"last_used,omitempty"`
 	} `json:"profile"`
 }
 
@@ -21,7 +21,7 @@ type JsonProfileRepository struct {
 func (r *JsonProfileRepository) GetProfiles(browser *browsers.Browser) (ProfileSlice, error) {
 	filename := browser.ResolvePath(r.Filename)
 
-	bytes, err := ioutil.ReadFile(filename)
+	bytes, err := os.ReadFile(filename)
 
 	if err != nil {
 		return nil, err

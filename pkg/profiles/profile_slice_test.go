@@ -8,12 +8,12 @@ import (
 func TestProfileSlice_Match(t *testing.T) {
 	test := assert.New(t)
 	profileSlice := ProfileSlice{
-		Profile{
+		&Profile{
 			Name:      DefaultProfileName,
 			UserName:  "User 1",
 			UserEmail: "user1@gmail.com",
 		},
-		Profile{
+		&Profile{
 			Name:      "User2",
 			UserName:  "User 2",
 			UserEmail: "user1@gmail.com",
@@ -29,19 +29,19 @@ func TestProfileSlice_Match(t *testing.T) {
 func TestProfileSlice_Sort(t *testing.T) {
 	test := assert.New(t)
 	profileSlice := ProfileSlice{
-		Profile{
+		&Profile{
 			Name:      "User2",
 			UserName:  "User 2",
 			UserEmail: "user2@gmail.com",
 		},
-		Profile{
+		&Profile{
 			Name:      DefaultProfileName,
 			UserName:  "User 1",
 			UserEmail: "user1@gmail.com",
 		},
 	}.Sort()
 
-	test.Equal(Profile{
+	test.Equal(&Profile{
 		Name:      DefaultProfileName,
 		UserName:  "User 1",
 		UserEmail: "user1@gmail.com",
@@ -51,13 +51,13 @@ func TestProfileSlice_Sort(t *testing.T) {
 func TestProfileSlice_FirstActive(t *testing.T) {
 	test := assert.New(t)
 	profileSlice := ProfileSlice{
-		Profile{
+		&Profile{
 			Name:      "User2",
 			UserName:  "User 2",
 			UserEmail: "user2@gmail.com",
 			IsActive:  true,
 		},
-		Profile{
+		&Profile{
 			Name:      DefaultProfileName,
 			UserName:  "User 1",
 			UserEmail: "user1@gmail.com",
